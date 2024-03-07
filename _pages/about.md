@@ -39,7 +39,7 @@ If you are seeking any form of academic cooperation, please feel free to email m
 </div>
 
 
-<div class='paper-box'><div class='paper-box-image'><div><div class="badge">ACL-finding 2023</div><img src='papers/02-GROVE.png' alt="02-GROVE" width="100%"></div></div>
+<div class='paper-box'><div class='paper-box-image'><div><div class="badge">EMNLP-finding 2023</div><img src='papers/02-GROVE.png' alt="02-GROVE" width="100%"></div></div>
 <div class='paper-box-text' markdown="1">
 
 - [GROVE: A Retrieval-augmented Complex Story Generation Framework with A Forest of Evidence](https://aclanthology.org/2023.findings-emnlp.262/), Zhihua Wen, Zhiliang Tian, Wei Wu, Yuxin Yang, Zhen Huang, Dongsheng Li.
