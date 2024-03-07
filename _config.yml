@@ -7,7 +7,7 @@
 
 # Site Settings
 title                    : "Zexin Jian - Homepage"
-description              : "Zexin Jian - Homepage"
+description              : "Zexin Jian, an undergraduate student at the School of Computer Science, National University of Defense Technology"
 repository               : "xinchen-jzx/xinchen-jzx.github.io"
 google_scholar_stats_use_cdn : true
 
@@ -22,8 +22,8 @@ baidu_site_verification  :  # get baidu_site_verification from https://ziyuan.ba
 # Site Author
 author:
   name             : "Zexin Jian"
-  avatar           : "images/xinchen-jzx.png"
-  bio              : "Lorem ipsum College"
+  avatar           : "images/profile.jpg"
+  bio              : "National University of Defense Technology"
   location         : "Changsha, China"
   employer         :
   pubmed           : 
@@ -37,7 +37,7 @@ author:
   flickr           :
   facebook         :
   foursquare       :
-  github           : # e.g., "github username"
+  github           : "https://github.com/xinchen-jzx"
   google_plus      :
   keybase          :
   instagram        :
