@@ -21,7 +21,7 @@ Welcome! I am an undergraduate student at Computer College, **National Universit
 
 My research interest includes **Operating System, Computer System, Large Language Models (LLM), and Computer Architecture**. 
 
-If you are seeking any form of academic cooperation, please feel free to email me at [zexinjian@gmail.com](). 
+If you are seeking any form of academic cooperation, please feel free to email me at [zexinjian@foxmail.com](). 
 
 
 
@@ -55,17 +55,6 @@ If you are seeking any form of academic cooperation, please feel free to email m
 <br/>
 
 # 🎖 Honors and Awards
-## 🥇 Competitions
-- *2023.11*, **National College student Mathematics Competition PLA Division (全国大学生数学竞赛解放军赛区)**,the third prize; 
-- *2023.10*, **All-Army Military Modeling competition (全军军事建模竞赛)**, the second prize; 
-- *2023.09*, **National University of Defense Technology Mathematics competition (国防科技大学数学竞赛)**, the second prize; 
-- *2023.09*, **National Undergraduate Mathematical Modeline contest Hunan province Division (全国大学生数学建模竞赛湖南省赛区)**, the third prize;
-- *2022.11*, **National College student Mathematics Competition PLA Division (全国大学生数学竞赛解放军赛区)**, the first prize; 
-- *2022.09*, **National University of Defense Technology Mathematics Competition (国防科技大学数学竞赛)**, the second prize; 
-- *2022.06*, **National University of Defense Technology Programming Competition (国防科技大学程序设计竞赛)**, the silver award. 
-
-<br/>
-
 ## 🏆 Awards
 - *2023.10*, **National Inspirational Scholarship**. 
 
@@ -86,10 +75,11 @@ If you are seeking any form of academic cooperation, please feel free to email m
 
 ## 👩‍🏫 Teaching Experience
 - **National University of Defense Technology**
-  - Teaching Assistant, College Computing Fundamentals (大学计算基础), Fall 2023; 
-  - Teaching Assistant, Operating System (操作系统), Fall 2023; 
-  - Teaching Assistant,  C++ Programming (C++程序设计), Spring 2023; 
-  - Teaching Assistant,  C++ Programming (C++程序设计), Fall 2022. 
+  - TA for Operating System, Fall 2024;
+  - TA for College Computing Fundamentals, Fall 2023; 
+  - TA for Operating System, Fall 2023; 
+  - TA for C++ Programming, Spring 2023; 
+  - TA for C++ Programming, Fall 2022. 
 
 <br/>
 <br/>
