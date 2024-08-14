@@ -17,11 +17,11 @@ redirect_from:
 
 <span class='anchor' id='about-me'></span>
 
-Welcome! I am an undergraduate student at Computer College, **National University of Defense Technology (国防科技大学计算机学院)**. 
+<font size=6>Welcome! I am an undergraduate student at Computer College, **National University of Defense Technology (国防科技大学计算机学院)**. </font>
 
-My research interest includes **Operating System, Computer System, Large Language Models (LLM), and Computer Architecture**. 
+<font size=6>My research interest includes **Operating System, Computer System, Large Language Models (LLM), and Computer Architecture**. </font>
 
-If you are seeking any form of academic cooperation, please feel free to email me at [zexinjian@foxmail.com](). 
+<font size=6>If you are seeking any form of academic cooperation, please feel free to email me at [zexinjian@foxmail.com](). </font>
 
 
 
