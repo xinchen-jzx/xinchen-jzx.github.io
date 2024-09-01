@@ -17,66 +17,44 @@ redirect_from:
 
 <span class='anchor' id='about-me'></span>
 
-<font face="楷书"><font size=4>Welcome! I am an undergraduate student at Computer College, </font></font> <b><font face="楷书"><font size=4>National University of Defense Technology (国防科技大学计算机学院). </font></font></b>
+<font face="楷书"><font size=4>Welcome! I am an undergraduate student at Computer College, <b>National University of Defense Technology (国防科技大学计算机学院). </b></font></font>
 
-<font face="楷书"><font size=4>My research interest includes </font></font> <font face="楷书"><font size=4><b>Operating System, Computer System, Large Language Models (LLM), and Computer Architecture. </b></font></font>
+<font face="楷书"><font size=4>My research interest includes <b>Operating System, Computer System, Large Language Models (LLM), and Computer Architecture. </b></font></font>
 
 <font face="楷书"><font size=4>If you are seeking any form of academic cooperation, please feel free to email me at <a href="">zexinjian@foxmail.com</a>. </font></font>
 
-
-
 # 🔥 News
-- *2023.10*: &nbsp;🎉🎉 One paper is accepted by EMNLP-finding 2023!
-- *2023.07*: &nbsp;🎉🎉 One paper is accepted by ACL-finding 2023!
+- <font face="楷书"><font size=4><i>2023.10</i>: &nbsp;🎉🎉 One paper is accepted by EMNLP-finding 2023!</font></font>
+- <font face="楷书"><font size=4><i>2023.07</i>: &nbsp;🎉🎉 One paper is accepted by ACL-finding 2023!</font></font>
 
-<br/>
 <br/>
 
 # 📝 Publications
 
-## 🤖 MLSys
 <div class='paper-box'><div class='paper-box-image'><div><div class="badge">ACL-finding 2023</div><img src='papers/01-GRACE-acl23.png' alt="01-GRACE-acl23" width="100%"></div></div>
 <div class='paper-box-text' markdown="1">
 
-- [GRACE: Gradient-guided Controllable Retrieval for Augmenting Attribute-based Text Generation](https://aclanthology.org/2023.findings-acl.530/), Zhihua Wen, Zhiliang Tian, Zhen Huang, Yuxin Yang, **Zexin Jian**, Changjian Wang, Dongsheng Li.
+- <font face="楷书"><font size=4>[GRACE: Gradient-guided Controllable Retrieval for Augmenting Attribute-based Text Generation](https://aclanthology.org/2023.findings-acl.530/), Zhihua Wen, Zhiliang Tian, Zhen Huang, Yuxin Yang, <b>Zexin Jian</b>, Changjian Wang, Dongsheng Li.</font></font>
 </div>
 </div>
-
-<br/>
 
 <div class='paper-box'><div class='paper-box-image'><div><div class="badge">EMNLP-finding 2023</div><img src='papers/02-GROVE-emnlp23.png' alt="02-GROVE-emnlp23" width="100%"></div></div>
 <div class='paper-box-text' markdown="1">
 
-- [GROVE: A Retrieval-augmented Complex Story Generation Framework with A Forest of Evidence](https://aclanthology.org/2023.findings-emnlp.262/), Zhihua Wen, Zhiliang Tian, Wei Wu, Yuxin Yang, Zhen Huang, Dongsheng Li.
+- <font face="楷书"><font size=4>[GROVE: A Retrieval-augmented Complex Story Generation Framework with A Forest of Evidence](https://aclanthology.org/2023.findings-emnlp.262/), Zhihua Wen, Zhiliang Tian, Wei Wu, Yuxin Yang, Zhen Huang, Dongsheng Li.</font></font>
 </div>
 </div>
 
-<br/>
-<br/>
-
-## Sys
-
-# 🎖 Honors and Awards
-## 🏆 Awards
-- *2023.10*, **National Inspirational Scholarship**. 
-
-<br/>
-
-## 🏆 Honors
-- *2023.10*, **Learning Pacesetter**; 
-- *2023.05*, **Outstanding Students of the college**. 
-
-<br/>
 <br/>
 
 # 📖 Experience
 ## 😊 Education
-- *2021.09 - now*, School of Computer Science, **National University of Defense Technology**, Changsha, China.
+- <font face="楷书"><font size=4><i>2021.09 - now</i>, School of Computer Science, <b>National University of Defense Technology</b>, Changsha, China.</font></font>
 
 <br/>
 
 ## 👩‍🏫 Teaching Experience
-- **National University of Defense Technology**
+- <font face="楷书"><font size=4><b>National University of Defense Technology</b></font></font>
   - TA for Operating System, Fall 2024;
   - TA for College Computing Fundamentals, Fall 2023; 
   - TA for Operating System, Fall 2023; 
@@ -84,15 +62,7 @@ redirect_from:
   - TA for C++ Programming, Fall 2022. 
 
 <br/>
-<br/>
 
 # 💬 Invited Talks
-- *2023.06*, attended **the AIS conference** as a speaker, Changsha, China.
-- *2023.05*, participated in **the ADL 138 "ChatGPT and Large Model Technology" conference** organized by CCF, Beijing, China.
-
-<br/>
-<br/>
-
-# 💻 Internships
-- *2023.07 - 2023.09*, **Cross-platform model distillation**, Department of Computing Science, National University of Defense Technology, supervised by Li Shanshan and Wang Changjian. 
-- *2024.08 - now*, 
+- <font face="楷书"><font size=4><i>2023.06</i>, attended <b>the AIS conference</b> as a speaker, Changsha, China.</font></font>
+- <font face="楷书"><font size=4><i>2023.05</i>, participated in <b>the ADL 138 "ChatGPT and Large Model Technology" conference</b> organized by CCF, Beijing, China.</font></font>
