@@ -34,14 +34,14 @@ redirect_from:
 <div class='paper-box'><div class='paper-box-image'><div><div class="badge">ACL-finding 2023</div><img src='papers/01-GRACE-acl23.png' alt="01-GRACE-acl23" width="100%"></div></div>
 <div class='paper-box-text' markdown="1">
 
-- <font face="楷书"><font size=4>[GRACE: Gradient-guided Controllable Retrieval for Augmenting Attribute-based Text Generation](https://aclanthology.org/2023.findings-acl.530/), Zhihua Wen, Zhiliang Tian, Zhen Huang, Yuxin Yang, <b>Zexin Jian</b>, Changjian Wang, Dongsheng Li.</font></font>
+- <font face="楷书"><font size=4><a href=https://aclanthology.org/2023.findings-acl.530>GRACE: Gradient-guided Controllable Retrieval for Augmenting Attribute-based Text Generation</a>, Zhihua Wen, Zhiliang Tian, Zhen Huang, Yuxin Yang, <b>Zexin Jian</b>, Changjian Wang, Dongsheng Li.</font></font>
 </div>
 </div>
 
 <div class='paper-box'><div class='paper-box-image'><div><div class="badge">EMNLP-finding 2023</div><img src='papers/02-GROVE-emnlp23.png' alt="02-GROVE-emnlp23" width="100%"></div></div>
 <div class='paper-box-text' markdown="1">
 
-- <font face="楷书"><font size=4>[GROVE: A Retrieval-augmented Complex Story Generation Framework with A Forest of Evidence](https://aclanthology.org/2023.findings-emnlp.262/), Zhihua Wen, Zhiliang Tian, Wei Wu, Yuxin Yang, Zhen Huang, Dongsheng Li.</font></font>
+- <font face="楷书"><font size=4><a href=https://aclanthology.org/2023.findings-emnlp.262>GROVE: A Retrieval-augmented Complex Story Generation Framework with A Forest of Evidence</a>, Zhihua Wen, Zhiliang Tian, Wei Wu, Yuxin Yang, Zhen Huang, Dongsheng Li.</font></font>
 </div>
 </div>
 
