@@ -31,7 +31,7 @@ redirect_from:
 
 # 📝 Publications
 
-<div class='paper-box'><div class='paper-box-image'><div><div class="badge">ACL-finding 2023</div><img src='papers/02-Knowledge Boundary-nips24.png' alt="02-Knowledge Boundary-nips24" width="100%"></div></div>
+<div class='paper-box'><div class='paper-box-image'><div><div class="badge">NeurIPS 2023</div><img src='papers/02-Knowledge Boundary-nips24.png' alt="02-Knowledge Boundary-nips24" width="100%"></div></div>
 <div class='paper-box-text' markdown="1">
 
 - <font face="楷书"><font size=4><a href="">Perception of Knowledge Boundary for Large Language Models through Semi-open-ended Question Answering</a>, Zhihua Wen, Zhiliang Tian, <b>Zexin Jian</b>, Zhen Huang, Pei Ke, Yifu Gao, Minlie Huang, Dongsheng Li.</font></font>
