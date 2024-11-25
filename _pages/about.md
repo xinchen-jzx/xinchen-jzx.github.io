@@ -19,7 +19,7 @@ redirect_from:
 
 <font face="楷书"><font size=4>Welcome! I am an undergraduate student at Computer College, <b>National University of Defense Technology (国防科技大学计算机学院). </b></font></font>
 
-<font face="楷书"><font size=4>My research interest includes <b>Operating System, Computer System, Large Language Models (LLM), and Computer Architecture. </b></font></font>
+<font face="楷书"><font size=4>My research interest includes <b>MLSys, Operating System, Compiler, Computer Architecture and Large Language Models (LLM). </b></font></font>
 
 <font face="楷书"><font size=4>If you are seeking any form of academic cooperation, please feel free to email me at <a href="">zexinjian@foxmail.com</a>. </font></font>
 
@@ -60,9 +60,3 @@ redirect_from:
   - <font face="楷书"><font size=4>TA for Operating System, Fall 2023;</font></font> 
   - <font face="楷书"><font size=4>TA for C++ Programming, Spring 2023;</font></font>
   - <font face="楷书"><font size=4>TA for C++ Programming, Fall 2022.</font></font>
-
-<br/>
-
-# 💬 Invited Talks
-- <font face="楷书"><font size=4><i>2023.06</i>, attended <b>the AIS conference</b> as a speaker, Changsha, China.</font></font>
-- <font face="楷书"><font size=4><i>2023.05</i>, participated in <b>the ADL 138 "ChatGPT and Large Model Technology" conference</b> organized by CCF, Beijing, China.</font></font>
