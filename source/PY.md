@@ -7,16 +7,16 @@ permalink: PY.html
 
 ## Projects
 
-<!-- Examples: -->
-<!-- {% links %}
+{% links %}
 [
-    {
-    "title": "小舒同学",
-    "link": "https://xiaoshuapp.com/",
-    "img": "https://xiaoshuapp.com/icon.png",
-    "des": "让新标签页更加简单高效，也让你产生整理收藏夹的兴趣"
-    }
-{% endlinks %} -->
+  {
+    "title": "NUDT SysY Compiler",
+    "link": "https://gitee.com/triple-adventurer/sys-ycompiler",
+    "img": "/assets/SysY24.png",
+    "des": "以C++为主要开发语言，面向RISC-V目标平台，综合应用编译技术、操作系统、计算机体系结构等知识构思并实现了一个SysY2022（C语言子集）的综合性编译系统"
+  }
+]
+{% endlinks %}
 
 ## Friends
 
