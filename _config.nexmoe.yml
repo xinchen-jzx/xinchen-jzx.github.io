@@ -1,6 +1,6 @@
 avatar: /assets/profile.jpg # 网站 Logo
 background: # 既是博客的背景，又是文章默认头图
-    path: https://i.dawnlab.me/b5a7e61560facdd5b8aa9683fce147d7.png
+    path: /assets/bg.jpg
     width: 1280
     height: 726
 favicon:
@@ -106,30 +106,61 @@ widgets:
     #           img: https://cdn.jsdelivr.net/gh/nexmoe/nexmoe.github.io@latest/images/avatar.png
     #           link : https://nexmoe.com/
 
-copyTip: "著作权归作者所有。\n商业转载请联系作者获得授权，非商业转载请注明出处。\n来源：%url" # 自定义复制版权文案,使用 %url 代替当前页面URL, 修改为false禁用
+# copyTip: "著作权归作者所有。\n商业转载请联系作者获得授权，非商业转载请注明出处。\n来源：%url" # 自定义复制版权文案,使用 %url 代替当前页面URL, 修改为false禁用
 
 slotHead: | 
-  <!-- Global site tag (gtag.js) - Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-4D4ZJ9G024"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag("js", new Date());
-
-    gtag("config", "G-4D4ZJ9G024");
-  </script>
+  <style>
+  /* 头像大小调整 */
+  .avatar{
+      width: 80px;   /* 头像宽度 */
+      height: 80px;  /* 头像高度 */
+      vertical-align: -20px;
+      border-radius: 50%;
+      margin-right: 5px;
+      margin-bottom: 5px;
+      -webkit-box-shadow: 1px 1px 1px rgba(0,0,0,.1), 1px 1px 1px rgba(0,0,0,0.1), 1px 1px 1px rgba(0,0,0,0.1);
+      box-shadow: 1px 1px 1px rgba(0,0,0,.1), 1px 1px 1px rgba(0,0,0,0.1), 1px 1px 1px rgba(0,0,0,0.1);
+      border: 2px solid #fff;
+  }
+  </style>
+  <body>
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/xiaoyanu/file-test@2021.11.24-2/more/lovetime.css" />
+    <div style="text-align: center;">
+        
+      <img class="avatar" src="/assets/me.jpg">
+      
+  <span id="Timing"></span>
+    </div>
+    <script>
+      function timing() {
+        // 开始时间 - 格式: 年-月-日 时:分:秒
+        let start = '2003-12-05 00:00:00'
+        let startTime = new Date(start).getTime()
+        let currentTime = new Date().getTime()
+        let difference = currentTime - startTime
+        let m =  Math.floor(difference / (1000))
+        let mm = m % 60  // 秒
+        let f = Math.floor(m / 60)
+        let ff = f % 60  // 分钟
+        let s = Math.floor(f / 60)  // 小时
+        let ss = s % 24
+        let day = Math.floor(s / 24 )  // 天数
+        return "<br> " + day + " day " + ss + " h " + ff + " m " + mm +' s'
+      }
+      setInterval(()=>{
+        document.getElementById('Timing').innerHTML = timing()
+      }, 1000)
+    </script></body>
 
 slotFooter: | 
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2058306854838448" crossorigin="anonymous"></script>
 
 # 自定义侧边栏尾部内容
-# slotSidebar: |
-#   # <br><a target="_blank" href="https://www.upyun.com/?utm_source=lianmeng&utm_medium=referral">
-#   # <img src="https://i.dawnlab.me/c0268c1e6cfd0863d6ba35be1575941a.png" width="150px"></a>
+slotSidebar: | 
 
 # 评论框插槽
 slotComment: | 
 
-
+# 页面底部版权说明
 slotCopyright: | 
   <strong>版权声明：</strong>本文采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/cn/deed.zh" target="_blank">CC BY-NC-SA 3.0 CN</a> 协议进行许可

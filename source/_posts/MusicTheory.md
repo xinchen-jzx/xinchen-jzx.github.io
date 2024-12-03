@@ -1,6 +1,7 @@
 ---
 title: MusicTheory
 date: 2024-12-01 19:13:09
+cover: https://i.dawnlab.me/b5a7e61560facdd5b8aa9683fce147d7.png
 tags:
 ---
 

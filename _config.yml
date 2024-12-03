@@ -97,8 +97,6 @@ ignore:
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
 theme: nexmoe
-theme_config:
-  background_color: '#ffffff'
 
 # Deployment
 ## Docs: https://hexo.io/docs/one-command-deployment
