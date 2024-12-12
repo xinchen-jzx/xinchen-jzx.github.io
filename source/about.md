@@ -8,7 +8,11 @@ author_profile: true
 permalink: /about.html
 ---
 
-<font face="楷书"><font size=4>Welcome! I am an undergraduate student at Computer College, <b>National University of Defense Technology (国防科技大学计算机学院). </b></font></font>
+<font face="楷书"><font size=4>I will continue to search, even if the endless stars make my search hopeless, even if I am alone.</font></font>
+
+## About Me
+
+<font face="楷书"><font size=4>Welcome! My name is <b>Zexin Jian</b>, an undergraduate student at Computer College, <b>National University of Defense Technology (国防科技大学计算机学院). </b></font></font>
 
 <font face="楷书"><font size=4>My research interest includes <b>MLSys (Operating System, Compiler and so on) and Large Language Models (LLM). </b></font></font>
 
