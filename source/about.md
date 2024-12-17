@@ -12,9 +12,9 @@ permalink: /about.html
 
 ## About Me
 
-<font face="楷书"><font size=4>Welcome! My name is <b>Zexin Jian</b>, an undergraduate student at Computer College, <b>National University of Defense Technology (国防科技大学计算机学院). </b></font></font>
+<font face="楷书"><font size=4>Welcome! My name is <b>Zexin Jian (简泽鑫)</b>, an undergraduate student at Computer College, <b>National University of Defense Technology (国防科技大学计算机学院). </b></font></font>
 
-<font face="楷书"><font size=4>My research interest includes <b>MLSys (Operating System, Compiler and so on) and Large Language Models (LLM). </b></font></font>
+<font face="楷书"><font size=4>My research interest includes <b>MLSys, Managed Runtime and Large Language Models (LLM). </b></font></font>
 
 <font face="楷书"><font size=4>If you are seeking any form of academic cooperation, please feel free to email me at <a href="">zexinjian@foxmail.com</a>. </font></font>
 
@@ -34,13 +34,13 @@ permalink: /about.html
 <br/>
 
 ## 📖 Experience
-### 😊 Education
-- <font face="楷书"><font size=4><i>2021.09 - 2025.06</i>, School of Computer Science, <b>National University of Defense Technology</b>, Changsha, China.</font></font>
+- <font face="楷书"><font size=4><i>2021.09 - present</i>, B.S. student at <b>National University of Defense Technology (NUDT)</b>, Changsha, China.</font></font>
+- <font face="楷书"><font size=4><i>2024.06 - present</i>, Visiting student at <b>the Institute of Computing Technology, Chinese Academy of Sciences (ICT, CAS)</b> co-advised by [Dr. Huimin Cui (崔慧敏)](https://cuihuimin.github.io/) and [Dr. Chenxi Wang (王晨曦)](https://wangchenxi7.github.io/home/), Beijing, China</font></font>
 
 <br/>
 
 ### 👩‍🏫 Teaching Experience
-- <font face="楷书"><font size=4><b>National University of Defense Technology</b></font></font>
+- <font face="楷书"><font size=4><b>National University of Defense Technology (NUDT)</b></font></font>
   - <font face="楷书"><font size=4>TA for Operating System, Fall 2024;</font></font>
   - <font face="楷书"><font size=4>TA for College Computing Fundamentals, Fall 2023;</font></font>
   - <font face="楷书"><font size=4>TA for Operating System, Fall 2023;</font></font> 
