@@ -11,8 +11,8 @@ permalink: PY.html
 {% links %}
 [
   {
-    "title": "NUDT SysY Compiler",
-    "link": "https://gitee.com/triple-adventurer/sys-ycompiler",
+    "title": "NUDT SysY Compiler 2024",
+    "link": "https://github.com/xinchen-jzx/SysYCompiler2024",
     "img": "/assets/SysY24.jpg",
     "des": "以C++为主要开发语言，面向RISC-V目标平台，综合应用编译技术、操作系统、计算机体系结构等知识构思并实现了一个SysY2022（C语言子集）的综合性编译系统"
   }
