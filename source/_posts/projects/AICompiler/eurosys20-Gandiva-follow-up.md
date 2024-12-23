@@ -20,7 +20,7 @@ tags: GPU Heterogeneity Scheduling
 
 对于多机任务来说，需要一次性分配好所有的GPU；对于小任务来说，每个server上单独调度小任务效率更高。因此，Gandiva_fair采用Split Stride scheduler。其中，每个server上的per-server scheduler用于调度单机任务，central scheduler用于调度多机任务和每个server上所有小任务组成的"集成任务"。
 
-<img alt="Big Job" align="center" src="assets/posts/projects/AICompiler/eurosys20-Gandiva_follow_up-fig1.png">
+![Big Job](../../../assets/posts/projects/AICompiler/eurosys20-Gandiva_follow_up-fig1.png)
 
 ### Load Balance
 
