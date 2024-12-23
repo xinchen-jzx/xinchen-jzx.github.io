@@ -16,7 +16,7 @@
 <meta property="og:image" content="https://xinchen-jzx.github.io/2024/12/23/projects/AICompiler/eurosys20-Gandiva-follow-up/assets/posts/projects/AICompiler/eurosys20-Gandiva_follow_up-fig1.png">
 <meta property="og:image" content="https://xinchen-jzx.github.io/2024/12/23/projects/AICompiler/eurosys20-Gandiva-follow-up/assets/posts/projects/AICompiler/eurosys20-Gandiva_follow_up-fig2.png">
 <meta property="article:published_time" content="2024-12-22T16:00:00.000Z">
-<meta property="article:modified_time" content="2024-12-23T11:53:10.915Z">
+<meta property="article:modified_time" content="2024-12-23T11:55:37.556Z">
 <meta property="article:author" content="Zexin Jian">
 <meta property="article:tag" content="GPU Heterogeneity Scheduling">
 <meta name="twitter:card" content="summary">
@@ -26,15 +26,15 @@
 <link rel="stylesheet" href="/lib/mdui_043tiny/mdui.css">
 
 
-<link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1734954825959">
+<link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1734954944456">
 
-<link rel="stylesheet" href="/css/style.css?v=1734954825959">
+<link rel="stylesheet" href="/css/style.css?v=1734954944456">
 
 
 
 
     
-        <link rel="stylesheet" href="/custom.css?v=1734954825959">
+        <link rel="stylesheet" href="/custom.css?v=1734954944456">
     
 
 
@@ -44,7 +44,7 @@
 <script src="/lib/lax.min.js" async></script>
 
 
-<script async src="/js/app.js?v=1734954825959"></script>
+<script async src="/js/app.js?v=1734954944456"></script>
 
  
 
@@ -219,11 +219,11 @@
           </li>
         
           <li>
-            <a href="/2024/12/23/projects/AICompiler/osdi20-HiveD/">osdi20 - HiveD</a>
+            <a href="/2024/12/23/projects/AICompiler/osdi20-Gandiva/">osdi20-Gandiva</a>
           </li>
         
           <li>
-            <a href="/2024/12/23/projects/AICompiler/osdi20-Gandiva/">osdi20-Gandiva</a>
+            <a href="/2024/12/23/projects/AICompiler/osdi20-HiveD/">osdi20 - HiveD</a>
           </li>
         
           <li>
@@ -281,6 +281,12 @@
 <h3 id="处理异构性问题"><a href="#处理异构性问题" class="headerlink" title="处理异构性问题"></a>处理异构性问题</h3><p>仅针对调参的时候，一个用户提交大量相似的任务的情景。通过同一用户的不同job在不同类型的GPU上运行，记录效率，从而决定怎样为这个任务分配GPU是最优的。对于不同的用户，最开始给他们分配的GPU型号是相对公平的。但是因为他们的任务不同，Gandiva_fair可能会根据job的特点，在他们之间进行GPU的交易，从而使得每个用户的运行效率都有所提升。</p>
 <img alt="Algorithm 2" align="center" src="assets/posts/projects/AICompiler/eurosys20-Gandiva_follow_up-fig2.png">
 
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>本文主要解决了两件事：</p>
+<ol>
+<li>通过调度算法和负载均衡来保证不同用户之间的公平性；</li>
+<li>充分利用异构集群的特点来提高集群的效率。</li>
+</ol>
+
     
   </article>
 
@@ -306,7 +312,7 @@
 </div>
   
   
-    <script async src="/js/copy-codeblock.js?v=1734954825922"></script>
+    <script async src="/js/copy-codeblock.js?v=1734954944429"></script>
   
 
   
@@ -324,7 +330,7 @@
             <button class="mdui-fab catalog" style="overflow:unset;">
                 <i class="nexmoefont icon-i-catalog"></i>
                 <div class="nexmoe-toc">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%BE%E8%AE%A1"><span class="toc-number">1.</span> <span class="toc-text">设计</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Split-Stride-Gang-Scheduling"><span class="toc-number">1.1.</span> <span class="toc-text">Split Stride Gang-Scheduling</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B0%8F%E4%BB%BB%E5%8A%A1-%E5%8D%95%E6%9C%BA%E4%BB%BB%E5%8A%A1"><span class="toc-number">1.1.1.</span> <span class="toc-text">小任务 (单机任务)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A4%A7%E4%BB%BB%E5%8A%A1-%E5%A4%9A%E6%9C%BA%E4%BB%BB%E5%8A%A1"><span class="toc-number">1.1.2.</span> <span class="toc-text">大任务 (多机任务)</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Load-Balance"><span class="toc-number">1.2.</span> <span class="toc-text">Load Balance</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%84%E7%90%86%E5%BC%82%E6%9E%84%E6%80%A7%E9%97%AE%E9%A2%98"><span class="toc-number">1.3.</span> <span class="toc-text">处理异构性问题</span></a></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%BE%E8%AE%A1"><span class="toc-number">1.</span> <span class="toc-text">设计</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Split-Stride-Gang-Scheduling"><span class="toc-number">1.1.</span> <span class="toc-text">Split Stride Gang-Scheduling</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B0%8F%E4%BB%BB%E5%8A%A1-%E5%8D%95%E6%9C%BA%E4%BB%BB%E5%8A%A1"><span class="toc-number">1.1.1.</span> <span class="toc-text">小任务 (单机任务)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A4%A7%E4%BB%BB%E5%8A%A1-%E5%A4%9A%E6%9C%BA%E4%BB%BB%E5%8A%A1"><span class="toc-number">1.1.2.</span> <span class="toc-text">大任务 (多机任务)</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Load-Balance"><span class="toc-number">1.2.</span> <span class="toc-text">Load Balance</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%84%E7%90%86%E5%BC%82%E6%9E%84%E6%80%A7%E9%97%AE%E9%A2%98"><span class="toc-number">1.3.</span> <span class="toc-text">处理异构性问题</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-number">2.</span> <span class="toc-text">总结</span></a></li></ol>
                 </div>
             </button>
             
