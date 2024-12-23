@@ -1,0 +1,372 @@
+<!doctype html>
+<html lang="en"><head>
+<title>osdi20 - HiveD - xinchen_Jane</title>
+<meta charset="UTF-8">
+<meta name="keywords" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
+
+<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+<meta name="description" content="HiveD: Sharing a GPU Cluster for Deep Learning with Guarantees  随着深度学习训练需求的不断扩张，很多组织和机构都会选择自建多租户集群来共享GPU资源。然而现有的GPU集群管理方案因为使用GPU配额 (Quota)机制可能导致严重的共享异常 (Sharing Anomaly)现象，即某些租户的深度学习任务甚至比在私有集群上更差。为了从">
+<meta property="og:type" content="article">
+<meta property="og:title" content="osdi20 - HiveD">
+<meta property="og:url" content="https://xinchen-jzx.github.io/2024/12/23/projects/AICompiler/osdi20-HiveD/index.html">
+<meta property="og:site_name" content="xinchen_Jane">
+<meta property="og:description" content="HiveD: Sharing a GPU Cluster for Deep Learning with Guarantees  随着深度学习训练需求的不断扩张，很多组织和机构都会选择自建多租户集群来共享GPU资源。然而现有的GPU集群管理方案因为使用GPU配额 (Quota)机制可能导致严重的共享异常 (Sharing Anomaly)现象，即某些租户的深度学习任务甚至比在私有集群上更差。为了从">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://xinchen-jzx.github.io/2024/12/23/projects/AICompiler/osdi20-HiveD/assets/osdi20-HiveD-fig1.png">
+<meta property="og:image" content="https://xinchen-jzx.github.io/2024/12/23/projects/AICompiler/osdi20-HiveD/assets/osdi20-HiveD-fig2.png">
+<meta property="og:image" content="https://xinchen-jzx.github.io/2024/12/23/projects/AICompiler/osdi20-HiveD/assets/osdi20-HiveD-fig3.png">
+<meta property="og:image" content="https://xinchen-jzx.github.io/2024/12/23/projects/AICompiler/osdi20-HiveD/assets/osdi20-HiveD-fig4.png">
+<meta property="og:image" content="https://xinchen-jzx.github.io/2024/12/23/projects/AICompiler/osdi20-HiveD/assets/osdi20-HiveD-fig5.png">
+<meta property="article:published_time" content="2024-12-22T16:00:00.000Z">
+<meta property="article:modified_time" content="2024-12-23T09:11:12.542Z">
+<meta property="article:author" content="Zexin Jian">
+<meta property="article:tag" content="GPU Heterogeneity Scheduling">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://xinchen-jzx.github.io/2024/12/23/projects/AICompiler/osdi20-HiveD/assets/osdi20-HiveD-fig1.png">
+
+<link rel="stylesheet" href="/lib/fancybox/fancybox.css">
+<link rel="stylesheet" href="/lib/mdui_043tiny/mdui.css">
+
+
+<link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1734946598391">
+
+<link rel="stylesheet" href="/css/style.css?v=1734946598391">
+
+
+
+
+    
+        <link rel="stylesheet" href="/custom.css?v=1734946598391">
+    
+
+
+
+<script src="/lib/mdui_043tiny/mdui.js" async></script>
+<script src="/lib/fancybox/fancybox.umd.js" async></script>
+<script src="/lib/lax.min.js" async></script>
+
+
+<script async src="/js/app.js?v=1734946598391"></script>
+
+ 
+
+
+
+<link rel="stylesheet"  href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/atom-one-dark.min.css">
+<meta name="generator" content="Hexo 7.3.0"></head><body class="nexmoe mdui-drawer-body-left"><div id="nexmoe-background"><div class="nexmoe-bg" style="background-image: url(/assets/bg.jpg)"></div><div class="mdui-appbar mdui-shadow-0"><div class="mdui-toolbar"><a class="mdui-btn mdui-btn-icon mdui-ripple" mdui-drawer="{target: &#039;#drawer&#039;, swipe: true}" title="menu"><i class="mdui-icon nexmoefont icon-menu"></i></a><div class="mdui-toolbar-spacer"></div><a class="mdui-btn mdui-btn-icon" href="/" title="Zexin Jian"><img src="/assets/profile.jpg" alt="Zexin Jian"></a></div></div></div><div id="nexmoe-header"><div class="nexmoe-drawer mdui-drawer" id="drawer">
+    <div class="nexmoe-avatar mdui-ripple">
+        <a href="/" title="Zexin Jian">
+            <img src="/assets/profile.jpg" alt="Zexin Jian" alt="Zexin Jian">
+        </a>
+    </div>
+    <div class="nexmoe-count">
+        <div><span>Articles</span>5</div>
+        <div><span>Tags</span>3</div>
+        <div><span>Categories</span>0</div>
+    </div>
+    <div class="nexmoe-list mdui-list" mdui-collapse="{accordion: true}">
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/about.html" title="About Me">
+            <i class="mdui-list-item-icon nexmoefont icon-home"></i>
+            <div class="mdui-list-item-content">
+                About Me
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/" title="Blogs">
+            <i class="mdui-list-item-icon nexmoefont icon-info-circle"></i>
+            <div class="mdui-list-item-content">
+                Blogs
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/archive.html" title="Archives">
+            <i class="mdui-list-item-icon nexmoefont icon-container"></i>
+            <div class="mdui-list-item-content">
+                Archives
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/PY.html" title="Friends">
+            <i class="mdui-list-item-icon nexmoefont icon-unorderedlist"></i>
+            <div class="mdui-list-item-content">
+                Friends
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/donate.html" title="Sponsor Me">
+            <i class="mdui-list-item-icon nexmoefont icon-coffee"></i>
+            <div class="mdui-list-item-content">
+                Sponsor Me
+            </div>
+        </a>
+        
+    </div>
+    
+    
+        
+        <div class="nexmoe-widget-wrap">
+    <div class="nexmoe-widget nexmoe-search">
+         
+            <form id="search_form" action_e="https://cn.bing.com/search?q=site:nexmoe.com" onsubmit="return search();">
+                <label><input id="search_value" name="q" type="search" placeholder="Search"></label>
+            </form>
+         
+    </div>
+</div>
+
+
+
+
+    
+        
+        <div class="nexmoe-widget-wrap">
+	<div class="nexmoe-widget nexmoe-social">
+		<a
+			class="mdui-ripple"
+			href="https://space.bilibili.com/494384321"
+			target="_blank"
+			mdui-tooltip="{content: '哔哩哔哩'}"
+			style="
+				color: rgb(231, 106, 141);
+				background-color: rgba(231, 106, 141, .1);
+			"
+		>
+			<i
+				class="nexmoefont icon-bilibili"
+			></i> </a
+		><a
+			class="mdui-ripple"
+			href="https://github.com/xinchen-jzx"
+			target="_blank"
+			mdui-tooltip="{content: 'GitHub'}"
+			style="
+				color: rgb(25, 23, 23);
+				background-color: rgba(25, 23, 23, .1);
+			"
+		>
+			<i
+				class="nexmoefont icon-github"
+			></i> </a
+		><a
+			class="mdui-ripple"
+			href="https://www.zhihu.com/people/boom-69-30-24"
+			target="_blank"
+			mdui-tooltip="{content: '知乎'}"
+			style="
+				color: rgb(30, 136, 229);
+				background-color: rgba(30, 136, 229, .1);
+			"
+		>
+			<i
+				class="nexmoefont icon-zhihu"
+			></i> </a
+		>
+	</div>
+</div>
+
+    
+        
+        
+
+    
+        
+        
+  <div class="nexmoe-widget-wrap">
+    <div id="randomtagcloud" class="nexmoe-widget tagcloud nexmoe-rainbow">
+      <a href="/tags/AICompiler-Survey/" style="font-size: 10px;">AICompiler Survey</a> <a href="/tags/GPU-Heterogeneity-Scheduling/" style="font-size: 20px;">GPU Heterogeneity Scheduling</a> <a href="/tags/life/" style="font-size: 10px;">life</a>
+    </div>
+    
+      <script>
+        var maxTagcloud = parseInt(17);
+        var tags_length = parseInt(3);
+        var tags_arr = [];
+        for(var i = 0; i < tags_length; i++){
+          tags_arr.push(i);
+        }
+        tags_arr.sort(function (l, r) {
+          return Math.random() > 0.5 ? -1 : 1;
+        });
+        tags_arr = tags_arr.slice(0, maxTagcloud < tags_length ? tags_length - maxTagcloud : 0);
+        for(var tag_i = 0; tag_i < tags_arr.length; tag_i++){
+          document.getElementById("randomtagcloud").children[tags_arr[tag_i]].style.display = 'none';
+        }
+      </script>
+    
+  </div>
+
+    
+        
+        
+        
+  <div class="nexmoe-widget-wrap">
+    <h3 class="nexmoe-widget-title">Archive</h3>
+    <div class="nexmoe-widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/">2024</a><span class="archive-list-count">5</span></li></ul>
+    </div>
+  </div>
+
+
+
+    
+        
+        
+  <div class="nexmoe-widget-wrap">
+    <h3 class="nexmoe-widget-title">Recent Posts</h3>
+    <div class="nexmoe-widget">
+      <ul>
+        
+          <li>
+            <a href="/2024/12/23/projects/AICompiler/osdi20-Gandiva/">osdi20-Gandiva</a>
+          </li>
+        
+          <li>
+            <a href="/2024/12/23/projects/AICompiler/osdi20-HiveD/">osdi20 - HiveD</a>
+          </li>
+        
+          <li>
+            <a href="/2024/12/17/life/2024/">2024年终总结</a>
+          </li>
+        
+          <li>
+            <a href="/2024/12/12/projects/AICompiler/survey/">The Deep Learning Compiler - A Comprehensive Survey</a>
+          </li>
+        
+          <li>
+            <a href="/2024/12/01/MusicTheory/">MusicTheory</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+    
+   
+    <div class="nexmoe-copyright">
+        &copy; 2024 Zexin Jian
+        Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+        & <a href="https://github.com/theme-nexmoe/hexo-theme-nexmoe" target="_blank">Nexmoe</a>
+        
+    </div>
+</div><!-- .nexmoe-drawer --></div><div id="nexmoe-content"><div class="nexmoe-primary"><div class="nexmoe-post">
+  <article>
+    
+        <div class="nexmoe-post-cover"> 
+            <img src="/assets/bg.jpg" alt="osdi20 - HiveD" loading="lazy">
+            <h1>osdi20 - HiveD</h1>
+        </div>
+    
+    
+    <div class="nexmoe-post-meta">
+    <div class="nexmoe-rainbow">
+        <a class="nexmoefont icon-calendar-fill">2024年12月23日</a>
+        
+        
+    </div>
+    
+    
+    
+    
+    
+</div>
+
+    <blockquote>
+<p>HiveD: Sharing a GPU Cluster for Deep Learning with Guarantees</p>
+</blockquote>
+<p>随着深度学习训练需求的不断扩张，很多组织和机构都会选择自建多租户集群来共享GPU资源。然而现有的GPU集群管理方案因为使用GPU配额 (Quota)机制可能导致严重的共享异常 (Sharing Anomaly)现象，即某些租户的深度学习任务甚至比在私有集群上更差。为了从根本上解决问题，该论文提出一个新的多租户GPU集群管理方案HiveD，通过新的资源抽象和调度框架从而100%保证共享安全 (Sharing Safety)，同时不失一般性地和任何任务调度策略兼容。</p>
+<p>HiveD首先提出了一种新的资源抽象，被称为Cell (类比蜂巢Hive中的蜂窝)。HiveD通过多级Cell来描述GPU集群中拓扑的层级组织。在Cell的基础上，HiveD会为每个租户提供一个虚拟私有集群 (Virtual Private Cluster，简称VC)。每个租户的VC显式定义了它拥有的各级Cell的配额。为了在保证共享安全的同时，又能灵活地分配GPU资源，论文为HiveD设计了一个Buddy Cell Allocation算法，来把VC中的逻辑Cell和物理GPU进行动态绑定。该论文在理论上证明了该算法能100%提供共享安全。此外该算法还可以降低物理集群的GPU碎片化、更灵活地处理设备故障、支持动态重配置VC。</p>
+<h2 id="背景和动机"><a href="#背景和动机" class="headerlink" title="背景和动机"></a>背景和动机</h2><p><strong>多租户集群 (Multi-Tenant Cluster)<strong>：HiveD的目标场景是一个集群里有多个tenants，每个tenant会贡献一定的资源，这部分贡献的资源是所谓的私有集群 (Private Cluster)。要保证这些tenants愿意去共享资源的前提就是，其在共享集群中的性能应该不差于单独拥有一个私有集群时的性能，否则tenant会更愿意去独占自己的资源。这个概念在调度领域也叫</strong>Sharing Incentive</strong>。</p>
+<p><strong>传统的对多租户GPU集群的管理方法</strong>：用户申请一定数量的GPU Quato。为了提高训练速度，用户通常对一个深度学习任务有Affinity Requirement，即对资源分布的要求 (例如一个需要64张卡的任务需要跑在8台机器各8张卡上)。在多租户集群中没有满足要求的资源时，资源管理器可以选择排队等待或者使用更宽松的Affinity Requirement。</p>
+<p>**共享异常 (Sharing Anomaly)**：和内存管理中的外部碎片类似。有时候多租户集群中有足够的资源数量，但是这些资源”碎片化”，无法满足用户的Affinity要求，这样的现象被称为”共享异常”。</p>
+<img alt="Sharing Anomaly" align="center" src="./assets/osdi20-HiveD-fig1.png">
+
+<h2 id="系统设计"><a href="#系统设计" class="headerlink" title="系统设计"></a>系统设计</h2><img alt="System Design" align="center" src="./assets/osdi20-HiveD-fig2.png">
+
+<p>HiveD采用了两层结构：第一层结构是Virtual Private Cluster虚拟私有集群，这一层为用户提供了一个私有集群的”假象”；第二层是实际的集群，从虚拟私有集群 (VC)到实际的集群中的设备之间存在着映射关系，如上图所示。</p>
+<ul>
+<li><strong>VC</strong>：<ul>
+<li>提出了一种新的对资源抽象的方式 – Cell，使用这种资源抽象可以同时描述GPU资源的Quota和Affinity；</li>
+<li>在VC层面，可以使用现有的深度学习调度器来对资源进行调度。</li>
+</ul>
+</li>
+<li><strong>From Virtual to Physical</strong>：<ul>
+<li>提出了可以保证共享安全的Dynamic Cell Allocation算法；</li>
+<li>支持low-priority jobs。</li>
+</ul>
+</li>
+</ul>
+<h3 id="Virtual-Private-Cluster-with-Cells"><a href="#Virtual-Private-Cluster-with-Cells" class="headerlink" title="Virtual Private Cluster with Cells"></a>Virtual Private Cluster with Cells</h3><p>为了对私有GPU集群进行描述，HiveD定义了一个多层Cell结构的层次结构。某一层次上的Cell是具有相应拓扑结构的GPU的对应集合。在每个虚拟私有集群 (VD)上使用每个级别上的cell数来模拟&#x2F;描述相应的私有集群。</p>
+<img alt="Cells" align="center" src="./assets/osdi20-HiveD-fig3.png">
+
+<p>在cell层次结构中，K级的cell由一组(K - 1)级cell组成，这些(K - 1)级的cell被称为伙伴单元 (Buddy Cells)；伙伴单元可以合并为下一个更高级别的cell。本文假设cell具有层次一致的可组合性：</p>
+<ol>
+<li>所有K级cell在满足组合对K级cell的请求方面是等价的；</li>
+<li>所有K级cell都可以拆分成相同数量的(K - 1)级cell。</li>
+</ol>
+<h3 id="Buddy-Cell-Allocation-Algorithm"><a href="#Buddy-Cell-Allocation-Algorithm" class="headerlink" title="Buddy Cell Allocation Algorithm"></a>Buddy Cell Allocation Algorithm</h3><p>Buddy Cell Allocation算法非常简单直观：如果需要在VC中分配一个K级cell，算法从K级开始首先检查是否有可用的K级Cell，如果有可用的cell则分配一个；否则算法将逐级下移，去检查(K + 1)级或者更高级别的cell，直到有一个可用的l级cell，其中l &gt; K。然后，算法将递归地将一个空闲的l级cell拆分为多个较低级别的cell，直到K级cell可用为止。每次拆分都会在下一个较低级别生成一组Buddy Cells，这些cell将被添加到相对应的空闲列表中。</p>
+<p>如果有cell被释放，该算法会按照与分配cell相反的方式把空闲的cell尽量merge起来，这样保证空闲的cell中有尽量多的更高level的cell。</p>
+<img alt="Buddy Cell Allocation Algorithm" align="center" src="./assets/osdi20-HiveD-fig4.png">
+
+<img alt="Theorem 1" align="center" src="./assets/osdi20-HiveD-fig5.png">
+
+<blockquote>
+<p>For the case where cells are heterogeneous, HiveD partitions the cluster into several pools within which cells at the same level are homogeneous, and applies Buddy Cell Allocation Algorithm in each pool.</p>
+</blockquote>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>HiveD做的事情就是给各个tenant一个正在使用自己私有集群的假象，同时赋予tenants使用自己VC以外的资源来从共享集群中获益的能力。</p>
+
+    
+  </article>
+
+  
+      
+    <div class="nexmoe-post-copyright">
+        <strong>Author：</strong>Zexin Jian<br>
+        <strong>Link：</strong><a href="https://xinchen-jzx.github.io/2024/12/23/projects/AICompiler/osdi20-HiveD/" title="https:&#x2F;&#x2F;xinchen-jzx.github.io&#x2F;2024&#x2F;12&#x2F;23&#x2F;projects&#x2F;AICompiler&#x2F;osdi20-HiveD&#x2F;" target="_blank" rel="noopener">https:&#x2F;&#x2F;xinchen-jzx.github.io&#x2F;2024&#x2F;12&#x2F;23&#x2F;projects&#x2F;AICompiler&#x2F;osdi20-HiveD&#x2F;</a><br>
+        
+            <strong>版权声明：</strong>本文采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/cn/deed.zh" target="_blank">CC BY-NC-SA 3.0 CN</a> 协议进行许可
+
+        
+    </div>
+
+
+  
+  
+  <div class="nexmoe-post-meta nexmoe-rainbow">
+   
+    
+        <a class="nexmoefont icon-tag-fill -none-link" href="/tags/GPU-Heterogeneity-Scheduling/" rel="tag">GPU Heterogeneity Scheduling</a>
+    
+</div>
+  
+  
+    <script async src="/js/copy-codeblock.js?v=1734946598365"></script>
+  
+
+  
+      <div class="nexmoe-post-footer">
+          
+      </div>
+  
+</div></div><div class="nexmoe-post-right">    <div class="nexmoe-fixed">
+        <div class="nexmoe-tool">
+
+            
+
+            
+            
+            <button class="mdui-fab catalog" style="overflow:unset;">
+                <i class="nexmoefont icon-i-catalog"></i>
+                <div class="nexmoe-toc">
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%83%8C%E6%99%AF%E5%92%8C%E5%8A%A8%E6%9C%BA"><span class="toc-number">1.</span> <span class="toc-text">背景和动机</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1"><span class="toc-number">2.</span> <span class="toc-text">系统设计</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Virtual-Private-Cluster-with-Cells"><span class="toc-number">2.1.</span> <span class="toc-text">Virtual Private Cluster with Cells</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Buddy-Cell-Allocation-Algorithm"><span class="toc-number">2.2.</span> <span class="toc-text">Buddy Cell Allocation Algorithm</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-number">3.</span> <span class="toc-text">总结</span></a></li></ol>
+                </div>
+            </button>
+            
+
+            
+
+            <a href="#nexmoe-content" class="backtop toc-link" aria-label="Back To Top" title="top"><button class="mdui-fab mdui-ripple"><i class="nexmoefont icon-caret-top"></i></button></a>
+        </div>
+    </div>
+</div></div><div id="nexmoe-footer"><!--!--></div><div id="nexmoe-search-space"><div class="search-container"><div class="search-header"><div class="search-input-container"><input class="search-input" type="text" placeholder="Search" onInput="sinput();"></div><a class="search-close" onclick="sclose();">×</a></div><div class="search-body"></div></div></div><div><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2058306854838448" crossorigin="anonymous"></script>
+</div></body></html>
