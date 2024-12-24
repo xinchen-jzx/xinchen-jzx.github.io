@@ -1,0 +1,356 @@
+<!doctype html>
+<html lang="en"><head>
+<title>osdi20-AntMan - xinchen_Jane</title>
+<meta charset="UTF-8">
+<meta name="keywords" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
+
+<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+<meta name="description" content="AntMan: Dynamic Scaling on GPU Clusters for Deep Learning  这一新工作通过对调度器和训练框架的联合设计，减少了同一个物理GPU上多个任务间的相互干扰，从某种程度上实现了对GPU资源的超卖，提高了GPU资源的利用率。 1. 动机随着深度学习在工业界的落地，在云上进行模型训练和推理的需求越来越旺盛。但是，GPU这样的硬件设备的资源利用率，一直">
+<meta property="og:type" content="article">
+<meta property="og:title" content="osdi20-AntMan">
+<meta property="og:url" content="https://xinchen-jzx.github.io/2024/12/24/projects/AICompiler/osdi20-AntMan/index.html">
+<meta property="og:site_name" content="xinchen_Jane">
+<meta property="og:description" content="AntMan: Dynamic Scaling on GPU Clusters for Deep Learning  这一新工作通过对调度器和训练框架的联合设计，减少了同一个物理GPU上多个任务间的相互干扰，从某种程度上实现了对GPU资源的超卖，提高了GPU资源的利用率。 1. 动机随着深度学习在工业界的落地，在云上进行模型训练和推理的需求越来越旺盛。但是，GPU这样的硬件设备的资源利用率，一直">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://xinchen-jzx.github.io/assets/posts/projects/AICompiler/osdi20-AntMan-fig1.png">
+<meta property="og:image" content="https://xinchen-jzx.github.io/assets/posts/projects/AICompiler/osdi20-AntMan-fig2.png">
+<meta property="og:image" content="https://xinchen-jzx.github.io/assets/posts/projects/AICompiler/osdi20-AntMan-fig7.png">
+<meta property="og:image" content="https://xinchen-jzx.github.io/assets/posts/projects/AICompiler/osdi20-AntMan-fig3.png">
+<meta property="og:image" content="https://xinchen-jzx.github.io/assets/posts/projects/AICompiler/osdi20-AntMan-fig4.png">
+<meta property="og:image" content="https://xinchen-jzx.github.io/assets/posts/projects/AICompiler/osdi20-AntMan-fig5.png">
+<meta property="og:image" content="https://xinchen-jzx.github.io/assets/posts/projects/AICompiler/osdi20-AntMan-fig6.png">
+<meta property="article:published_time" content="2024-12-23T16:00:00.000Z">
+<meta property="article:modified_time" content="2024-12-24T13:53:51.728Z">
+<meta property="article:author" content="Zexin Jian">
+<meta property="article:tag" content="GPU Cluster Management">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://xinchen-jzx.github.io/assets/posts/projects/AICompiler/osdi20-AntMan-fig1.png">
+
+<link rel="stylesheet" href="/lib/fancybox/fancybox.css">
+<link rel="stylesheet" href="/lib/mdui_043tiny/mdui.css">
+
+
+<link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1735048506282">
+
+<link rel="stylesheet" href="/css/style.css?v=1735048506282">
+
+
+
+
+    
+        <link rel="stylesheet" href="/custom.css?v=1735048506282">
+    
+
+
+
+<script src="/lib/mdui_043tiny/mdui.js" async></script>
+<script src="/lib/fancybox/fancybox.umd.js" async></script>
+<script src="/lib/lax.min.js" async></script>
+
+
+<script async src="/js/app.js?v=1735048506282"></script>
+
+ 
+
+
+
+<link rel="stylesheet"  href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/atom-one-dark.min.css">
+<meta name="generator" content="Hexo 7.3.0"></head><body class="nexmoe mdui-drawer-body-left"><div id="nexmoe-background"><div class="nexmoe-bg" style="background-image: url(/assets/bg.jpg)"></div><div class="mdui-appbar mdui-shadow-0"><div class="mdui-toolbar"><a class="mdui-btn mdui-btn-icon mdui-ripple" mdui-drawer="{target: &#039;#drawer&#039;, swipe: true}" title="menu"><i class="mdui-icon nexmoefont icon-menu"></i></a><div class="mdui-toolbar-spacer"></div><a class="mdui-btn mdui-btn-icon" href="/" title="Zexin Jian"><img src="/assets/profile.jpg" alt="Zexin Jian"></a></div></div></div><div id="nexmoe-header"><div class="nexmoe-drawer mdui-drawer" id="drawer">
+    <div class="nexmoe-avatar mdui-ripple">
+        <a href="/" title="Zexin Jian">
+            <img src="/assets/profile.jpg" alt="Zexin Jian" alt="Zexin Jian">
+        </a>
+    </div>
+    <div class="nexmoe-count">
+        <div><span>Articles</span>9</div>
+        <div><span>Tags</span>3</div>
+        <div><span>Categories</span>0</div>
+    </div>
+    <div class="nexmoe-list mdui-list" mdui-collapse="{accordion: true}">
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/about.html" title="About Me">
+            <i class="mdui-list-item-icon nexmoefont icon-home"></i>
+            <div class="mdui-list-item-content">
+                About Me
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/" title="Blogs">
+            <i class="mdui-list-item-icon nexmoefont icon-info-circle"></i>
+            <div class="mdui-list-item-content">
+                Blogs
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/archive.html" title="Archives">
+            <i class="mdui-list-item-icon nexmoefont icon-container"></i>
+            <div class="mdui-list-item-content">
+                Archives
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/PY.html" title="Friends">
+            <i class="mdui-list-item-icon nexmoefont icon-unorderedlist"></i>
+            <div class="mdui-list-item-content">
+                Friends
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/donate.html" title="Sponsor Me">
+            <i class="mdui-list-item-icon nexmoefont icon-coffee"></i>
+            <div class="mdui-list-item-content">
+                Sponsor Me
+            </div>
+        </a>
+        
+    </div>
+    
+    
+        
+        <div class="nexmoe-widget-wrap">
+    <div class="nexmoe-widget nexmoe-search">
+         
+            <form id="search_form" action_e="https://cn.bing.com/search?q=site:nexmoe.com" onsubmit="return search();">
+                <label><input id="search_value" name="q" type="search" placeholder="Search"></label>
+            </form>
+         
+    </div>
+</div>
+
+
+
+
+    
+        
+        <div class="nexmoe-widget-wrap">
+	<div class="nexmoe-widget nexmoe-social">
+		<a
+			class="mdui-ripple"
+			href="https://space.bilibili.com/494384321"
+			target="_blank"
+			mdui-tooltip="{content: '哔哩哔哩'}"
+			style="
+				color: rgb(231, 106, 141);
+				background-color: rgba(231, 106, 141, .1);
+			"
+		>
+			<i
+				class="nexmoefont icon-bilibili"
+			></i> </a
+		><a
+			class="mdui-ripple"
+			href="https://github.com/xinchen-jzx"
+			target="_blank"
+			mdui-tooltip="{content: 'GitHub'}"
+			style="
+				color: rgb(25, 23, 23);
+				background-color: rgba(25, 23, 23, .1);
+			"
+		>
+			<i
+				class="nexmoefont icon-github"
+			></i> </a
+		><a
+			class="mdui-ripple"
+			href="https://www.zhihu.com/people/boom-69-30-24"
+			target="_blank"
+			mdui-tooltip="{content: '知乎'}"
+			style="
+				color: rgb(30, 136, 229);
+				background-color: rgba(30, 136, 229, .1);
+			"
+		>
+			<i
+				class="nexmoefont icon-zhihu"
+			></i> </a
+		>
+	</div>
+</div>
+
+    
+        
+        
+
+    
+        
+        
+  <div class="nexmoe-widget-wrap">
+    <div id="randomtagcloud" class="nexmoe-widget tagcloud nexmoe-rainbow">
+      <a href="/tags/AICompiler-Survey/" style="font-size: 10px;">AICompiler Survey</a> <a href="/tags/GPU-Cluster-Management/" style="font-size: 20px;">GPU Cluster Management</a> <a href="/tags/life/" style="font-size: 10px;">life</a>
+    </div>
+    
+      <script>
+        var maxTagcloud = parseInt(17);
+        var tags_length = parseInt(3);
+        var tags_arr = [];
+        for(var i = 0; i < tags_length; i++){
+          tags_arr.push(i);
+        }
+        tags_arr.sort(function (l, r) {
+          return Math.random() > 0.5 ? -1 : 1;
+        });
+        tags_arr = tags_arr.slice(0, maxTagcloud < tags_length ? tags_length - maxTagcloud : 0);
+        for(var tag_i = 0; tag_i < tags_arr.length; tag_i++){
+          document.getElementById("randomtagcloud").children[tags_arr[tag_i]].style.display = 'none';
+        }
+      </script>
+    
+  </div>
+
+    
+        
+        
+        
+  <div class="nexmoe-widget-wrap">
+    <h3 class="nexmoe-widget-title">Archive</h3>
+    <div class="nexmoe-widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/">2024</a><span class="archive-list-count">9</span></li></ul>
+    </div>
+  </div>
+
+
+
+    
+        
+        
+  <div class="nexmoe-widget-wrap">
+    <h3 class="nexmoe-widget-title">Recent Posts</h3>
+    <div class="nexmoe-widget">
+      <ul>
+        
+          <li>
+            <a href="/2024/12/24/projects/AICompiler/nsdi22-MLaaS/">nsdi22-MLaaS</a>
+          </li>
+        
+          <li>
+            <a href="/2024/12/24/projects/AICompiler/osdi20-AntMan/">osdi20-AntMan</a>
+          </li>
+        
+          <li>
+            <a href="/2024/12/24/projects/AICompiler/osdi20-BytePS/">osdi-BytePS</a>
+          </li>
+        
+          <li>
+            <a href="/2024/12/23/projects/AICompiler/eurosys20-Gandiva-follow-up/">eurosys20-Gandiva_follow_up</a>
+          </li>
+        
+          <li>
+            <a href="/2024/12/23/projects/AICompiler/osdi18-Gandiva/">osdi18-Gandiva</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+    
+   
+    <div class="nexmoe-copyright">
+        &copy; 2024 Zexin Jian
+        Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+        & <a href="https://github.com/theme-nexmoe/hexo-theme-nexmoe" target="_blank">Nexmoe</a>
+        
+    </div>
+</div><!-- .nexmoe-drawer --></div><div id="nexmoe-content"><div class="nexmoe-primary"><div class="nexmoe-post">
+  <article>
+    
+        <div class="nexmoe-post-cover absolute" style="padding-top: NaN%;"> 
+            <img src="../../../assets/posts/projects/AICompiler/osdi20-AntMan.png" alt="osdi20-AntMan" loading="lazy">
+            <h1>osdi20-AntMan</h1>
+        </div>
+    
+    
+    <div class="nexmoe-post-meta">
+    <div class="nexmoe-rainbow">
+        <a class="nexmoefont icon-calendar-fill">2024年12月24日</a>
+        
+        
+    </div>
+    
+    
+    
+    
+    
+</div>
+
+    <blockquote>
+<p>AntMan: Dynamic Scaling on GPU Clusters for Deep Learning</p>
+</blockquote>
+<p>这一新工作通过对调度器和训练框架的联合设计，减少了同一个物理GPU上多个任务间的相互干扰，从某种程度上实现了对GPU资源的超卖，提高了GPU资源的利用率。</p>
+<h2 id="1-动机"><a href="#1-动机" class="headerlink" title="1. 动机"></a>1. 动机</h2><p>随着深度学习在工业界的落地，在云上进行模型训练和推理的需求越来越旺盛。但是，GPU这样的硬件设备的资源利用率，一直以来都处于相对比较低的水平。一方面因为模型训练往往涉及许多不同的环节，比如数据的预处理等。有些环节不适合在GPU上执行。另一方面，随着数据规模的扩大和模型复杂度的提升，分布式训练逐渐成为工业界训练场景的主流选择。同步SGD的分布式训练中，很多的时间花费在了等待网络IO上，GPU从微观的角度来看，经常空闲。</p>
+<p><img src="/../../../assets/posts/projects/AICompiler/osdi20-AntMan-fig1.png"></p>
+<p>注意：在分布式训练中，通常需要任务下所有的实例都被运行时，训练才能开始。因此需要在调度上进行gang scheduling的支持。而gang scheduling会造成GPU的等待。任务所需要的GPU越多，在任务执行前GPU空闲的时间越长。这也很容易理解：调度器需要先把空闲的GPU hold住一段时间，在确定分布式训练中所有的PS和Worker都可以被运行，才会真正创建所有实例。GPU被调度器Hold的这段时间没有办法被其他任务使用，所以会造成一定的浪费。</p>
+<p>多个任务共享一个GPU可以提高利用率，但是多个任务会在GPU上 (如Memory hierarchy等)有相互的干扰。因此，在生产环境中，通常不会采取这样的方式。目前也有一些GPU虚拟化的解决方案 (如 Amazon Elastic Inference)，但是在容器环境下，也很少有可以落地生产环境的。</p>
+<p>除此之外，GPU在训练过程中，SM和显存也存在一定程度的不均衡。在左图中，DeepFM的模型训练通常需要进行数据的预处理，这个过程只需要CPU参与，因此GPU利用率为0%。右图也是有类似的情况。</p>
+<p><img src="/../../../assets/posts/projects/AICompiler/osdi20-AntMan-fig2.png"></p>
+<h2 id="2-Key-Insight"><a href="#2-Key-Insight" class="headerlink" title="2. Key Insight"></a>2. Key Insight</h2><p>文章通过实验，论述了Key Insight：大部分模型本身占用的显存并不多，使用的显存多来自mini-batch过程中，在单个mini-batch中会被申请和释放。文章中所有的design基本都是围绕这一Key Insight展开的。</p>
+<h2 id="3-系统设计"><a href="#3-系统设计" class="headerlink" title="3. 系统设计"></a>3. 系统设计</h2><p>文章联合设计了调度器和框架，让框架在训练任务的角度来支持显存和算力的动态调整，然后让调度器从集群的角度利用这一新的特性进行更有针对性的调度。</p>
+<h3 id="3-1-框架层的设计"><a href="#3-1-框架层的设计" class="headerlink" title="3.1 框架层的设计"></a>3.1 框架层的设计</h3><h4 id="3-1-1-显存方面"><a href="#3-1-1-显存方面" class="headerlink" title="3.1.1 显存方面"></a>3.1.1 显存方面</h4><p><img src="/../../../assets/posts/projects/AICompiler/osdi20-AntMan-fig7.png"></p>
+<p>现有深度学习框架中，缓存的GPU内存大小 (红色虚线)的总大小随着深度框架中创建的张量而增加 (a∼b)。一般来说，有些张量只在深度学习训练的某些阶段使用，在其他情况下这些张量是不被需要的。但是这部分缓存的GPU内存没有释放。</p>
+<p>AntMan扩展GPU内存上限。它会主动检测已用内存，以收缩缓存内存，从而内省地调整GPU内存使用量，使之适合。这是通过在处理mini batch时监控应用程序性能和内存需求来实现的。AntMan尽可能在GPU设备上分配张量，但是，如果GPU内存仍然不足，则可以在GPU之外使用主存分配张量 (d~e)。有了这样的通用内存支持，作业甚至可以继续处理低于其实际GPU内存需求的进程。当GPU内存的上限增加时，张量可以自动分配回GPU (f)。</p>
+<p><img src="/../../../assets/posts/projects/AICompiler/osdi20-AntMan-fig3.png"></p>
+<h4 id="3-1-2-计算方面"><a href="#3-1-2-计算方面" class="headerlink" title="3.1.2 计算方面"></a>3.1.2 计算方面</h4><p>在计算方面，如果多个任务运行在同一个GPU上时，主要会带来GPU Kernel的排队延迟，和PCIe总线带宽的争抢。以下图（a）和（b）来说，B任务影响了A任务原本的执行，为了解决这个问题，Antman在框架层引入了GPU Op Manager。在原本的设计中，一旦Kernel的控制依赖被满足了，就会被执行。GPU Op Manager接管了原本的流程，它会控制GPU Kernel被issue的频率。因为GPU Op Manager只会管控 GPU Kernel，因此CPU的Op可以照常被执行，不会被Block。如下图（c）所示，满足了依赖的CPU Op可以在GPU Op没有被执行的时候照常执行，不会受到GPU Op Manager的影响。</p>
+<p><img src="/../../../assets/posts/projects/AICompiler/osdi20-AntMan-fig4.png"></p>
+<h3 id="3-2-调度器的设计"><a href="#3-2-调度器的设计" class="headerlink" title="3.2 调度器的设计"></a>3.2 调度器的设计</h3><p>在调度器的设计上，Antman并没有采取Monolithic的架构，而是存在两个角色：Global Scheduler和Local Coordinator。其中全局的调度器负责进行任务的调度，而Local Coordinator主要负责根据深度学习的训练任务的执行情况 (任务情况，硬件指标，mini batch的执行时间，显存和内存的使用情况等)管理训练任务的全生命周期。</p>
+<p><img src="/../../../assets/posts/projects/AICompiler/osdi20-AntMan-fig5.png"></p>
+<p>Antman根据SLA把任务分为resource-guarantee和opportunistic两种任务，其中前者需要保证与独占GPU卡类似的训练速度。Antman的设计目标是在保证resource-guarantee类型任务的SLA的同时，提高集群的利用率。opportunistic类型的任务主要就是用来提高集群利用率的。</p>
+<p>全局调度器的调度算法比较简单，如下图所示。首先调度器会根据拓扑，获得一个最优的节点组合。这一步与业界主流基本一致，尽可能考虑到NVLink等硬件资源的拓扑结构，进行分配。如果是resource-guarantee的任务，有合适的节点就会直接运行。对于opportunistic类型的任务，Antman会找到负载最低的节点去执行。</p>
+<p><img src="/../../../assets/posts/projects/AICompiler/osdi20-AntMan-fig6.png"></p>
+<p>Local Coordinator最主要的职责是管理在共享的GPU上训练任务。在Antman中，一个GPU只会被分配给一个resource-guarantee的任务。所以当有opportunistic的任务已经在GPU上运行时，为了满足新来的resource-guarantee任务，Local Coordinator会限制opportunistic任务使用的SM和显存。随后慢慢提高opportunistic的限制，确保在不影响resource-guarantee任务的训练速度 (mini batch的耗时)的同时，提高opportunistic的资源限额。</p>
+<h2 id="4-总结"><a href="#4-总结" class="headerlink" title="4. 总结"></a>4. 总结</h2><p>阿里的这一工作通过对框架和调度器的联合设计，在某种程度上支持了任务的SLA级别，以及GPU资源在显存和算力级别的共享。可以看出，在这一方面的工作从调度器单方面的优化，逐渐走向co-design的方向。GPU的虚拟化和复用也逐渐走向落地。</p>
+
+    
+  </article>
+
+  
+      
+    <div class="nexmoe-post-copyright">
+        <strong>Author：</strong>Zexin Jian<br>
+        <strong>Link：</strong><a href="https://xinchen-jzx.github.io/2024/12/24/projects/AICompiler/osdi20-AntMan/" title="https:&#x2F;&#x2F;xinchen-jzx.github.io&#x2F;2024&#x2F;12&#x2F;24&#x2F;projects&#x2F;AICompiler&#x2F;osdi20-AntMan&#x2F;" target="_blank" rel="noopener">https:&#x2F;&#x2F;xinchen-jzx.github.io&#x2F;2024&#x2F;12&#x2F;24&#x2F;projects&#x2F;AICompiler&#x2F;osdi20-AntMan&#x2F;</a><br>
+        
+            <strong>版权声明：</strong>本文采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/cn/deed.zh" target="_blank">CC BY-NC-SA 3.0 CN</a> 协议进行许可
+
+        
+    </div>
+
+
+  
+  
+  <div class="nexmoe-post-meta nexmoe-rainbow">
+   
+    
+        <a class="nexmoefont icon-tag-fill -none-link" href="/tags/GPU-Cluster-Management/" rel="tag">GPU Cluster Management</a>
+    
+</div>
+  
+  
+    <script async src="/js/copy-codeblock.js?v=1735048506250"></script>
+  
+
+  
+      <div class="nexmoe-post-footer">
+          
+      </div>
+  
+</div></div><div class="nexmoe-post-right">    <div class="nexmoe-fixed">
+        <div class="nexmoe-tool">
+
+            
+
+            
+            
+            <button class="mdui-fab catalog" style="overflow:unset;">
+                <i class="nexmoefont icon-i-catalog"></i>
+                <div class="nexmoe-toc">
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E5%8A%A8%E6%9C%BA"><span class="toc-number">1.</span> <span class="toc-text">1. 动机</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-Key-Insight"><span class="toc-number">2.</span> <span class="toc-text">2. Key Insight</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1"><span class="toc-number">3.</span> <span class="toc-text">3. 系统设计</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-%E6%A1%86%E6%9E%B6%E5%B1%82%E7%9A%84%E8%AE%BE%E8%AE%A1"><span class="toc-number">3.1.</span> <span class="toc-text">3.1 框架层的设计</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#3-1-1-%E6%98%BE%E5%AD%98%E6%96%B9%E9%9D%A2"><span class="toc-number">3.1.1.</span> <span class="toc-text">3.1.1 显存方面</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-1-2-%E8%AE%A1%E7%AE%97%E6%96%B9%E9%9D%A2"><span class="toc-number">3.1.2.</span> <span class="toc-text">3.1.2 计算方面</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-%E8%B0%83%E5%BA%A6%E5%99%A8%E7%9A%84%E8%AE%BE%E8%AE%A1"><span class="toc-number">3.2.</span> <span class="toc-text">3.2 调度器的设计</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E6%80%BB%E7%BB%93"><span class="toc-number">4.</span> <span class="toc-text">4. 总结</span></a></li></ol>
+                </div>
+            </button>
+            
+
+            
+
+            <a href="#nexmoe-content" class="backtop toc-link" aria-label="Back To Top" title="top"><button class="mdui-fab mdui-ripple"><i class="nexmoefont icon-caret-top"></i></button></a>
+        </div>
+    </div>
+</div></div><div id="nexmoe-footer"><!--!--></div><div id="nexmoe-search-space"><div class="search-container"><div class="search-header"><div class="search-input-container"><input class="search-input" type="text" placeholder="Search" onInput="sinput();"></div><a class="search-close" onclick="sclose();">×</a></div><div class="search-body"></div></div></div><div><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2058306854838448" crossorigin="anonymous"></script>
+</div></body></html>
