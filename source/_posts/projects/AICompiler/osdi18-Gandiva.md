@@ -1,16 +1,14 @@
 ---
 title: osdi18-Gandiva
 date: 2024-12-23
-tags: GPU Heterogeneity Scheduling
+tags: GPU Cluster Management
 ---
 
 > Ganddiva: Introspective Cluster Scheduling for Deep Learning
 
 ## Overview
 
-深度学习训练任务 (Deep Learning Training Job)往往长时间消耗大量的GPU资源，但是目前生产中使用的GPU集群资源调度器通常将训练任务视为黑盒。因此GPU资源没有得到充分的利用。
-
-作者通过对深度学习任务在训练过程中的特征进行分析，设计了针对于深度学习任务的GPU集群资源调度器。
+Gandiva：一个集群调度框架，使用特定领域知识，优化了GPU集群训练深度学习模型的延迟与效率。
 
 ## Motivation
 

@@ -1,7 +1,7 @@
 ---
 title: osdi20 - HiveD
 date: 2024-12-23
-tags: GPU Heterogeneity Scheduling
+tags: GPU Cluster Management
 ---
 
 > HiveD: Sharing a GPU Cluster for Deep Learning with Guarantees
