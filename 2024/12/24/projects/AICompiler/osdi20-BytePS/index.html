@@ -1,0 +1,398 @@
+<!doctype html>
+<html lang="en"><head>
+<title>osdi-BytePS - xinchen_Jane</title>
+<meta charset="UTF-8">
+<meta name="keywords" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
+
+<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+<meta name="description" content="A Unified Architecture for Accelerating Distributed DNN Training in Heterogeneous GPU&#x2F;CPU Clusters  目前工业界主流的分布式训练是基于数据并行方式实现的，其中具有代表性的两种架构是All-Reduce和参数服务器 (Parameter Serverm, PS)。本文提出一种分布式DNN训练">
+<meta property="og:type" content="article">
+<meta property="og:title" content="osdi-BytePS">
+<meta property="og:url" content="https://xinchen-jzx.github.io/2024/12/24/projects/AICompiler/osdi20-BytePS/index.html">
+<meta property="og:site_name" content="xinchen_Jane">
+<meta property="og:description" content="A Unified Architecture for Accelerating Distributed DNN Training in Heterogeneous GPU&#x2F;CPU Clusters  目前工业界主流的分布式训练是基于数据并行方式实现的，其中具有代表性的两种架构是All-Reduce和参数服务器 (Parameter Serverm, PS)。本文提出一种分布式DNN训练">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://xinchen-jzx.github.io/assets/posts/projects/AICompiler/osdi20-BytePS-fig1.png">
+<meta property="og:image" content="https://xinchen-jzx.github.io/assets/posts/projects/AICompiler/osdi20-BytePS-fig6.png">
+<meta property="og:image" content="https://xinchen-jzx.github.io/assets/posts/projects/AICompiler/osdi20-BytePS-fig7.png">
+<meta property="og:image" content="https://xinchen-jzx.github.io/assets/posts/projects/AICompiler/osdi20-BytePS-fig8.png">
+<meta property="og:image" content="https://xinchen-jzx.github.io/assets/posts/projects/AICompiler/osdi20-BytePS-fig9.png">
+<meta property="og:image" content="https://xinchen-jzx.github.io/assets/posts/projects/AICompiler/osdi20-BytePS-fig10.png">
+<meta property="og:image" content="https://xinchen-jzx.github.io/assets/posts/projects/AICompiler/osdi20-BytePS-fig11.png">
+<meta property="og:image" content="https://xinchen-jzx.github.io/assets/posts/projects/AICompiler/osdi20-BytePS-fig4.png">
+<meta property="og:image" content="https://xinchen-jzx.github.io/assets/posts/projects/AICompiler/osdi20-BytePS-fig3.png">
+<meta property="og:image" content="https://xinchen-jzx.github.io/assets/posts/projects/AICompiler/osdi20-BytePS-fig12.png">
+<meta property="og:image" content="https://xinchen-jzx.github.io/assets/posts/projects/AICompiler/osdi20-BytePS-fig13.png">
+<meta property="og:image" content="https://xinchen-jzx.github.io/assets/posts/projects/AICompiler/osdi20-BytePS-fig14.png">
+<meta property="og:image" content="https://xinchen-jzx.github.io/assets/posts/projects/AICompiler/osdi20-BytePS-fig15.png">
+<meta property="og:image" content="https://xinchen-jzx.github.io/assets/posts/projects/AICompiler/osdi20-BytePS-fig5.png">
+<meta property="og:image" content="https://xinchen-jzx.github.io/assets/posts/projects/AICompiler/osdi20-BytePS-fig2.png">
+<meta property="og:image" content="https://xinchen-jzx.github.io/assets/posts/projects/AICompiler/osdi20-BytePS-fig16.png">
+<meta property="og:image" content="https://xinchen-jzx.github.io/assets/posts/projects/AICompiler/osdi20-BytePS-fig17.png">
+<meta property="article:published_time" content="2024-12-23T16:00:00.000Z">
+<meta property="article:modified_time" content="2024-12-24T13:02:29.351Z">
+<meta property="article:author" content="Zexin Jian">
+<meta property="article:tag" content="GPU Cluster Management">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://xinchen-jzx.github.io/assets/posts/projects/AICompiler/osdi20-BytePS-fig1.png">
+
+<link rel="stylesheet" href="/lib/fancybox/fancybox.css">
+<link rel="stylesheet" href="/lib/mdui_043tiny/mdui.css">
+
+
+<link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1735045385810">
+
+<link rel="stylesheet" href="/css/style.css?v=1735045385810">
+
+
+
+
+    
+        <link rel="stylesheet" href="/custom.css?v=1735045385810">
+    
+
+
+
+<script src="/lib/mdui_043tiny/mdui.js" async></script>
+<script src="/lib/fancybox/fancybox.umd.js" async></script>
+<script src="/lib/lax.min.js" async></script>
+
+
+<script async src="/js/app.js?v=1735045385810"></script>
+
+ 
+
+
+
+<link rel="stylesheet"  href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/atom-one-dark.min.css">
+<meta name="generator" content="Hexo 7.3.0"></head><body class="nexmoe mdui-drawer-body-left"><div id="nexmoe-background"><div class="nexmoe-bg" style="background-image: url(/assets/bg.jpg)"></div><div class="mdui-appbar mdui-shadow-0"><div class="mdui-toolbar"><a class="mdui-btn mdui-btn-icon mdui-ripple" mdui-drawer="{target: &#039;#drawer&#039;, swipe: true}" title="menu"><i class="mdui-icon nexmoefont icon-menu"></i></a><div class="mdui-toolbar-spacer"></div><a class="mdui-btn mdui-btn-icon" href="/" title="Zexin Jian"><img src="/assets/profile.jpg" alt="Zexin Jian"></a></div></div></div><div id="nexmoe-header"><div class="nexmoe-drawer mdui-drawer" id="drawer">
+    <div class="nexmoe-avatar mdui-ripple">
+        <a href="/" title="Zexin Jian">
+            <img src="/assets/profile.jpg" alt="Zexin Jian" alt="Zexin Jian">
+        </a>
+    </div>
+    <div class="nexmoe-count">
+        <div><span>Articles</span>8</div>
+        <div><span>Tags</span>3</div>
+        <div><span>Categories</span>0</div>
+    </div>
+    <div class="nexmoe-list mdui-list" mdui-collapse="{accordion: true}">
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/about.html" title="About Me">
+            <i class="mdui-list-item-icon nexmoefont icon-home"></i>
+            <div class="mdui-list-item-content">
+                About Me
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/" title="Blogs">
+            <i class="mdui-list-item-icon nexmoefont icon-info-circle"></i>
+            <div class="mdui-list-item-content">
+                Blogs
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/archive.html" title="Archives">
+            <i class="mdui-list-item-icon nexmoefont icon-container"></i>
+            <div class="mdui-list-item-content">
+                Archives
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/PY.html" title="Friends">
+            <i class="mdui-list-item-icon nexmoefont icon-unorderedlist"></i>
+            <div class="mdui-list-item-content">
+                Friends
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/donate.html" title="Sponsor Me">
+            <i class="mdui-list-item-icon nexmoefont icon-coffee"></i>
+            <div class="mdui-list-item-content">
+                Sponsor Me
+            </div>
+        </a>
+        
+    </div>
+    
+    
+        
+        <div class="nexmoe-widget-wrap">
+    <div class="nexmoe-widget nexmoe-search">
+         
+            <form id="search_form" action_e="https://cn.bing.com/search?q=site:nexmoe.com" onsubmit="return search();">
+                <label><input id="search_value" name="q" type="search" placeholder="Search"></label>
+            </form>
+         
+    </div>
+</div>
+
+
+
+
+    
+        
+        <div class="nexmoe-widget-wrap">
+	<div class="nexmoe-widget nexmoe-social">
+		<a
+			class="mdui-ripple"
+			href="https://space.bilibili.com/494384321"
+			target="_blank"
+			mdui-tooltip="{content: '哔哩哔哩'}"
+			style="
+				color: rgb(231, 106, 141);
+				background-color: rgba(231, 106, 141, .1);
+			"
+		>
+			<i
+				class="nexmoefont icon-bilibili"
+			></i> </a
+		><a
+			class="mdui-ripple"
+			href="https://github.com/xinchen-jzx"
+			target="_blank"
+			mdui-tooltip="{content: 'GitHub'}"
+			style="
+				color: rgb(25, 23, 23);
+				background-color: rgba(25, 23, 23, .1);
+			"
+		>
+			<i
+				class="nexmoefont icon-github"
+			></i> </a
+		><a
+			class="mdui-ripple"
+			href="https://www.zhihu.com/people/boom-69-30-24"
+			target="_blank"
+			mdui-tooltip="{content: '知乎'}"
+			style="
+				color: rgb(30, 136, 229);
+				background-color: rgba(30, 136, 229, .1);
+			"
+		>
+			<i
+				class="nexmoefont icon-zhihu"
+			></i> </a
+		>
+	</div>
+</div>
+
+    
+        
+        
+
+    
+        
+        
+  <div class="nexmoe-widget-wrap">
+    <div id="randomtagcloud" class="nexmoe-widget tagcloud nexmoe-rainbow">
+      <a href="/tags/AICompiler-Survey/" style="font-size: 10px;">AICompiler Survey</a> <a href="/tags/GPU-Cluster-Management/" style="font-size: 20px;">GPU Cluster Management</a> <a href="/tags/life/" style="font-size: 10px;">life</a>
+    </div>
+    
+      <script>
+        var maxTagcloud = parseInt(17);
+        var tags_length = parseInt(3);
+        var tags_arr = [];
+        for(var i = 0; i < tags_length; i++){
+          tags_arr.push(i);
+        }
+        tags_arr.sort(function (l, r) {
+          return Math.random() > 0.5 ? -1 : 1;
+        });
+        tags_arr = tags_arr.slice(0, maxTagcloud < tags_length ? tags_length - maxTagcloud : 0);
+        for(var tag_i = 0; tag_i < tags_arr.length; tag_i++){
+          document.getElementById("randomtagcloud").children[tags_arr[tag_i]].style.display = 'none';
+        }
+      </script>
+    
+  </div>
+
+    
+        
+        
+        
+  <div class="nexmoe-widget-wrap">
+    <h3 class="nexmoe-widget-title">Archive</h3>
+    <div class="nexmoe-widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/">2024</a><span class="archive-list-count">8</span></li></ul>
+    </div>
+  </div>
+
+
+
+    
+        
+        
+  <div class="nexmoe-widget-wrap">
+    <h3 class="nexmoe-widget-title">Recent Posts</h3>
+    <div class="nexmoe-widget">
+      <ul>
+        
+          <li>
+            <a href="/2024/12/24/projects/AICompiler/nsdi22-MLaaS/">nsdi22-MLaaS</a>
+          </li>
+        
+          <li>
+            <a href="/2024/12/24/projects/AICompiler/osdi20-BytePS/">osdi-BytePS</a>
+          </li>
+        
+          <li>
+            <a href="/2024/12/23/projects/AICompiler/eurosys20-Gandiva-follow-up/">eurosys20-Gandiva_follow_up</a>
+          </li>
+        
+          <li>
+            <a href="/2024/12/23/projects/AICompiler/osdi18-Gandiva/">osdi18-Gandiva</a>
+          </li>
+        
+          <li>
+            <a href="/2024/12/23/projects/AICompiler/osdi20-HiveD/">osdi20 - HiveD</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+    
+   
+    <div class="nexmoe-copyright">
+        &copy; 2024 Zexin Jian
+        Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+        & <a href="https://github.com/theme-nexmoe/hexo-theme-nexmoe" target="_blank">Nexmoe</a>
+        
+    </div>
+</div><!-- .nexmoe-drawer --></div><div id="nexmoe-content"><div class="nexmoe-primary"><div class="nexmoe-post">
+  <article>
+    
+        <div class="nexmoe-post-cover absolute" style="padding-top: NaN%;"> 
+            <img src="../../../assets/posts/projects/AICompiler/osdi20-BytePS.png" alt="osdi-BytePS" loading="lazy">
+            <h1>osdi-BytePS</h1>
+        </div>
+    
+    
+    <div class="nexmoe-post-meta">
+    <div class="nexmoe-rainbow">
+        <a class="nexmoefont icon-calendar-fill">2024年12月24日</a>
+        
+        
+    </div>
+    
+    
+    
+    
+    
+</div>
+
+    <blockquote>
+<p>A Unified Architecture for Accelerating Distributed DNN Training in Heterogeneous GPU&#x2F;CPU Clusters</p>
+</blockquote>
+<p>目前工业界主流的分布式训练是基于数据并行方式实现的，其中具有代表性的两种架构是All-Reduce和参数服务器 (Parameter Serverm, PS)。本文提出一种分布式DNN训练的统一架构BytePS，并延续了字节跳动在RDMA方面的研究，利用了RDMA高速网络的特性对集群的通信和算力资源利用率进行优化。</p>
+<h2 id="1-研究动机：现有架构的设计缺陷"><a href="#1-研究动机：现有架构的设计缺陷" class="headerlink" title="1. 研究动机：现有架构的设计缺陷"></a>1. 研究动机：现有架构的设计缺陷</h2><p><img src="/../../../assets/posts/projects/AICompiler/osdi20-BytePS-fig1.png"></p>
+<p>如下图所示，目前的All-Reduce和PS架构在训练性能上距离最优情况都有较大的差距。</p>
+<p><img src="/../../../assets/posts/projects/AICompiler/osdi20-BytePS-fig6.png"></p>
+<h3 id="1-1-机器间网络通信问题"><a href="#1-1-机器间网络通信问题" class="headerlink" title="1.1 机器间网络通信问题"></a>1.1 机器间网络通信问题</h3><p>在异构集群场景下，All-Reduce和PS架构对资源的利用情况如下图所示：</p>
+<p><img src="/../../../assets/posts/projects/AICompiler/osdi20-BytePS-fig7.png"></p>
+<ol>
+<li>All-Reduce架构仅用到GPU机器，这是因为其设计假定了每个节点都是同构节点。迭代过程中，GPU独立计算模型参数的梯度，然后使用All-Reduce通信聚合梯度；</li>
+<li>PS架构则包含GPU Worker和CPU Server。迭代过程中，GPU Worker将梯度传输至CPU Server；后者将接收到的不同Workers的梯度做聚合，然后执行DNN优化器 (如RMSProp或Adam等)并将更新后的参数传输回GPU Workers。</li>
+</ol>
+<p>可以看出，All-Reduce的同构化设计导致其无法充分利用这种异构资源，即只有GPU Workers之间通信，而无法利用其它CPU和带宽资源。而PS虽然能够利用CPU机器作为Server，却可能在CPU Serer数量较少的时候产生流量热点 (例如形成多对一的情况)，从而导致网络拥塞。</p>
+<h3 id="1-2-机器内多卡PCIe带宽竞争问题"><a href="#1-2-机器内多卡PCIe带宽竞争问题" class="headerlink" title="1.2 机器内多卡PCIe带宽竞争问题"></a>1.2 机器内多卡PCIe带宽竞争问题</h3><p>如今一台训练机器通常都具备有多张GPU卡 (例如4或8卡)。在做机器间的通信前，机器内部的多GPU之间需要首先做一次本地通信，该通信过程一般是基于PCIe或NVLink链路。我们观察到，目前的网卡如Mellanox CX5带宽已达100Gbps，已经很接近PCIe 3.0 x16的128Gbps链路带宽。而不幸的是，现在流行的机器内聚合方式 (例如8卡直接做all-reduce)会使PCIe成为瓶颈，导致网卡无法达到其100Gbps带宽上限。即使对含有NVLink的拓扑，我们也能发现类似的PCIe竞争导致的瓶颈问题。</p>
+<h3 id="1-3-通信链路中的CPU瓶颈问题"><a href="#1-3-通信链路中的CPU瓶颈问题" class="headerlink" title="1.3 通信链路中的CPU瓶颈问题"></a>1.3 通信链路中的CPU瓶颈问题</h3><p>从前面的问题1中可以看出，相比于All-reduce而言，PS架构实际上是存在更大的潜力的，因为它能充分利用异构GPU&#x2F;CPU资源。然而，目前的PS甚至比All-reduce性能显著低 (图2)，似乎与之矛盾。这是因为PS架构中还存在另外一种瓶颈限制了其性能 – CPU瓶颈。顾名思义，PS (参数服务器)需要将参数存储在CPU server上，这就意味着需要将优化器 (如Adam&#x2F;RMSProp等)放在Server上去执行。然而，优化器通常包含复杂的数学运算，将会消耗大量的CPU内存带宽。在100Gbps的网络输入情况下，CPU将无法满足将完整优化器放置在其上运行的需求。</p>
+<h2 id="2-BytePS主要设计"><a href="#2-BytePS主要设计" class="headerlink" title="2. BytePS主要设计"></a>2. BytePS主要设计</h2><p>针对以上三个问题，BytePS逐一提出了解决方案。</p>
+<h3 id="2-1-机器间网络通信优化"><a href="#2-1-机器间网络通信优化" class="headerlink" title="2.1 机器间网络通信优化"></a>2.1 机器间网络通信优化</h3><p>（1）由前文可知，PS仅利用了GPU机器与CPU机器之间的带宽。在CPU机器数量较少时，GPU机器的带宽B无法充分利用。下图给出了一个例子，在这种情况下，GPU 机器仅能达到2&#x2F;3的最大带宽，剩余1&#x2F;3带宽未得到利用。</p>
+<p><img src="/../../../assets/posts/projects/AICompiler/osdi20-BytePS-fig8.png"></p>
+<p>（2）All-reduce仅利用了GPU机器之间的带宽。此时，GPU机器与CPU机器之间的带宽未得到利用。</p>
+<p><img src="/../../../assets/posts/projects/AICompiler/osdi20-BytePS-fig9.png"></p>
+<p>（3）BytePS结合两者之长，同时利用了GPU与GPU之间、GPU与CPU之间的带宽，使得每台机器的带宽都能被充分利用。这就是BytePS机器间通信的思路。</p>
+<p><img src="/../../../assets/posts/projects/AICompiler/osdi20-BytePS-fig10.png"></p>
+<p>该思路在实现过程中，需要考虑如何分配GPU与GPU之间 (设为x%)、GPU与CPU之间 (设为y%)的流量比例。经过计算，最优比例如下：（其中n为表示GPU机器的数量，k表示CPU机器的数量）</p>
+<p><img src="/../../../assets/posts/projects/AICompiler/osdi20-BytePS-fig11.png"></p>
+<p>以上即为最优通信策略，对于不同的n与k，采用该策略可使得机器间通信时间最小。</p>
+<h3 id="2-2-机器内多卡通信优化"><a href="#2-2-机器内多卡通信优化" class="headerlink" title="2.2 机器内多卡通信优化"></a>2.2 机器内多卡通信优化</h3><p><img src="/../../../assets/posts/projects/AICompiler/osdi20-BytePS-fig4.png"></p>
+<p>目前市面上主流有两种机器拓扑：PCIe-only型8卡机器和NVLink-based型8卡机器。BytePS针对这两类拓扑提出了通用的解决方案和设计原则。</p>
+<h4 id="2-2-1-PCIe-only型拓扑"><a href="#2-2-1-PCIe-only型拓扑" class="headerlink" title="2.2.1 PCIe-only型拓扑"></a>2.2.1 PCIe-only型拓扑</h4><p>如下图所示，标记0-7的灰框表示GPU，P0和P1表示PCIe switch。现实当中，P0-CPU0以及P1-CPU1是带宽最小的链路，因此优化目标是最小化这条链路上传输的数据量。目前主流的做法是对这8卡做一次全局All-reduce，这样P0-CPU0需要传输的数据量是7M&#x2F;4 (根据All-reduce的通信量计算得出)，其中M是每张卡上的梯度大小。注意到该做法并没有利用CPU的计算能力。</p>
+<p><img src="/../../../assets/posts/projects/AICompiler/osdi20-BytePS-fig3.png"></p>
+<p>BytePS的核心思想是利用CPU的计算能力减少瓶颈链路的传输数据量。如下图所示，首先每个PCIe switch下的4张卡先进行一次Local Reduce-scatter。该步骤之后，每张卡上已聚合的梯度大小为M&#x2F;4。</p>
+<p><img src="/../../../assets/posts/projects/AICompiler/osdi20-BytePS-fig12.png"></p>
+<p>下一步，每张卡将自身已聚合的M&#x2F;4梯度拷贝到主机的内存上，如下图所示。注意这个过程使得P0-CPU0只传输了M&#x2F;4*4&#x3D;M的流量。</p>
+<p><img src="/../../../assets/posts/projects/AICompiler/osdi20-BytePS-fig13.png"></p>
+<p>此时，两个NUMA node的主机内存上各自有一份大小为M的梯度。我们再利用CPU将这两份梯度做一次聚合。但是这个过程的传输只发生在带宽较大的QPI上 (&gt;300Gbps)，并不会产生瓶颈。于是这一系列步骤不但实现了预期中的梯度聚合效果，还使瓶颈链路的传输量从7M&#x2F;4降低为M，显著降低了通信时间。这里的核心设计原则是：尽量避免跨NUMA GPU的直接通信，而可以利用CPU的聚合能力来间接完成。</p>
+<h4 id="2-2-2-NVLink-based拓扑"><a href="#2-2-2-NVLink-based拓扑" class="headerlink" title="2.2.2 NVLink-based拓扑"></a>2.2.2 NVLink-based拓扑</h4><p>下图是NVLink-based机型的示意图。对于这种拓扑，GPU之间可以通过超高带宽的NVLink链路进行通信。由于NVLink带宽显著大于PCIe带宽，PCIe瓶颈问题显得更加严重。可以看到，下图中P0-CPU0链路 (标红色的线段)会同时被以下两种传输同时竞争：（1）CPU0的内存往GPU0&#x2F;GPU1拷贝数据；（2）CPU0的内存往网卡NIC发送数据。由于P0-CPU0链路的带宽与网卡带宽很接近，这种竞争会导致网卡无法发挥最大带宽。</p>
+<p><img src="/../../../assets/posts/projects/AICompiler/osdi20-BytePS-fig14.png"></p>
+<p>为解决这一竞争问题，BytePS利用了NVLink带宽显著高于PCIe链路的事实，利用Reduce (而非Reduce-scatter)方式避免PCIe竞争。如下图红线所示，所有卡先将其梯度通过NVLink传输至GPU2上并做Reduce，接着GPU2将聚合后的梯度拷贝到CPU0内存，再经由网卡发送出去。由于NVLink带宽很高，这种做法不会导致GPU2产生流量热点问题，但却能够避免在P0-CPU0链路上发生的竞争。</p>
+<h4 id="2-2-3-CPU瓶颈优化：Summation-Service"><a href="#2-2-3-CPU瓶颈优化：Summation-Service" class="headerlink" title="2.2.3 CPU瓶颈优化：Summation Service"></a>2.2.3 CPU瓶颈优化：Summation Service</h4><p>前文提到，优化器对于CPU而言是比较重的任务，这也是PS架构的性能缺陷之一。然而，如何高效利用CPU的异构计算能力是BytePS的核心诉求之一，这就需要克服数据同步过程中的CPU瓶颈。</p>
+<p>经分析，优化器可被拆解为两部分：（1）Sum：将来自其他GPU workers的梯度求和并得到一份聚合后的新梯度；（2）Update：利用新梯度对参数进行更新。后者对于CPU而言的确是非常消耗内存带宽的操作，但前者却能够在CPU上高效实现 (例如AVX指令集)。如下图所示，求和操作在CPU上可以达到远超网络带宽的吞吐率，即不会引入CPU瓶颈。</p>
+<p><img src="/../../../assets/posts/projects/AICompiler/osdi20-BytePS-fig15.png"></p>
+<p>受到这个发现的启发，BytePS提出了Summation Service概念，对传统PS的CPU瓶颈问题做了改进。如下图所示，不同于PS将完整优化器放置在CPU上的设计，Summation Service只将Sum操作放置在CPU上，而将Update操作交由计算能力更强大、内存带宽更充足的GPU来执行。这种设计能够避免同步过程中的CPU瓶颈。</p>
+<p><img src="/../../../assets/posts/projects/AICompiler/osdi20-BytePS-fig5.png"></p>
+<p>但是这样是否会有过多的context switch从而带来这方面的overhead，作者没有讨论。</p>
+<h2 id="3-总体系统架构"><a href="#3-总体系统架构" class="headerlink" title="3. 总体系统架构"></a>3. 总体系统架构</h2><p>将前述BytePS三个设计点结合起来，我们得到BytePS完整系统架构，如下图所示。 </p>
+<p><img src="/../../../assets/posts/projects/AICompiler/osdi20-BytePS-fig2.png"></p>
+<ol>
+<li>每台GPU机器上部署了一个Communication Service模块，负责聚合本地多卡的梯度 (即机器内多卡通信)，其能充分考虑机器内部复杂的拓扑，避免产生PCIe瓶颈。</li>
+<li>每台GPU&#x2F;CPU机器上部署了一个Summation Service模块，处理来自其他GPU机器的梯度，其能够高效运行在CPU上。</li>
+<li>模块之间通过网络互连，通信策略使用的是前述设计中提到的最优网络通信方案。经证明，该方案不仅有最佳的性能，且能够从通信角度统一All-reduce和PS两种架构。</li>
+</ol>
+<h2 id="4-系统实现与优化"><a href="#4-系统实现与优化" class="headerlink" title="4. 系统实现与优化"></a>4. 系统实现与优化</h2><p>BytePS在实现中充分利用了流水线的思想，尽可能地将计算和PCIe和网络传输重叠起来。此外，BytePS还利用了一些RDMA实现上的优化技巧 (例如内存页对齐等)，解决了实际部署时遇到的RDMA slow receiver问题，实现了高性能的网络传输。</p>
+<p>对于用户侧，BytePS提供了丰富的用户接口，能够兼容TensorFlow，PyTorch和MXNet等主流深度学习框架。通常只需要几行至十几行代码的修改，就可将现有基于其他框架 (如Horovod或PyTorch DDP等)的代码迁移至BytePS上运行。</p>
+<h2 id="5-性能评估"><a href="#5-性能评估" class="headerlink" title="5. 性能评估"></a>5. 性能评估</h2><p>BytePS对多种CV类 (包括ResNet-50，VGG-16，GAN)和NLP类 (Transformer，BERT-Large，GPT-2)模型都做了分布式性能评测，规模从8卡 - 256卡。所使用的硬件是V100 GPU和100Gbps RDMA网络。对照组为目前广泛使用的All-reduce和原生PS实现。</p>
+<p>下图展示了CV和NLP模型上的评估结果。总体而言，BytePS在各类模型上都取得了正向收益，且相比于All-reduce和PS能够达到的最大提升幅度达84%和245%。</p>
+<p><img src="/../../../assets/posts/projects/AICompiler/osdi20-BytePS-fig16.png"></p>
+<p><img src="/../../../assets/posts/projects/AICompiler/osdi20-BytePS-fig17.png"></p>
+
+    
+  </article>
+
+  
+      
+    <div class="nexmoe-post-copyright">
+        <strong>Author：</strong>Zexin Jian<br>
+        <strong>Link：</strong><a href="https://xinchen-jzx.github.io/2024/12/24/projects/AICompiler/osdi20-BytePS/" title="https:&#x2F;&#x2F;xinchen-jzx.github.io&#x2F;2024&#x2F;12&#x2F;24&#x2F;projects&#x2F;AICompiler&#x2F;osdi20-BytePS&#x2F;" target="_blank" rel="noopener">https:&#x2F;&#x2F;xinchen-jzx.github.io&#x2F;2024&#x2F;12&#x2F;24&#x2F;projects&#x2F;AICompiler&#x2F;osdi20-BytePS&#x2F;</a><br>
+        
+            <strong>版权声明：</strong>本文采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/cn/deed.zh" target="_blank">CC BY-NC-SA 3.0 CN</a> 协议进行许可
+
+        
+    </div>
+
+
+  
+  
+  <div class="nexmoe-post-meta nexmoe-rainbow">
+   
+    
+        <a class="nexmoefont icon-tag-fill -none-link" href="/tags/GPU-Cluster-Management/" rel="tag">GPU Cluster Management</a>
+    
+</div>
+  
+  
+    <script async src="/js/copy-codeblock.js?v=1735045385778"></script>
+  
+
+  
+      <div class="nexmoe-post-footer">
+          
+      </div>
+  
+</div></div><div class="nexmoe-post-right">    <div class="nexmoe-fixed">
+        <div class="nexmoe-tool">
+
+            
+
+            
+            
+            <button class="mdui-fab catalog" style="overflow:unset;">
+                <i class="nexmoefont icon-i-catalog"></i>
+                <div class="nexmoe-toc">
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E7%A0%94%E7%A9%B6%E5%8A%A8%E6%9C%BA%EF%BC%9A%E7%8E%B0%E6%9C%89%E6%9E%B6%E6%9E%84%E7%9A%84%E8%AE%BE%E8%AE%A1%E7%BC%BA%E9%99%B7"><span class="toc-number">1.</span> <span class="toc-text">1. 研究动机：现有架构的设计缺陷</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-%E6%9C%BA%E5%99%A8%E9%97%B4%E7%BD%91%E7%BB%9C%E9%80%9A%E4%BF%A1%E9%97%AE%E9%A2%98"><span class="toc-number">1.1.</span> <span class="toc-text">1.1 机器间网络通信问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-%E6%9C%BA%E5%99%A8%E5%86%85%E5%A4%9A%E5%8D%A1PCIe%E5%B8%A6%E5%AE%BD%E7%AB%9E%E4%BA%89%E9%97%AE%E9%A2%98"><span class="toc-number">1.2.</span> <span class="toc-text">1.2 机器内多卡PCIe带宽竞争问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3-%E9%80%9A%E4%BF%A1%E9%93%BE%E8%B7%AF%E4%B8%AD%E7%9A%84CPU%E7%93%B6%E9%A2%88%E9%97%AE%E9%A2%98"><span class="toc-number">1.3.</span> <span class="toc-text">1.3 通信链路中的CPU瓶颈问题</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-BytePS%E4%B8%BB%E8%A6%81%E8%AE%BE%E8%AE%A1"><span class="toc-number">2.</span> <span class="toc-text">2. BytePS主要设计</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-%E6%9C%BA%E5%99%A8%E9%97%B4%E7%BD%91%E7%BB%9C%E9%80%9A%E4%BF%A1%E4%BC%98%E5%8C%96"><span class="toc-number">2.1.</span> <span class="toc-text">2.1 机器间网络通信优化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-%E6%9C%BA%E5%99%A8%E5%86%85%E5%A4%9A%E5%8D%A1%E9%80%9A%E4%BF%A1%E4%BC%98%E5%8C%96"><span class="toc-number">2.2.</span> <span class="toc-text">2.2 机器内多卡通信优化</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-2-1-PCIe-only%E5%9E%8B%E6%8B%93%E6%89%91"><span class="toc-number">2.2.1.</span> <span class="toc-text">2.2.1 PCIe-only型拓扑</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-2-2-NVLink-based%E6%8B%93%E6%89%91"><span class="toc-number">2.2.2.</span> <span class="toc-text">2.2.2 NVLink-based拓扑</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-2-3-CPU%E7%93%B6%E9%A2%88%E4%BC%98%E5%8C%96%EF%BC%9ASummation-Service"><span class="toc-number">2.2.3.</span> <span class="toc-text">2.2.3 CPU瓶颈优化：Summation Service</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E6%80%BB%E4%BD%93%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84"><span class="toc-number">3.</span> <span class="toc-text">3. 总体系统架构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E7%B3%BB%E7%BB%9F%E5%AE%9E%E7%8E%B0%E4%B8%8E%E4%BC%98%E5%8C%96"><span class="toc-number">4.</span> <span class="toc-text">4. 系统实现与优化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-%E6%80%A7%E8%83%BD%E8%AF%84%E4%BC%B0"><span class="toc-number">5.</span> <span class="toc-text">5. 性能评估</span></a></li></ol>
+                </div>
+            </button>
+            
+
+            
+
+            <a href="#nexmoe-content" class="backtop toc-link" aria-label="Back To Top" title="top"><button class="mdui-fab mdui-ripple"><i class="nexmoefont icon-caret-top"></i></button></a>
+        </div>
+    </div>
+</div></div><div id="nexmoe-footer"><!--!--></div><div id="nexmoe-search-space"><div class="search-container"><div class="search-header"><div class="search-input-container"><input class="search-input" type="text" placeholder="Search" onInput="sinput();"></div><a class="search-close" onclick="sclose();">×</a></div><div class="search-body"></div></div></div><div><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2058306854838448" crossorigin="anonymous"></script>
+</div></body></html>
