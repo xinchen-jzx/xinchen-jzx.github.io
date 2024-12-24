@@ -1,0 +1,397 @@
+<!doctype html>
+<html lang="en"><head>
+<title>nsdi22-MLaaS - xinchen_Jane</title>
+<meta charset="UTF-8">
+<meta name="keywords" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
+
+<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+<meta name="description" content="MLaaS in the Wild: Workload Analysis and Scheduling in Large-Scale Heterogeneous GPU Clusters  随着机器学习 (ML)技术的持续进步和最近大量数据集的可用性，科技公司正在部署大型ML即服务 (MLaaS)云，通常使用异构GPU来提供大量ML应用程序。然而，在异构GPU集群中运行不同的ML工作负载会带来许">
+<meta property="og:type" content="article">
+<meta property="og:title" content="nsdi22-MLaaS">
+<meta property="og:url" content="https://xinchen-jzx.github.io/2024/12/24/projects/AICompiler/nsdi22-MLaaS/index.html">
+<meta property="og:site_name" content="xinchen_Jane">
+<meta property="og:description" content="MLaaS in the Wild: Workload Analysis and Scheduling in Large-Scale Heterogeneous GPU Clusters  随着机器学习 (ML)技术的持续进步和最近大量数据集的可用性，科技公司正在部署大型ML即服务 (MLaaS)云，通常使用异构GPU来提供大量ML应用程序。然而，在异构GPU集群中运行不同的ML工作负载会带来许">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://xinchen-jzx.github.io/assets/posts/projects/AICompiler/nsdi22-MLaaS-fig1.png">
+<meta property="og:image" content="https://xinchen-jzx.github.io/assets/posts/projects/AICompiler/nsdi22-MLaaS-fig3.png">
+<meta property="og:image" content="https://xinchen-jzx.github.io/assets/posts/projects/AICompiler/nsdi22-MLaaS-fig4.png">
+<meta property="og:image" content="https://xinchen-jzx.github.io/assets/posts/projects/AICompiler/nsdi22-MLaaS-fig5.png">
+<meta property="og:image" content="https://xinchen-jzx.github.io/assets/posts/projects/AICompiler/nsdi22-MLaaS-fig2.png">
+<meta property="og:image" content="https://xinchen-jzx.github.io/assets/posts/projects/AICompiler/nsdi22-MLaaS-fig6.png">
+<meta property="og:image" content="https://xinchen-jzx.github.io/assets/posts/projects/AICompiler/nsdi22-MLaaS-fig7.png">
+<meta property="og:image" content="https://xinchen-jzx.github.io/assets/posts/projects/AICompiler/nsdi22-MLaaS-fig8.png">
+<meta property="og:image" content="https://xinchen-jzx.github.io/assets/posts/projects/AICompiler/nsdi22-MLaaS-fig9.png">
+<meta property="article:published_time" content="2024-12-23T16:00:00.000Z">
+<meta property="article:modified_time" content="2024-12-24T07:35:18.459Z">
+<meta property="article:author" content="Zexin Jian">
+<meta property="article:tag" content="GPU Cluster Management">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://xinchen-jzx.github.io/assets/posts/projects/AICompiler/nsdi22-MLaaS-fig1.png">
+
+<link rel="stylesheet" href="/lib/fancybox/fancybox.css">
+<link rel="stylesheet" href="/lib/mdui_043tiny/mdui.css">
+
+
+<link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1735025945525">
+
+<link rel="stylesheet" href="/css/style.css?v=1735025945525">
+
+
+
+
+    
+        <link rel="stylesheet" href="/custom.css?v=1735025945525">
+    
+
+
+
+<script src="/lib/mdui_043tiny/mdui.js" async></script>
+<script src="/lib/fancybox/fancybox.umd.js" async></script>
+<script src="/lib/lax.min.js" async></script>
+
+
+<script async src="/js/app.js?v=1735025945525"></script>
+
+ 
+
+
+
+<link rel="stylesheet"  href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/atom-one-dark.min.css">
+<meta name="generator" content="Hexo 7.3.0"></head><body class="nexmoe mdui-drawer-body-left"><div id="nexmoe-background"><div class="nexmoe-bg" style="background-image: url(/assets/bg.jpg)"></div><div class="mdui-appbar mdui-shadow-0"><div class="mdui-toolbar"><a class="mdui-btn mdui-btn-icon mdui-ripple" mdui-drawer="{target: &#039;#drawer&#039;, swipe: true}" title="menu"><i class="mdui-icon nexmoefont icon-menu"></i></a><div class="mdui-toolbar-spacer"></div><a class="mdui-btn mdui-btn-icon" href="/" title="Zexin Jian"><img src="/assets/profile.jpg" alt="Zexin Jian"></a></div></div></div><div id="nexmoe-header"><div class="nexmoe-drawer mdui-drawer" id="drawer">
+    <div class="nexmoe-avatar mdui-ripple">
+        <a href="/" title="Zexin Jian">
+            <img src="/assets/profile.jpg" alt="Zexin Jian" alt="Zexin Jian">
+        </a>
+    </div>
+    <div class="nexmoe-count">
+        <div><span>Articles</span>7</div>
+        <div><span>Tags</span>3</div>
+        <div><span>Categories</span>0</div>
+    </div>
+    <div class="nexmoe-list mdui-list" mdui-collapse="{accordion: true}">
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/about.html" title="About Me">
+            <i class="mdui-list-item-icon nexmoefont icon-home"></i>
+            <div class="mdui-list-item-content">
+                About Me
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/" title="Blogs">
+            <i class="mdui-list-item-icon nexmoefont icon-info-circle"></i>
+            <div class="mdui-list-item-content">
+                Blogs
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/archive.html" title="Archives">
+            <i class="mdui-list-item-icon nexmoefont icon-container"></i>
+            <div class="mdui-list-item-content">
+                Archives
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/PY.html" title="Friends">
+            <i class="mdui-list-item-icon nexmoefont icon-unorderedlist"></i>
+            <div class="mdui-list-item-content">
+                Friends
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/donate.html" title="Sponsor Me">
+            <i class="mdui-list-item-icon nexmoefont icon-coffee"></i>
+            <div class="mdui-list-item-content">
+                Sponsor Me
+            </div>
+        </a>
+        
+    </div>
+    
+    
+        
+        <div class="nexmoe-widget-wrap">
+    <div class="nexmoe-widget nexmoe-search">
+         
+            <form id="search_form" action_e="https://cn.bing.com/search?q=site:nexmoe.com" onsubmit="return search();">
+                <label><input id="search_value" name="q" type="search" placeholder="Search"></label>
+            </form>
+         
+    </div>
+</div>
+
+
+
+
+    
+        
+        <div class="nexmoe-widget-wrap">
+	<div class="nexmoe-widget nexmoe-social">
+		<a
+			class="mdui-ripple"
+			href="https://space.bilibili.com/494384321"
+			target="_blank"
+			mdui-tooltip="{content: '哔哩哔哩'}"
+			style="
+				color: rgb(231, 106, 141);
+				background-color: rgba(231, 106, 141, .1);
+			"
+		>
+			<i
+				class="nexmoefont icon-bilibili"
+			></i> </a
+		><a
+			class="mdui-ripple"
+			href="https://github.com/xinchen-jzx"
+			target="_blank"
+			mdui-tooltip="{content: 'GitHub'}"
+			style="
+				color: rgb(25, 23, 23);
+				background-color: rgba(25, 23, 23, .1);
+			"
+		>
+			<i
+				class="nexmoefont icon-github"
+			></i> </a
+		><a
+			class="mdui-ripple"
+			href="https://www.zhihu.com/people/boom-69-30-24"
+			target="_blank"
+			mdui-tooltip="{content: '知乎'}"
+			style="
+				color: rgb(30, 136, 229);
+				background-color: rgba(30, 136, 229, .1);
+			"
+		>
+			<i
+				class="nexmoefont icon-zhihu"
+			></i> </a
+		>
+	</div>
+</div>
+
+    
+        
+        
+
+    
+        
+        
+  <div class="nexmoe-widget-wrap">
+    <div id="randomtagcloud" class="nexmoe-widget tagcloud nexmoe-rainbow">
+      <a href="/tags/AICompiler-Survey/" style="font-size: 10px;">AICompiler Survey</a> <a href="/tags/GPU-Cluster-Management/" style="font-size: 20px;">GPU Cluster Management</a> <a href="/tags/life/" style="font-size: 10px;">life</a>
+    </div>
+    
+      <script>
+        var maxTagcloud = parseInt(17);
+        var tags_length = parseInt(3);
+        var tags_arr = [];
+        for(var i = 0; i < tags_length; i++){
+          tags_arr.push(i);
+        }
+        tags_arr.sort(function (l, r) {
+          return Math.random() > 0.5 ? -1 : 1;
+        });
+        tags_arr = tags_arr.slice(0, maxTagcloud < tags_length ? tags_length - maxTagcloud : 0);
+        for(var tag_i = 0; tag_i < tags_arr.length; tag_i++){
+          document.getElementById("randomtagcloud").children[tags_arr[tag_i]].style.display = 'none';
+        }
+      </script>
+    
+  </div>
+
+    
+        
+        
+        
+  <div class="nexmoe-widget-wrap">
+    <h3 class="nexmoe-widget-title">Archive</h3>
+    <div class="nexmoe-widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/">2024</a><span class="archive-list-count">7</span></li></ul>
+    </div>
+  </div>
+
+
+
+    
+        
+        
+  <div class="nexmoe-widget-wrap">
+    <h3 class="nexmoe-widget-title">Recent Posts</h3>
+    <div class="nexmoe-widget">
+      <ul>
+        
+          <li>
+            <a href="/2024/12/24/projects/AICompiler/nsdi22-MLaaS/">nsdi22-MLaaS</a>
+          </li>
+        
+          <li>
+            <a href="/2024/12/23/projects/AICompiler/eurosys20-Gandiva-follow-up/">eurosys20-Gandiva_follow_up</a>
+          </li>
+        
+          <li>
+            <a href="/2024/12/23/projects/AICompiler/osdi18-Gandiva/">osdi18-Gandiva</a>
+          </li>
+        
+          <li>
+            <a href="/2024/12/23/projects/AICompiler/osdi20-HiveD/">osdi20 - HiveD</a>
+          </li>
+        
+          <li>
+            <a href="/2024/12/17/life/2024/">2024年终总结</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+    
+   
+    <div class="nexmoe-copyright">
+        &copy; 2024 Zexin Jian
+        Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+        & <a href="https://github.com/theme-nexmoe/hexo-theme-nexmoe" target="_blank">Nexmoe</a>
+        
+    </div>
+</div><!-- .nexmoe-drawer --></div><div id="nexmoe-content"><div class="nexmoe-primary"><div class="nexmoe-post">
+  <article>
+    
+        <div class="nexmoe-post-cover"> 
+            <img src="/assets/bg.jpg" alt="nsdi22-MLaaS" loading="lazy">
+            <h1>nsdi22-MLaaS</h1>
+        </div>
+    
+    
+    <div class="nexmoe-post-meta">
+    <div class="nexmoe-rainbow">
+        <a class="nexmoefont icon-calendar-fill">2024年12月24日</a>
+        
+        
+    </div>
+    
+    
+    
+    
+    
+</div>
+
+    <blockquote>
+<p>MLaaS in the Wild: Workload Analysis and Scheduling in Large-Scale Heterogeneous GPU Clusters</p>
+</blockquote>
+<p>随着机器学习 (ML)技术的持续进步和最近大量数据集的可用性，科技公司正在部署大型ML即服务 (MLaaS)云，通常使用异构GPU来提供大量ML应用程序。然而，在异构GPU集群中运行不同的ML工作负载会带来许多挑战。</p>
+<p><img src="/../../../assets/posts/projects/AICompiler/nsdi22-MLaaS-fig1.png"></p>
+<p>在本文中，作者对从阿里巴巴拥有6000多个GPU的生产MLaaS集群中收集的为期两个月的工作负载跟踪进行了表征研究，解释了集群调度面临的挑战，包括Low Utilization Caused by Fractional GPU Uses、Long Queuenig Delays for Short-Running Task Instances、Hard to Schedule High-GPU Tasks、Load Imbalance、Bottleneck on CPUs。</p>
+<h2 id="1-Workload-Characterization"><a href="#1-Workload-Characterization" class="headerlink" title="1. Workload Characterization"></a>1. Workload Characterization</h2><h3 id="1-1-Temporal-Pattern"><a href="#1-1-Temporal-Pattern" class="headerlink" title="1.1 Temporal Pattern"></a>1.1 Temporal Pattern</h3><p>负载时间分析如下图所示：</p>
+<p><img onerror="imgOnError(this);" data-fancybox="gallery" src="/../../../assets/posts/projects/AICompiler/nsdi22-MLaaS-fig3.png" alt="Error" data-caption="Error" loading="lazy"></p>
+<p>运行时长和调度延迟如下图所示：</p>
+<ul>
+<li><p>运行时长从秒级到天级 (Philly)(a)</p>
+</li>
+<li><p>短任务的调度延迟占据生命周期的相当比重 (b)；</p>
+</li>
+<li><p>申请整卡和高端卡的任务等待时间更长 (c, d)。</p>
+</li>
+</ul>
+<p><img onerror="imgOnError(this);" data-fancybox="gallery" src="/../../../assets/posts/projects/AICompiler/nsdi22-MLaaS-fig4.png" alt="Error" data-caption="Error" loading="lazy"></p>
+<h3 id="1-2-Spatial-Pattern"><a href="#1-2-Spatial-Pattern" class="headerlink" title="1.2 Spatial Pattern"></a>1.2 Spatial Pattern</h3><p><img onerror="imgOnError(this);" data-fancybox="gallery" src="/../../../assets/posts/projects/AICompiler/nsdi22-MLaaS-fig5.png" alt="Error" data-caption="Error" loading="lazy"></p>
+<ul>
+<li><p>资源申请：CPU&#x2F;GPU&#x2F;Mem均存在长尾分布现象 (实线)；</p>
+</li>
+<li><p>资源使用：不均衡，超过90%的业务GPU算力用量少于半张卡 (虚线)；</p>
+</li>
+<li><p>资源申请和使用量存在Gap – 提升效率的空间。</p>
+</li>
+</ul>
+<h2 id="2-GPU-Machine-Utilization"><a href="#2-GPU-Machine-Utilization" class="headerlink" title="2. GPU Machine Utilization"></a>2. GPU Machine Utilization</h2><h3 id="2-1-Utilization-of-Compute-Resources"><a href="#2-1-Utilization-of-Compute-Resources" class="headerlink" title="2.1 Utilization of Compute Resources"></a>2.1 Utilization of Compute Resources</h3><p><img src="/../../../assets/posts/projects/AICompiler/nsdi22-MLaaS-fig2.png"></p>
+<ul>
+<li><p>8卡机器的CPU利用率显著高于2卡机器 (中位和长尾)；</p>
+</li>
+<li><p>GPU利用率的中位 (P50)和长尾 (P90)存在较大差距；</p>
+</li>
+<li><p>主存和显存水位不高。</p>
+</li>
+</ul>
+<h3 id="2-2-Low-Usage-of-Network-and-I-O"><a href="#2-2-Low-Usage-of-Network-and-I-O" class="headerlink" title="2.2 Low Usage of Network and I&#x2F;O"></a>2.2 Low Usage of Network and I&#x2F;O</h3><p><img src="/../../../assets/posts/projects/AICompiler/nsdi22-MLaaS-fig6.png"></p>
+<p>实验显示，IO等待目前还没有在集群中成为瓶颈。</p>
+<h2 id="3-Oppotunities-for-Cluster-Management"><a href="#3-Oppotunities-for-Cluster-Management" class="headerlink" title="3. Oppotunities for Cluster Management"></a>3. Oppotunities for Cluster Management</h2><h3 id="3-1-GPU-Sharing"><a href="#3-1-GPU-Sharing" class="headerlink" title="3.1 GPU Sharing"></a>3.1 GPU Sharing</h3><p>GPU独享导致GPU利用率很低。为了避免这一问题，PAI支持GPU共享。</p>
+<p><img src="/../../../assets/posts/projects/AICompiler/nsdi22-MLaaS-fig7.png"></p>
+<h3 id="3-2-Predictable-Duration-for-Recurring-Tasks"><a href="#3-2-Predictable-Duration-for-Recurring-Tasks" class="headerlink" title="3.2 Predictable Duration for Recurring Tasks"></a>3.2 Predictable Duration for Recurring Tasks</h3><ul>
+<li>重复提交作业是常见的 (65%的作业重复超过5次)。<ul>
+<li>基于作业元信息做特征工程，形成标识符。</li>
+</ul>
+</li>
+</ul>
+<p><img src="/../../../assets/posts/projects/AICompiler/nsdi22-MLaaS-fig8.png"></p>
+<h2 id="4-Challenges-of-Scheduling"><a href="#4-Challenges-of-Scheduling" class="headerlink" title="4. Challenges of Scheduling"></a>4. Challenges of Scheduling</h2><h3 id="4-1-Deployed-Scheduling-Policies"><a href="#4-1-Deployed-Scheduling-Policies" class="headerlink" title="4.1 Deployed Scheduling Policies"></a>4.1 Deployed Scheduling Policies</h3><ol>
+<li>Reserving-and-Packing：<ul>
+<li>即：将对GPU需求较高的应用放在高级GPU设备上，将需求较低的任务打包放到低级设备上。</li>
+</ul>
+</li>
+<li>Load-Balancing：<ul>
+<li>即：在上述基础上，优先将应用放在分配率低的机器上。</li>
+</ul>
+</li>
+</ol>
+<p><img src="/../../../assets/posts/projects/AICompiler/nsdi22-MLaaS-fig9.png"></p>
+<h3 id="4-2-Open-Challenges"><a href="#4-2-Open-Challenges" class="headerlink" title="4.2 Open Challenges"></a>4.2 Open Challenges</h3><ol>
+<li>Mismatch between machine specs and instance requests；</li>
+<li>Overcrowded weak-GPU machines；</li>
+<li>Imbalanced load with high-end machines；</li>
+<li>CPU can be the bottleneck。</li>
+</ol>
+
+    
+  </article>
+
+  
+      
+    <div class="nexmoe-post-copyright">
+        <strong>Author：</strong>Zexin Jian<br>
+        <strong>Link：</strong><a href="https://xinchen-jzx.github.io/2024/12/24/projects/AICompiler/nsdi22-MLaaS/" title="https:&#x2F;&#x2F;xinchen-jzx.github.io&#x2F;2024&#x2F;12&#x2F;24&#x2F;projects&#x2F;AICompiler&#x2F;nsdi22-MLaaS&#x2F;" target="_blank" rel="noopener">https:&#x2F;&#x2F;xinchen-jzx.github.io&#x2F;2024&#x2F;12&#x2F;24&#x2F;projects&#x2F;AICompiler&#x2F;nsdi22-MLaaS&#x2F;</a><br>
+        
+            <strong>版权声明：</strong>本文采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/cn/deed.zh" target="_blank">CC BY-NC-SA 3.0 CN</a> 协议进行许可
+
+        
+    </div>
+
+
+  
+  
+  <div class="nexmoe-post-meta nexmoe-rainbow">
+   
+    
+        <a class="nexmoefont icon-tag-fill -none-link" href="/tags/GPU-Cluster-Management/" rel="tag">GPU Cluster Management</a>
+    
+</div>
+  
+  
+    <script async src="/js/copy-codeblock.js?v=1735025945495"></script>
+  
+
+  
+      <div class="nexmoe-post-footer">
+          
+      </div>
+  
+</div></div><div class="nexmoe-post-right">    <div class="nexmoe-fixed">
+        <div class="nexmoe-tool">
+
+            
+
+            
+            
+            <button class="mdui-fab catalog" style="overflow:unset;">
+                <i class="nexmoefont icon-i-catalog"></i>
+                <div class="nexmoe-toc">
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-Workload-Characterization"><span class="toc-number">1.</span> <span class="toc-text">1. Workload Characterization</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-Temporal-Pattern"><span class="toc-number">1.1.</span> <span class="toc-text">1.1 Temporal Pattern</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-Spatial-Pattern"><span class="toc-number">1.2.</span> <span class="toc-text">1.2 Spatial Pattern</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-GPU-Machine-Utilization"><span class="toc-number">2.</span> <span class="toc-text">2. GPU Machine Utilization</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-Utilization-of-Compute-Resources"><span class="toc-number">2.1.</span> <span class="toc-text">2.1 Utilization of Compute Resources</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-Low-Usage-of-Network-and-I-O"><span class="toc-number">2.2.</span> <span class="toc-text">2.2 Low Usage of Network and I&#x2F;O</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-Oppotunities-for-Cluster-Management"><span class="toc-number">3.</span> <span class="toc-text">3. Oppotunities for Cluster Management</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-GPU-Sharing"><span class="toc-number">3.1.</span> <span class="toc-text">3.1 GPU Sharing</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-Predictable-Duration-for-Recurring-Tasks"><span class="toc-number">3.2.</span> <span class="toc-text">3.2 Predictable Duration for Recurring Tasks</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-Challenges-of-Scheduling"><span class="toc-number">4.</span> <span class="toc-text">4. Challenges of Scheduling</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1-Deployed-Scheduling-Policies"><span class="toc-number">4.1.</span> <span class="toc-text">4.1 Deployed Scheduling Policies</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-2-Open-Challenges"><span class="toc-number">4.2.</span> <span class="toc-text">4.2 Open Challenges</span></a></li></ol></li></ol>
+                </div>
+            </button>
+            
+
+            
+
+            <a href="#nexmoe-content" class="backtop toc-link" aria-label="Back To Top" title="top"><button class="mdui-fab mdui-ripple"><i class="nexmoefont icon-caret-top"></i></button></a>
+        </div>
+    </div>
+</div></div><div id="nexmoe-footer"><!--!--></div><div id="nexmoe-search-space"><div class="search-container"><div class="search-header"><div class="search-input-container"><input class="search-input" type="text" placeholder="Search" onInput="sinput();"></div><a class="search-close" onclick="sclose();">×</a></div><div class="search-body"></div></div></div><div><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2058306854838448" crossorigin="anonymous"></script>
+</div></body></html>
