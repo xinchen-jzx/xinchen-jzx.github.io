@@ -10,7 +10,7 @@ layout: homepage
 
 📫 <font face="楷书"><font size=4>If you are seeking any form of academic cooperation, please feel free to email me at <a href="">zexinjian@foxmail.com</a>. </font></font>
 
-👀 <font face="楷书"><font size=4>Interests: [Movies](https://shadowed-arthropod-441.notion.site/160f475b015c803daf06ccaa6bf65e20)、[Readings](https://shadowed-arthropod-441.notion.site/167f475b015c8093a841c1767fc24fe8) </font></font>
+👀 <font face="楷书"><font size=4>Interests: <a href=https://shadowed-arthropod-441.notion.site/160f475b015c803daf06ccaa6bf65e20>Movies</a>、<a href=https://shadowed-arthropod-441.notion.site/167f475b015c8093a841c1767fc24fe8>Readings</a> </font></font>
 
 ## Research Interests
 
