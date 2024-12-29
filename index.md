@@ -12,14 +12,14 @@ layout: homepage
 
 ## Research Interests
 
-- <font face="楷书"><font size=4>**Managed Runtime System:** build hard-core systems, managed runtime and big data systems for emerging hardware, such as non-volatile memory and resource-disaggregated datacenter</font></font>
-- <font face="楷书"><font size=4>**MLSys:** GPU Management, AI Compiler</font></font>
-- <font face="楷书"><font size=4>**LLM:** CTG, Story Generation</font></font>
+- <font face="楷书"><font size=4><b>Managed Runtime System:</b> build hard-core systems, managed runtime and big data systems for emerging hardware, such as non-volatile memory and resource-disaggregated datacenter</font></font>
+- <font face="楷书"><font size=4><b>MLSys:</b> GPU Management, AI Compiler</font></font>
+- <font face="楷书"><font size=4><b>LLM:</b> CTG, Story Generation</font></font>
 
 ## News
 
 - **[Sept. 2024]** <font face="楷书"><font size=4>&nbsp;🎉🎉 Our paper about LLM is accepted to NeurIPS 2024!</font></font>
-- **[May. 2023]** <font face="楷书"><font size=4><i>2023.05</i>: &nbsp;🎉🎉 Out paper about CTG is accepted to ACL 2023!</font></font>
+- **[May. 2023]** <font face="楷书"><font size=4><i>&nbsp;🎉🎉 Out paper about CTG is accepted to ACL 2023!</font></font>
 
 {% include_relative _includes/publications.md %}
 
