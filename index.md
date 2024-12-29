@@ -19,7 +19,7 @@ layout: homepage
 ## News
 
 - **[Sept. 2024]** <font face="楷书"><font size=4>&nbsp;🎉🎉 Our paper about LLM is accepted to NeurIPS 2024!</font></font>
-- **[May. 2023]** <font face="楷书"><font size=4><i>&nbsp;🎉🎉 Out paper about CTG is accepted to ACL 2023!</font></font>
+- **[May. 2023]** <font face="楷书"><font size=4>&nbsp;🎉🎉 Out paper about CTG is accepted to ACL 2023!</font></font>
 
 {% include_relative _includes/publications.md %}
 
