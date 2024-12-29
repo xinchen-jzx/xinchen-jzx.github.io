@@ -10,13 +10,11 @@ layout: homepage
 
 📫 <font face="楷书"><font size=4>If you are seeking any form of academic cooperation, please feel free to email me at <a href="">zexinjian@foxmail.com</a>. </font></font>
 
-👀 <font face="楷书"><font size=4>Interests: <a href=https://shadowed-arthropod-441.notion.site/160f475b015c803daf06ccaa6bf65e20>Movies</a>、<a href=https://shadowed-arthropod-441.notion.site/167f475b015c8093a841c1767fc24fe8>Readings</a> </font></font>
-
 ## Research Interests
 
-- **Managed Runtime System:** build hard-core systems, managed runtime and big data systems for emerging hardware, such as non-volatile memory and resource-disaggregated datacenter
-- **MLSys:** GPU Management, AI Compiler
-- **LLM:** CTG, Story Generation
+- <font face="楷书"><font size=4>**Managed Runtime System:** build hard-core systems, managed runtime and big data systems for emerging hardware, such as non-volatile memory and resource-disaggregated datacenter</font></font>
+- <font face="楷书"><font size=4>**MLSys:** GPU Management, AI Compiler</font></font>
+- <font face="楷书"><font size=4>**LLM:** CTG, Story Generation</font></font>
 
 ## News
 
