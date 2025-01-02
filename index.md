@@ -19,7 +19,7 @@ layout: homepage
 ## News
 
 - **[Sept. 2024]** &nbsp;🎉🎉 Our paper about LLM is accepted to NeurIPS 2024!
-- **[May. 2023]**  &nbsp;🎉🎉 Out paper about CTG is accepted to ACL 2023!
+- **[May. 2023]**  &nbsp;🎉🎉 Our paper about CTG is accepted to ACL 2023!
 
 {% include_relative _includes/publications.md %}
 
