@@ -13,4 +13,5 @@ main:
     conference_short: ACL
     conference: The 61st Annual Meeting of the Association for Computational Linguistics <strong>(ACL)</strong>, 2023.
     pdf: https://aclanthology.org/2023.findings-acl.530.pdf
+    code: https://github.com/xinchen-jzx/GRACE
     image: ./papers/img/01-GRACE-acl23.png
