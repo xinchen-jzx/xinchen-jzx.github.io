@@ -5,6 +5,7 @@ main:
     conference_short: NeurIPS
     conference: The Thirty-Eighth Annual Conference on Neural Information Processing Systems <strong>(NeurIPS)</strong>, 2024.
     pdf: https://arxiv.org/pdf/2405.14383
+    code: https://github.com/xinchen-jzx/LLM-KnowledgeBoundary
     image: ./papers/img/02-Knowledge Boundary-nips24.png
 
   - title: "GRACE: Gradient-guided Controllable Retrieval for Augmenting Attribute-based Text Generation"
