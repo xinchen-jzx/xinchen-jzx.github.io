@@ -13,7 +13,7 @@ layout: homepage
 ## Research Interests
 
 - <b>Managed Runtime System:</b> build hard-core systems, managed runtime and big data systems for emerging hardware, such as non-volatile memory and resource-disaggregated datacenter
-- <b>MLSys:</b> GPU Management, AI Compiler
+- <b>Machine Learning System:</b> GPU Management, AI Compiler
 - <b>LLM:</b> CTG, Story Generation
 
 ## News
