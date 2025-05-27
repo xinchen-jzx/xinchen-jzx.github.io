@@ -23,9 +23,11 @@ The overall kernel architecture diagram is as follows:
 
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/1_SysYCompiler24/workflow.jpg" title="Workflow" class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="eager" path="assets/img/1_miniRust/workflow.jpg" title="Workflow" class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 <div class="caption">
     NUDT-OS Architecture
 </div>
+
+For more details, please check the <a href="https://github.com/xinchen-jzx/mini-Rust">Github</a> repository.
