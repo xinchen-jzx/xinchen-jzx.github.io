@@ -451,8 +451,8 @@ ninja.data = [{
             },},{id: "news-a-simple-inline-announcement-with-markdown-emoji-sparkles-smile",
           title: 'A simple inline announcement with Markdown emoji! :sparkles: :smile:',
           description: "",
-          section: "News",},{id: "projects-nudt-sysy-compiler-for-csc-2024",
-          title: 'NUDT SysY Compiler for CSC-2024',
+          section: "News",},{id: "projects-nudt-compiler",
+          title: 'NUDT-Compiler',
           description: "for CSC-2024 Compiler Design Contest",
           section: "Projects",handler: () => {
               window.location.href = "/projects/1_SysYCompiler24/";
@@ -461,11 +461,11 @@ ninja.data = [{
           description: "Open source project miniRust",
           section: "Projects",handler: () => {
               window.location.href = "/projects/2_miniRust/";
-            },},{id: "projects-project-3-with-very-long-name",
-          title: 'project 3 with very long name',
-          description: "a project that redirects to another website",
+            },},{id: "projects-grace23",
+          title: 'GRACE23',
+          description: "ACL23 - GRACE:Gradient-guided Controllable Retrieval for Augmenting Attribute-based Text Generation",
           section: "Projects",handler: () => {
-              window.location.href = "/projects/3_project/";
+              window.location.href = "/projects/3_GRACE23/";
             },},{id: "projects-project-4",
           title: 'project 4',
           description: "another without an image",
