@@ -3,7 +3,7 @@ layout: page
 title: NUDT SysY Compiler for CSC-2024
 description: for CSC-2024 Compiler Design Contest
 img: assets/img/1_SysYCompiler24/NUDT-SysY-Compiler.png
-importance: 1
+importance: 2
 category: fun
 ---
 
