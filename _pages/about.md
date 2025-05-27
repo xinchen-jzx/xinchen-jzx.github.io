@@ -27,8 +27,8 @@ latest_posts:
   limit: 3 # leave blank to include all the blog posts
 ---
 
-Write your biography here. Tell the world about yourself. Link to your favorite [subreddit](http://reddit.com). You can put a picture in, too. The code is already in, just name your picture `prof_pic.jpg` and put it in the `img/` folder.
+👋 Welcome! My name is <b>Zexin Jian (简泽鑫)</b>, an undergraduate student at Computer College, <b>National University of Defense Technology (国防科技大学计算机学院), </b>, advised by <a href="">Dr.Zengkun</a>. I will be a PhD student at Institute of Computing Technology (ICT), Chinese Academy of Sciences (CAS) in Sep 2025. I am lucky to be advised by <a href="https://cuihuimin.github.io/">Dr. Huimin Cui</a> and <a href="https://wangchenxi7.github.io/home/">Dr. Chenxi Wang</a>. 
 
-Put your address / P.O. box / other info right below your picture. You can also disable any of these elements by editing `profile` property of the YAML header of your `_pages/about.md`. Edit `_bibliography/papers.bib` and Jekyll will render your [publications page](/al-folio/publications/) automatically.
+🤔 My research interest includes <b>Managed Runtime System, MLSys and Large Language Models (LLM). </b>
 
-Link to your social media connections, too. This theme is set up to use [Font Awesome icons](https://fontawesome.com/) and [Academicons](https://jpswalsh.github.io/academicons/), like the ones below. Add your Facebook, Twitter, LinkedIn, Google Scholar, or just disable all of them.
+📫 If you are seeking any form of academic cooperation, please feel free to email me at <a href="">zexinjian@gmail.com</a>.
