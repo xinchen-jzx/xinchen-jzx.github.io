@@ -1,0 +1,22 @@
+@inproceedings{GRACE-ACL23,
+  title = "{GRACE}: Gradient-guided Controllable Retrieval for Augmenting Attribute-based Text Generation",
+  author = "Wen, Zhihua  and
+    Tian, Zhiliang  and
+    Huang, Zhen  and
+    Yang, Yuxin  and
+    Jian, Zexin  and
+    Wang, Changjian  and
+    Li, Dongsheng",
+  editor = "Rogers, Anna  and
+    Boyd-Graber, Jordan  and
+    Okazaki, Naoaki",
+  booktitle = "Findings of the Association for Computational Linguistics: ACL 2023",
+  month = jul,
+  year = "2023",
+  address = "Toronto, Canada",
+  publisher = "Association for Computational Linguistics",
+  url = "https://aclanthology.org/2023.findings-acl.530/",
+  doi = "10.18653/v1/2023.findings-acl.530",
+  pages = "8377--8398",
+  abstract = "Attribute-based generation methods are of growing significance in controlling the generation of large pre-trained language models (PLMs). Existing studies control the generation by (1) finetuning the model with attributes or (2) guiding the inference processing toward control signals while freezing the PLM. However, finetuning approaches infuse domain bias into generation, making it hard to generate out-of-domain texts. Besides, many methods guide the inference in its word-by-word generation, pushing the word probability to the target attributes, resulting in less fluent sentences. We argue that distilling controlling information from natural texts can produce fluent sentences while maintaining high controllability. In this paper, we propose \textbf{GRA}dient-guided \textbf{C}ontrollable r\textbf{E}trieval (GRACE), a retrieval-augmented generation framework to facilitate the generation of fluent sentences with high attribute relevance. GRACE memorizes the semantic and attribute information from unlabeled corpora and applies a controllable retrieval to obtain desired information. For the generation, we design techniques to eliminate the domain bias from the retrieval results and integrate it into the generation model. Additionally, we propose a gradient-guided generation scheme that iteratively steers generation toward higher attribute relevance. Experimental results and quantities of examples verify the effectiveness of our method."
+}

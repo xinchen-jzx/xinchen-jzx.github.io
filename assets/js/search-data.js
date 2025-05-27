@@ -466,11 +466,11 @@ ninja.data = [{
           description: "ACL23 - GRACE:Gradient-guided Controllable Retrieval for Augmenting Attribute-based Text Generation",
           section: "Projects",handler: () => {
               window.location.href = "/projects/3_GRACE23/";
-            },},{id: "projects-project-4",
-          title: 'project 4',
-          description: "another without an image",
+            },},{id: "projects-llm-knowledgeboundary24",
+          title: 'LLM-KnowledgeBoundary24',
+          description: "NeurIPS24 - Perception of Knowledge Boundaries for LLMs via Semi-open-ended Question Answering",
           section: "Projects",handler: () => {
-              window.location.href = "/projects/4_project/";
+              window.location.href = "/projects/4_LLM-KnowledgeBoundary24/";
             },},{id: "projects-project-5",
           title: 'project 5',
           description: "a project with a background image",
