@@ -6,6 +6,9 @@ img: assets/img/3_GRACE23/GRACE.png
 importance: 2
 category: work
 related_publications: true
+giscus_comments: true
+
+bibliography: GRACE23.bib
 ---
 
 Zhihua Wen, Zhiliang Tian, Zhen Huang, Yuxin Yang, **Zexin Jian**, Changjian Wang, Dongsheng Li
