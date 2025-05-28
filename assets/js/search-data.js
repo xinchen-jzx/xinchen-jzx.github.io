@@ -51,12 +51,7 @@ ninja.data = [{
               handler: () => {
                 window.location.href = "/books/";
               },
-            },{id: "books-the-godfather",
-          title: 'The Godfather',
-          description: "",
-          section: "Books",handler: () => {
-              window.location.href = "/books/the_godfather.html";
-            },},{id: "news-our-paper-about-ctg-is-accepted-to-acl-2023",
+            },{id: "news-our-paper-about-ctg-is-accepted-to-acl-2023",
           title: ' 🎉🎉 Our paper about CTG is accepted to ACL 2023!',
           description: "",
           section: "News",},{id: "news-our-paper-about-llm-is-accepted-to-neurips-2024",
