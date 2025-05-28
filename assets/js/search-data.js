@@ -44,14 +44,7 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/teaching/";
           },
-        },{id: "dropdown-bookshelf",
-              title: "bookshelf",
-              description: "",
-              section: "Dropdown",
-              handler: () => {
-                window.location.href = "/books/";
-              },
-            },{id: "news-our-paper-about-ctg-is-accepted-to-acl-2023",
+        },{id: "news-our-paper-about-ctg-is-accepted-to-acl-2023",
           title: ' 🎉🎉 Our paper about CTG is accepted to ACL 2023!',
           description: "",
           section: "News",},{id: "news-our-paper-about-llm-is-accepted-to-neurips-2024",
