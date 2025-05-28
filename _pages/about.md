@@ -18,11 +18,6 @@ announcements:
   enabled: true # includes a list of news items
   scrollable: true # adds a vertical scroll bar if there are more than 3 news items
   limit: 5 # leave blank to include all the news in the `_news` folder
-
-latest_posts:
-  enabled: true
-  scrollable: true # adds a vertical scroll bar if there are more than 3 new posts items
-  limit: 3 # leave blank to include all the blog posts
 ---
 
 👋 Welcome! My name is <b>Zexin Jian (简泽鑫)</b>, an undergraduate student at Computer College, <b>National University of Defense Technology (国防科技大学计算机学院), </b>, advised by <a href="">Dr.Zengkun</a>. I will be a PhD student at Institute of Computing Technology (ICT), Chinese Academy of Sciences (CAS) in Sep 2025. I am lucky to be advised by <a href="https://cuihuimin.github.io/">Dr. Huimin Cui</a> and <a href="https://wangchenxi7.github.io/home/">Dr. Chenxi Wang</a>. 
