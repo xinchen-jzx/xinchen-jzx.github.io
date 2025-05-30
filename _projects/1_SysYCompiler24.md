@@ -19,7 +19,7 @@ NUDT SysYCompiler is a general compiler targeting RISC-V hardware. It implements
 
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/1_SysYCompiler24/workflow.jpg" title="Workflow" class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="eager" path="assets/img/1_SysYCompiler24/workflow.png" title="Workflow" class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 <div class="caption">

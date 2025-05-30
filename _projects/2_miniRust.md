@@ -34,6 +34,6 @@ For more details, please check the <a href="https://github.com/xinchen-jzx/mini-
 
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/1_miniRust/Result.jpg" title="Result" class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="eager" path="assets/img/1_miniRust/Result.png" title="Result" class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
