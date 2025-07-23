@@ -23,7 +23,7 @@ experience:
   - date: "Sep.2022 - Seq.2024"
     position: "Research Intern"
     company: "HPCL, NUDT"
-  - date: "2020 - present"
+  - date: "May.2025 - present"
     position: "Research Intern"
     company: "AIIT-NCC, PKU"
 
