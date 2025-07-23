@@ -25,6 +25,6 @@ announcements:
 🤔 My research interest includes:
 - <b>Managed Runtime System:</b> build hard-core systems, managed runtime and big data systems for emerging hardware, such as non-volatile memory and resource-disaggregated datacenter
 - <b>Machine Learning System:</b> Heterogeneous Computing, AI Compiler
-- <b>LLM:</b> CTG, Story Generation
+- <b>LLM:</b> <a href="https://aclanthology.org/2023.findings-acl.530/">CTG (ACL'23)</a>, <a href="https://dl.acm.org/doi/10.5555/3737916.3740736">Semi-Open-Ended QA (NIPS'24)</a>
 
 📫 If you are seeking any form of academic cooperation, please feel free to email me at <a href="">zexinjian@gmail.com</a>.
