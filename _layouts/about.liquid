@@ -40,6 +40,31 @@ layout: default
 
     <div class="clearfix">{{ content }}</div>
 
+    <!-- Education -->
+    {% if page.education %}
+      <h2>
+        <a href="{{ '/cv/' | relative_url }}" style="color: inherit">education</a>
+      </h2>
+      <div class="education">
+        {% for item in page.education %}
+          <div class="education-item">
+            <div class="row">
+              <div class="col-sm-3">
+                <span class="education-date">{{ item.date }}</span>
+              </div>
+              <div class="col-sm-9">
+                <h4 class="education-degree">{{ item.degree }}</h4>
+                <p class="education-institution">{{ item.institution }}</p>
+                {% if item.description %}
+                  <p class="education-description">{{ item.description }}</p>
+                {% endif %}
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    {% endif %}
+
     <!-- News -->
     {% if page.announcements and page.announcements.enabled %}
       <h2>
