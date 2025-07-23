@@ -12,9 +12,10 @@ profile:
     <p>Beijing Haidian, China</p>
 
 education:
-  - date: "2021 - 2025"
+  - date: "Sep.2021 - Jul.2025"
     degree: "B.S. in Computer Science"
     institution: "National University of Defense Technology (NUDT)"
+    logo: "NUDT.png"
     description: "Research focus on machine learning and AI"
   - date: "2014 - 2018"
     degree: "B.S. in Computer Science"

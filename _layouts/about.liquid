@@ -45,14 +45,20 @@ layout: default
       <h2>
         <a href="{{ '/cv/' | relative_url }}" style="color: inherit">education</a>
       </h2>
-      <div class="education">
+      <div class="education-section">
         {% for item in page.education %}
           <div class="education-item">
-            <div class="row">
+            <div class="row align-items-start">
+              <div class="col-sm-2 text-center">
+                {% if item.logo %}
+                  {% assign logo_path = item.logo | prepend: 'assets/img/' %}
+                  <img src="{{ logo_path | relative_url }}" alt="{{ item.institution }} logo" class="education-logo">
+                {% endif %}
+              </div>
               <div class="col-sm-3">
                 <span class="education-date">{{ item.date }}</span>
               </div>
-              <div class="col-sm-9">
+              <div class="col-sm-7">
                 <h4 class="education-degree">{{ item.degree }}</h4>
                 <p class="education-institution">{{ item.institution }}</p>
                 {% if item.description %}
