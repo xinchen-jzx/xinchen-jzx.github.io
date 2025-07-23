@@ -25,7 +25,7 @@ experience:
     company: "HPCL, NUDT"
   - date: "2020 - present"
     position: "Research Intern"
-    company: "AIIT-NCC, pku"
+    company: "AIIT-NCC, PKU"
 
 selected_papers: true # includes a list of papers marked as "selected={true}"
 social: true # includes social icons at the bottom of the page
