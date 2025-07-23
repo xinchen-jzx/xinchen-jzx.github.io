@@ -13,13 +13,19 @@ profile:
 
 education:
   - date: "Sep.2021 - Jul.2025"
-    degree: "B.S. in Computer Science"
     institution: "National University of Defense Technology (NUDT)"
-    logo: "NUDT.png"
-    description: "Research focus on machine learning and AI"
-  - date: "2014 - 2018"
     degree: "B.S. in Computer Science"
-    institution: "Another University"
+  - date: "Jun.2024 - present"
+    institution: "the Institute of Computing Technology, Chinese Academy of Sciences (ICT, CAS) "
+    degree: "Visiting Student in Computer Science"
+
+experience:
+  - date: "Sep.2022 - Seq.2024"
+    position: "Research Intern"
+    company: "HPCL, NUDT"
+  - date: "2020 - present"
+    position: "Research Intern"
+    company: "AIIT-NCC, pku"
 
 selected_papers: true # includes a list of papers marked as "selected={true}"
 social: true # includes social icons at the bottom of the page
