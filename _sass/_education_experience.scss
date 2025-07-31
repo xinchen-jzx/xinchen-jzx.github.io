@@ -41,11 +41,6 @@
       font-weight: 500;
       color: var(--global-theme-color);
       margin-bottom: 0.75rem;
-      
-      i {
-        margin-right: 0.3rem;
-        font-size: 0.85rem;
-      }
     }
     
     // Logo styling
@@ -75,7 +70,7 @@
       }
     }
     
-    // Institution/Company styling
+    // Institution/Position styling (primary)
     .education-institution,
     .experience-position {
       margin: 0 0 0.5rem 0;
@@ -83,15 +78,9 @@
       font-weight: 600;
       color: var(--global-text-color);
       line-height: 1.2;
-      
-      i {
-        margin-right: 0.4rem;
-        font-size: 0.95rem;
-        color: var(--global-theme-color);
-        opacity: 0.8;
-      }
     }
     
+    // Degree/Company styling (secondary)
     .education-degree,
     .experience-company {
       margin: 0;
@@ -99,13 +88,6 @@
       color: var(--global-text-color);
       opacity: 0.8;
       font-weight: 400;
-      
-      i {
-        margin-right: 0.3rem;
-        font-size: 0.85rem;
-        color: var(--global-theme-color);
-        opacity: 0.7;
-      }
     }
     
     .education-description,
@@ -137,10 +119,6 @@ h2 {
     border-radius: 2px;
   }
   
-  i {
-    margin-right: 0.5rem;
-    font-size: 1.5rem;
-  }
 }
 
 // Dark mode adjustments
