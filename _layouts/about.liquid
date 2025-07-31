@@ -43,17 +43,17 @@ layout: default
     <!-- Education -->
     {% if page.education %}
       <h2>
-        <a href="{{ '/cv/' | relative_url }}" style="color: inherit">education</a>
+        <a href="{{ '/cv/' | relative_url }}" style="color: inherit"><i class="fas fa-graduation-cap"></i> education</a>
       </h2>
       <div class="education-section">
         {% for item in page.education %}
           <div class="education-item">
             <div class="row">
               <div class="col-sm-3">
-                <span class="education-date">{{ item.date }}</span>
+                <span class="education-date"><i class="far fa-calendar-alt"></i> {{ item.date }}</span>
               </div>
               <div class="col-sm-9">
-                <h4 class="education-institution">{{ item.institution }}</h4>
+                <h4 class="education-institution"><i class="fas fa-university"></i> {{ item.institution }}</h4>
                 <p class="education-degree">{{ item.degree }}</p>
                 {% if item.description %}
                   <p class="education-description">{{ item.description }}</p>
@@ -68,18 +68,18 @@ layout: default
     <!-- Experience -->
     {% if page.experience %}
       <h2>
-        <a href="{{ '/cv/' | relative_url }}" style="color: inherit">experience</a>
+        <a href="{{ '/cv/' | relative_url }}" style="color: inherit"><i class="fas fa-briefcase"></i> experience</a>
       </h2>
       <div class="experience-section">
         {% for item in page.experience %}
           <div class="experience-item">
             <div class="row">
               <div class="col-sm-3">
-                <span class="experience-date">{{ item.date }}</span>
+                <span class="experience-date"><i class="far fa-calendar-alt"></i> {{ item.date }}</span>
               </div>
               <div class="col-sm-9">
-                <h4 class="experience-position">{{ item.position }}</h4>
-                <p class="experience-company">{{ item.company }}</p>
+                <h4 class="experience-position"><i class="fas fa-laptop-code"></i> {{ item.position }}</h4>
+                <p class="experience-company"><i class="fas fa-building"></i> {{ item.company }}</p>
                 {% if item.description %}
                   <p class="experience-description">{{ item.description }}</p>
                 {% endif %}
