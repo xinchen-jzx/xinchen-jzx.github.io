@@ -63,6 +63,9 @@ layout: default
               <div class="col-sm-9">
                 <h4 class="education-institution">{{ item.institution }}</h4>
                 <p class="education-degree">{{ item.degree }}</p>
+                {% if item.teacher %}
+                  <p class="education-teacher">{{ item.teacher }}</p>
+                {% endif %}
                 {% if item.description %}
                   <p class="education-description">{{ item.description }}</p>
                 {% endif %}

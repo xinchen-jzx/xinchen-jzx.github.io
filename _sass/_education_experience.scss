@@ -90,6 +90,15 @@
       font-weight: 400;
     }
     
+    // Teacher/Advisor styling
+    .education-teacher {
+      margin: 0.25rem 0 0 0;
+      font-size: 0.9rem;
+      color: var(--global-text-color);
+      opacity: 0.7;
+      font-style: italic;
+    }
+    
     .education-description,
     .experience-description {
       margin-top: 0.75rem;

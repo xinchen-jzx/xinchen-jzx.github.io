@@ -12,30 +12,32 @@ profile:
     <p>Beijing Haidian, China</p>
 
 education:
+  - date: "Sep.2025 - present"
+    institution: "the Institute of Computing Technology, Chinese Academy of Sciences (ICT, CAS) "
+    degree: "ph.D. in Computer Science"
+    teacher: "advised by Dr. Huimin Cui and Dr. Chenxi Wang"
+    logo: "ICT.png"
+  - date: "Jun.2024 - Sep.2025"
+    institution: "the Institute of Computing Technology, Chinese Academy of Sciences (ICT, CAS) "
+    degree: "Visiting Student in Computer Science"
+    teacher: "advised by Dr. Huimin Cui and Dr. Chenxi Wang"
+    logo: "ICT.png"
   - date: "Sep.2021 - Jul.2025"
     institution: "National University of Defense Technology (NUDT)"
     degree: "B.S. in Computer Science"
+    teacher: "advised by Dr. Zengkun"
     logo: "NUDT.png"
-  - date: "Jun.2024 - present"
-    institution: "the Institute of Computing Technology, Chinese Academy of Sciences (ICT, CAS) "
-    degree: "Visiting Student in Computer Science"
-    logo: "ICT.png"
 
 experience:
-  - date: "Sep.2022 - Seq.2024"
-    position: "Research Intern"
-    company: "HPCL, NUDT"
   - date: "May.2025 - present"
     position: "Research Intern"
     company: "AIIT-NCC, PKU"
+  - date: "Sep.2022 - Seq.2024"
+    position: "Research Intern"
+    company: "HPCL, NUDT"
 
 selected_papers: true # includes a list of papers marked as "selected={true}"
 social: true # includes social icons at the bottom of the page
-
-announcements:
-  enabled: true # includes a list of news items
-  scrollable: true # adds a vertical scroll bar if there are more than 3 news items
-  limit: 5 # leave blank to include all the news in the `_news` folder
 ---
 
 👋 Welcome! My name is <b>Zexin Jian (简泽鑫)</b>, an undergraduate student at Computer College, <b>National University of Defense Technology (国防科技大学计算机学院), </b>, advised by <a href="">Dr.Zengkun</a>. I will be a PhD student at Institute of Computing Technology (ICT), Chinese Academy of Sciences (CAS) in Sep 2025. I am lucky to be advised by <a href="https://cuihuimin.github.io/">Dr. Huimin Cui</a> and <a href="https://wangchenxi7.github.io/home/">Dr. Chenxi Wang</a>. 
