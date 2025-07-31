@@ -37,13 +37,7 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/teaching/";
           },
-        },{id: "news-our-paper-about-ctg-is-accepted-to-acl-2023",
-          title: ' 🎉🎉 Our paper about CTG is accepted to ACL 2023!',
-          description: "",
-          section: "News",},{id: "news-our-paper-about-llm-is-accepted-to-neurips-2024",
-          title: ' 🎉🎉 Our paper about LLM is accepted to NeurIPS 2024!',
-          description: "",
-          section: "News",},{id: "projects-nudt-compiler",
+        },{id: "projects-nudt-compiler",
           title: 'NUDT-Compiler',
           description: "for CSC-2024 Compiler Design Contest",
           section: "Projects",handler: () => {
