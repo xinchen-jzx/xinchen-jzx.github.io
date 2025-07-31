@@ -15,9 +15,11 @@ education:
   - date: "Sep.2021 - Jul.2025"
     institution: "National University of Defense Technology (NUDT)"
     degree: "B.S. in Computer Science"
+    logo: "NUDT.png"
   - date: "Jun.2024 - present"
     institution: "the Institute of Computing Technology, Chinese Academy of Sciences (ICT, CAS) "
     degree: "Visiting Student in Computer Science"
+    logo: "ICT.png"
 
 experience:
   - date: "Sep.2022 - Seq.2024"

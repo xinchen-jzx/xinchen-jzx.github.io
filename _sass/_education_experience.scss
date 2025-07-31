@@ -40,10 +40,38 @@
       font-size: 0.9rem;
       font-weight: 500;
       color: var(--global-theme-color);
+      margin-bottom: 0.75rem;
       
       i {
         margin-right: 0.3rem;
         font-size: 0.85rem;
+      }
+    }
+    
+    // Logo styling
+    .education-logo {
+      margin-top: 0.5rem;
+      max-width: 80px;
+      
+      img {
+        width: 100%;
+        height: auto;
+        border-radius: 0.5rem;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease;
+        background-color: white;
+        padding: 4px;
+        
+        &:hover {
+          transform: scale(1.05);
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+        }
+      }
+      
+      @media (max-width: 576px) {
+        max-width: 60px;
+        margin: 0.5rem auto 0;
+        text-align: center;
       }
     }
     
@@ -125,6 +153,10 @@ html[data-theme="dark"] {
     &:hover {
       box-shadow: 0 4px 8px rgba(255, 255, 255, 0.05);
     }
+  }
+  
+  .education-logo img {
+    background-color: rgba(255, 255, 255, 0.9);
   }
 }
 

@@ -51,6 +51,14 @@ layout: default
             <div class="row">
               <div class="col-sm-3">
                 <span class="education-date"><i class="far fa-calendar-alt"></i> {{ item.date }}</span>
+                {% if item.logo %}
+                  <div class="education-logo">
+                    {% assign logo_path = item.logo | prepend: 'assets/img/' %}
+                    {%
+                      include figure.liquid loading="eager" path=logo_path class="img-fluid" alt=item.institution
+                    %}
+                  </div>
+                {% endif %}
               </div>
               <div class="col-sm-9">
                 <h4 class="education-institution"><i class="fas fa-university"></i> {{ item.institution }}</h4>
