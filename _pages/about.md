@@ -30,11 +30,11 @@ education:
 
 experience:
   - date: "May.2025 - present"
-    position: "Research Intern"
-    company: "AIIT-NCC, PKU"
+    position: "AIIT, Peking University"
+    company: "Research Intern"
   - date: "Sep.2022 - Seq.2024"
-    position: "Research Intern"
-    company: "HPCL, NUDT"
+    position: "HPCL, NUDT"
+    company: "Research Intern"
 
 selected_papers: true # includes a list of papers marked as "selected={true}"
 social: true # includes social icons at the bottom of the page
