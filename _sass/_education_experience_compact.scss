@@ -1,20 +1,20 @@
 // Compact Education and Experience sections styling
 .edu-exp-container {
-  margin-top: 2rem;
-  margin-bottom: 2rem;
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
   
   .section-title {
-    font-size: 1.5rem;
-    margin-bottom: 1.25rem;
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
     font-weight: 600;
     position: relative;
     
     &::after {
       content: "";
       position: absolute;
-      bottom: -0.5rem;
+      bottom: -0.4rem;
       left: 0;
-      width: 2.5rem;
+      width: 2rem;
       height: 2px;
       background-color: var(--global-theme-color);
       border-radius: 2px;
@@ -25,7 +25,7 @@
 .education-section.compact,
 .experience-section.compact {
   .edu-exp-item {
-    margin-bottom: 1.25rem;
+    margin-bottom: 1rem;
     position: relative;
     
     &:last-child {
@@ -35,20 +35,20 @@
     .item-header {
       display: flex;
       align-items: flex-start;
-      gap: 0.75rem;
+      gap: 0.6rem;
     }
     
     .item-logo {
       flex-shrink: 0;
-      width: 50px;
-      height: 50px;
+      width: 45px;
+      height: 45px;
       display: flex;
       align-items: center;
       justify-content: center;
       background-color: white;
-      border-radius: 8px;
-      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
-      padding: 4px;
+      border-radius: 6px;
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.06);
+      padding: 3px;
       transition: all 0.3s ease;
       
       img {
@@ -58,8 +58,8 @@
       }
       
       &:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
+        transform: translateY(-1px);
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
       }
     }
     
@@ -69,33 +69,33 @@
       
       .institution,
       .position {
-        font-size: 1rem;
+        font-size: 0.95rem;
         font-weight: 600;
-        margin: 0 0 0.25rem 0;
+        margin: 0 0 0.15rem 0;
         color: var(--global-text-color);
-        line-height: 1.3;
+        line-height: 1.2;
       }
       
       .degree,
       .company {
-        font-size: 0.9rem;
-        margin: 0 0 0.2rem 0;
+        font-size: 0.85rem;
+        margin: 0 0 0.1rem 0;
         color: var(--global-text-color);
-        opacity: 0.85;
+        opacity: 0.8;
       }
       
       .date {
-        font-size: 0.85rem;
+        font-size: 0.8rem;
         color: var(--global-theme-color);
         font-style: italic;
-        margin: 0 0 0.2rem 0;
+        margin: 0 0 0.1rem 0;
       }
       
       .advisor,
       .description {
-        font-size: 0.85rem;
+        font-size: 0.8rem;
         color: var(--global-text-color);
-        opacity: 0.7;
+        opacity: 0.65;
         font-style: italic;
         margin: 0;
       }

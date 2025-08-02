@@ -55,7 +55,7 @@ layout: default
         {% if page.education %}
           <div class="col-md-6">
             <h2 class="section-title">
-              <a href="{{ '/cv/' | relative_url }}" style="color: inherit">education</a>
+              <a style="color: inherit">education</a>
             </h2>
             <div class="education-section compact">
               {% for item in page.education %}
@@ -86,7 +86,7 @@ layout: default
         {% if page.experience %}
           <div class="col-md-6">
             <h2 class="section-title">
-              <a href="{{ '/cv/' | relative_url }}" style="color: inherit">experience</a>
+              <a style="color: inherit">experience</a>
             </h2>
             <div class="experience-section compact">
               {% for item in page.experience %}
@@ -145,11 +145,21 @@ layout: default
     <div class="lover-display" id="lover-display">
       <div class="lover-container">
         <div class="lover-card left-card">
-          <div class="card-icon">👤</div>
+          {% if page.lover_left_photo %}
+            {% assign left_photo_path = page.lover_left_photo | prepend: 'assets/img/' %}
+            <img src="{{ left_photo_path | relative_url }}" alt="Me" class="lover-photo">
+          {% else %}
+            <div class="card-icon">👤</div>
+          {% endif %}
         </div>
         <div class="lover-heart">❤️</div>
         <div class="lover-card right-card">
-          <div class="card-icon">👤</div>
+          {% if page.lover_right_photo %}
+            {% assign right_photo_path = page.lover_right_photo | prepend: 'assets/img/' %}
+            <img src="{{ right_photo_path | relative_url }}" alt="My Love" class="lover-photo">
+          {% else %}
+            <div class="card-icon">👤</div>
+          {% endif %}
         </div>
       </div>
       <div class="lover-timer">

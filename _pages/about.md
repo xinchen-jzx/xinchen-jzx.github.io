@@ -40,8 +40,10 @@ experience:
 selected_papers: true # includes a list of papers marked as "selected={true}"
 social: true # includes social icons at the bottom of the page
 
-lover: true # includes lover display at the bottom of the page
-lover_start_date: "2024-08-01" # YYYY-MM-DD format
+lover: true                                # includes lover display at the bottom of the page
+lover_start_date: "2003-12-05"             # YYYY-MM-DD format
+lover_left_photo: "your_photo.jpg"         # 你的照片，放在 assets/img/ 目录下
+lover_right_photo: "girlfriend_photo.jpg"  # 女朋友的照片，放在 assets/img/ 目录下
 ---
 
 👋 Welcome! I am a first-year Ph.D. student in Computer Science at <b>Institute of Computing Technology, Chinese Academy of Sciences (ICT, CAS)</b>, where I conduct research in the <a href="https://github.com/ICTPLSys">PL-System Research Group</a> under the supervision of <a href="https://cuihuimin.github.io/">Dr. Huimin Cui</a> and <a href="https://wangchenxi7.github.io/home/">Dr. Chenxi Wang</a>. Prior to that, I received my B.S. in Computer Science, from <b>National University of Defense Technology (NUDT), </b>, advised by <a href="">Dr.Zengkun</a>.
