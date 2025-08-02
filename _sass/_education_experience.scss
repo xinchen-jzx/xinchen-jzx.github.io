@@ -27,12 +27,12 @@
       align-items: flex-start;
     }
     
-    // Date column styling
-    .col-sm-3 {
+    // Logo column styling
+    .col-sm-2 {
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 0.5rem;
+      padding: 0.25rem;
       
       @media (max-width: 576px) {
         margin-bottom: 0.5rem;
