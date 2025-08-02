@@ -40,73 +40,6 @@ layout: default
 
     <div class="clearfix">{{ content }}</div>
 
-    <!-- Education -->
-    {% if page.education %}
-      <h2>
-        <a href="{{ '/cv/' | relative_url }}" style="color: inherit">education</a>
-      </h2>
-      <div class="education-section">
-        {% for item in page.education %}
-          <div class="education-item">
-            <div class="row">
-              <div class="col-sm-2">
-                {% if item.logo %}
-                  <div class="education-logo">
-                    {% assign logo_path = item.logo | prepend: 'assets/img/' %}
-                    {%
-                      include figure.liquid loading="eager" path=logo_path class="img-fluid" alt=item.institution
-                    %}
-                  </div>
-                {% endif %}
-              </div>
-              <div class="col-sm-10">
-                <h4 class="education-institution">{{ item.institution }}</h4>
-                <p class="education-degree">{{ item.degree }} <span class="education-date">({{ item.date }})</span></p>
-                {% if item.teacher %}
-                  <p class="education-teacher">{{ item.teacher }}</p>
-                {% endif %}
-                {% if item.description %}
-                  <p class="education-description">{{ item.description }}</p>
-                {% endif %}
-              </div>
-            </div>
-          </div>
-        {% endfor %}
-      </div>
-    {% endif %}
-
-    <!-- Experience -->
-    {% if page.experience %}
-      <h2>
-        <a href="{{ '/cv/' | relative_url }}" style="color: inherit">experience</a>
-      </h2>
-      <div class="experience-section">
-        {% for item in page.experience %}
-          <div class="experience-item">
-            <div class="row">
-              <div class="col-sm-2">
-                {% if item.logo %}
-                  <div class="experience-logo">
-                    {% assign logo_path = item.logo | prepend: 'assets/img/' %}
-                    {%
-                      include figure.liquid loading="eager" path=logo_path class="img-fluid" alt=item.position
-                    %}
-                  </div>
-                {% endif %}
-              </div>
-              <div class="col-sm-10">
-                <h4 class="experience-position">{{ item.position }}</h4>
-                <p class="experience-company">{{ item.company }} <span class="experience-date">({{ item.date }})</span></p>
-                {% if item.description %}
-                  <p class="experience-description">{{ item.description }}</p>
-                {% endif %}
-              </div>
-            </div>
-          </div>
-        {% endfor %}
-      </div>
-    {% endif %}
-
     <!-- Selected papers -->
     {% if page.selected_papers %}
       <h2>
@@ -114,6 +47,74 @@ layout: default
       </h2>
       {% include selected_papers.liquid %}
     {% endif %}
+
+    <!-- Education & Experience Side by Side -->
+    {% if page.education or page.experience %}
+      <div class="row edu-exp-container">
+        <!-- Education Column -->
+        {% if page.education %}
+          <div class="col-md-6">
+            <h2 class="section-title">
+              <a href="{{ '/cv/' | relative_url }}" style="color: inherit">education</a>
+            </h2>
+            <div class="education-section compact">
+              {% for item in page.education %}
+                <div class="edu-exp-item">
+                  <div class="item-header">
+                    {% if item.logo %}
+                      <div class="item-logo">
+                        {% assign logo_path = item.logo | prepend: 'assets/img/' %}
+                        <img src="{{ logo_path | relative_url }}" alt="{{ item.institution }}">
+                      </div>
+                    {% endif %}
+                    <div class="item-content">
+                      <h5 class="institution">{{ item.institution }}</h5>
+                      <p class="degree">{{ item.degree }}</p>
+                      <p class="date">{{ item.date }}</p>
+                      {% if item.teacher %}
+                        <p class="advisor">{{ item.teacher }}</p>
+                      {% endif %}
+                    </div>
+                  </div>
+                </div>
+              {% endfor %}
+            </div>
+          </div>
+        {% endif %}
+        
+        <!-- Experience Column -->
+        {% if page.experience %}
+          <div class="col-md-6">
+            <h2 class="section-title">
+              <a href="{{ '/cv/' | relative_url }}" style="color: inherit">experience</a>
+            </h2>
+            <div class="experience-section compact">
+              {% for item in page.experience %}
+                <div class="edu-exp-item">
+                  <div class="item-header">
+                    {% if item.logo %}
+                      <div class="item-logo">
+                        {% assign logo_path = item.logo | prepend: 'assets/img/' %}
+                        <img src="{{ logo_path | relative_url }}" alt="{{ item.position }}">
+                      </div>
+                    {% endif %}
+                    <div class="item-content">
+                      <h5 class="position">{{ item.position }}</h5>
+                      <p class="company">{{ item.company }}</p>
+                      <p class="date">{{ item.date }}</p>
+                      {% if item.description %}
+                        <p class="description">{{ item.description }}</p>
+                      {% endif %}
+                    </div>
+                  </div>
+                </div>
+              {% endfor %}
+            </div>
+          </div>
+        {% endif %}
+      </div>
+    {% endif %}
+
 
     <!-- Social -->
     {% if page.social %}

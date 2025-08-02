@@ -44,7 +44,7 @@ lover: true # includes lover display at the bottom of the page
 lover_start_date: "2024-08-01" # YYYY-MM-DD format
 ---
 
-👋 Welcome! I am a first-year Ph.D. student in Computer Science at Institute of Computing Technology (ICT), Chinese Academy of Sciences (CAS), where I conduct research in the <a href="https://github.com/ICTPLSys">PL-System Research Group</a> under the supervision of <a href="https://cuihuimin.github.io/">Dr. Huimin Cui</a> and <a href="https://wangchenxi7.github.io/home/">Dr. Chenxi Wang</a>. Prior to that, I received my B.S. in Computer Science, from <b>National University of Defense Technology (NUDT), </b>, advised by <a href="">Dr.Zengkun</a>.
+👋 Welcome! I am a first-year Ph.D. student in Computer Science at <b>Institute of Computing Technology, Chinese Academy of Sciences (ICT, CAS)</b>, where I conduct research in the <a href="https://github.com/ICTPLSys">PL-System Research Group</a> under the supervision of <a href="https://cuihuimin.github.io/">Dr. Huimin Cui</a> and <a href="https://wangchenxi7.github.io/home/">Dr. Chenxi Wang</a>. Prior to that, I received my B.S. in Computer Science, from <b>National University of Defense Technology (NUDT), </b>, advised by <a href="">Dr.Zengkun</a>.
 
 🤔 My research interest includes:
 - <b>Managed Runtime System:</b> build hard-core systems, managed runtime and big data systems for emerging hardware, such as non-volatile memory and resource-disaggregated datacenter

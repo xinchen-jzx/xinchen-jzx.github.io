@@ -1,0 +1,170 @@
+// Compact Education and Experience sections styling
+.edu-exp-container {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  
+  .section-title {
+    font-size: 1.5rem;
+    margin-bottom: 1.25rem;
+    font-weight: 600;
+    position: relative;
+    
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: -0.5rem;
+      left: 0;
+      width: 2.5rem;
+      height: 2px;
+      background-color: var(--global-theme-color);
+      border-radius: 2px;
+    }
+  }
+}
+
+.education-section.compact,
+.experience-section.compact {
+  .edu-exp-item {
+    margin-bottom: 1.25rem;
+    position: relative;
+    
+    &:last-child {
+      margin-bottom: 0;
+    }
+    
+    .item-header {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+    }
+    
+    .item-logo {
+      flex-shrink: 0;
+      width: 50px;
+      height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: white;
+      border-radius: 8px;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+      padding: 4px;
+      transition: all 0.3s ease;
+      
+      img {
+        max-width: 100%;
+        max-height: 100%;
+        object-fit: contain;
+      }
+      
+      &:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
+      }
+    }
+    
+    .item-content {
+      flex: 1;
+      min-width: 0;
+      
+      .institution,
+      .position {
+        font-size: 1rem;
+        font-weight: 600;
+        margin: 0 0 0.25rem 0;
+        color: var(--global-text-color);
+        line-height: 1.3;
+      }
+      
+      .degree,
+      .company {
+        font-size: 0.9rem;
+        margin: 0 0 0.2rem 0;
+        color: var(--global-text-color);
+        opacity: 0.85;
+      }
+      
+      .date {
+        font-size: 0.85rem;
+        color: var(--global-theme-color);
+        font-style: italic;
+        margin: 0 0 0.2rem 0;
+      }
+      
+      .advisor,
+      .description {
+        font-size: 0.85rem;
+        color: var(--global-text-color);
+        opacity: 0.7;
+        font-style: italic;
+        margin: 0;
+      }
+    }
+  }
+}
+
+// Dark mode adjustments
+html[data-theme="dark"] {
+  .item-logo {
+    background-color: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 1px 3px rgba(255, 255, 255, 0.05);
+    
+    &:hover {
+      box-shadow: 0 2px 6px rgba(255, 255, 255, 0.1);
+    }
+  }
+}
+
+// Responsive design
+@media (max-width: 768px) {
+  .edu-exp-container {
+    .col-md-6 {
+      margin-bottom: 2rem;
+      
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+  
+  .education-section.compact,
+  .experience-section.compact {
+    .edu-exp-item {
+      .item-logo {
+        width: 45px;
+        height: 45px;
+      }
+      
+      .item-content {
+        .institution,
+        .position {
+          font-size: 0.95rem;
+        }
+        
+        .degree,
+        .company,
+        .date,
+        .advisor,
+        .description {
+          font-size: 0.85rem;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .education-section.compact,
+  .experience-section.compact {
+    .edu-exp-item {
+      .item-header {
+        gap: 0.5rem;
+      }
+      
+      .item-logo {
+        width: 40px;
+        height: 40px;
+      }
+    }
+  }
+}
