@@ -35,7 +35,7 @@ experience:
   - date: "Sep.2022 - Seq.2024"
     position: "State Key Laboratory of High-Performance Computing (HPCL), NUDT"
     company: "Research Intern"
-    lofo: "NUDT.png"
+    logo: "NUDT.png"
 
 selected_papers: true # includes a list of papers marked as "selected={true}"
 social: true # includes social icons at the bottom of the page

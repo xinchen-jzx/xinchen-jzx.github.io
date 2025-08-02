@@ -130,21 +130,30 @@ layout: default
   </article>
 </div>
 
-<!-- Lover Display (Fixed Position) -->
+<!-- Lover Pull Cord -->
 {% if page.lover %}
-  <div class="lover-display" id="lover-display">
-    <button class="lover-toggle" onclick="toggleLoverDisplay()">−</button>
-    <div class="lover-container">
-      <div class="lover-card left-card">
-        <div class="card-icon">👤</div>
-      </div>
-      <div class="lover-heart">❤️</div>
-      <div class="lover-card right-card">
-        <div class="card-icon">👤</div>
-      </div>
+  <div class="lover-pull-cord" id="lover-pull-cord" onclick="toggleLoverDisplay()">
+    <div class="cord-string"></div>
+    <div class="cord-handle">
+      <span class="cord-icon">❤️</span>
     </div>
-    <div class="lover-timer">
-      <span id="lover-days">0</span> day <span id="lover-hours">0</span> h <span id="lover-minutes">0</span> m <span id="lover-seconds">0</span> s
+  </div>
+  
+  <!-- Lover Display (Slide from Top) -->
+  <div class="lover-display-wrapper" id="lover-display-wrapper">
+    <div class="lover-display" id="lover-display">
+      <div class="lover-container">
+        <div class="lover-card left-card">
+          <div class="card-icon">👤</div>
+        </div>
+        <div class="lover-heart">❤️</div>
+        <div class="lover-card right-card">
+          <div class="card-icon">👤</div>
+        </div>
+      </div>
+      <div class="lover-timer">
+        <span id="lover-days">0</span> day <span id="lover-hours">0</span> h <span id="lover-minutes">0</span> m <span id="lover-seconds">0</span> s
+      </div>
     </div>
   </div>
   
@@ -166,31 +175,26 @@ layout: default
     }
     
     function toggleLoverDisplay() {
-      const display = document.getElementById('lover-display');
-      const toggle = display.querySelector('.lover-toggle');
+      const wrapper = document.getElementById('lover-display-wrapper');
+      const cord = document.getElementById('lover-pull-cord');
+      const isOpen = wrapper.classList.contains('open');
       
-      if (display.classList.contains('minimized')) {
-        display.classList.remove('minimized');
-        toggle.textContent = '−';
+      if (isOpen) {
+        wrapper.classList.remove('open');
+        cord.classList.remove('pulled');
+        localStorage.setItem('loverOpen', 'false');
       } else {
-        display.classList.add('minimized');
-        toggle.textContent = '❤️';
+        wrapper.classList.add('open');
+        cord.classList.add('pulled');
+        localStorage.setItem('loverOpen', 'true');
       }
     }
     
     // Check saved state
-    const loverMinimized = localStorage.getItem('loverMinimized');
-    if (loverMinimized === 'true') {
-      document.getElementById('lover-display').classList.add('minimized');
-      document.querySelector('.lover-toggle').textContent = '❤️';
-    }
-    
-    // Save state on toggle
-    const originalToggle = window.toggleLoverDisplay;
-    window.toggleLoverDisplay = function() {
-      originalToggle();
-      const isMinimized = document.getElementById('lover-display').classList.contains('minimized');
-      localStorage.setItem('loverMinimized', isMinimized);
+    const loverOpen = localStorage.getItem('loverOpen');
+    if (loverOpen === 'true') {
+      document.getElementById('lover-display-wrapper').classList.add('open');
+      document.getElementById('lover-pull-cord').classList.add('pulled');
     }
     
     updateLoverTimer();
