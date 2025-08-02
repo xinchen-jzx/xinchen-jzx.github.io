@@ -134,6 +134,45 @@ layout: default
       </div>
     {% endif %}
 
+    <!-- Lover Display -->
+    {% if page.lover %}
+      <div class="lover-display">
+        <div class="lover-container">
+          <div class="lover-card left-card">
+            <div class="card-icon">👤</div>
+          </div>
+          <div class="lover-heart">❤️</div>
+          <div class="lover-card right-card">
+            <div class="card-icon">👤</div>
+          </div>
+        </div>
+        <div class="lover-timer">
+          <span id="lover-days">0</span> day <span id="lover-hours">0</span> h <span id="lover-minutes">0</span> m <span id="lover-seconds">0</span> s
+        </div>
+      </div>
+      
+      <script>
+        function updateLoverTimer() {
+          const startDate = new Date('{{ page.lover_start_date }}');
+          const now = new Date();
+          const diff = now - startDate;
+          
+          const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+          const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+          const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+          const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+          
+          document.getElementById('lover-days').textContent = days;
+          document.getElementById('lover-hours').textContent = hours;
+          document.getElementById('lover-minutes').textContent = minutes;
+          document.getElementById('lover-seconds').textContent = seconds;
+        }
+        
+        updateLoverTimer();
+        setInterval(updateLoverTimer, 1000);
+      </script>
+    {% endif %}
+
     {% if site.newsletter and site.newsletter.enabled and site.footer_fixed %}
       {% include newsletter.liquid center=true %}
     {% endif %}

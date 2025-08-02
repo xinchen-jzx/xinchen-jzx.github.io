@@ -38,6 +38,8 @@ experience:
 
 selected_papers: true # includes a list of papers marked as "selected={true}"
 social: true # includes social icons at the bottom of the page
+lover: true # includes lover display at the bottom of the page
+lover_start_date: "2024-08-01" # YYYY-MM-DD format
 ---
 
 👋 Welcome! My name is <b>Zexin Jian (简泽鑫)</b>, an undergraduate student at Computer College, <b>National University of Defense Technology (国防科技大学计算机学院), </b>, advised by <a href="">Dr.Zengkun</a>. I will be a PhD student at Institute of Computing Technology (ICT), Chinese Academy of Sciences (CAS) in Sep 2025. I am lucky to be advised by <a href="https://cuihuimin.github.io/">Dr. Huimin Cui</a> and <a href="https://wangchenxi7.github.io/home/">Dr. Chenxi Wang</a>. 
