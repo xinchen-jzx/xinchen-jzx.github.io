@@ -40,14 +40,6 @@ layout: default
 
     <div class="clearfix">{{ content }}</div>
 
-    <!-- Selected papers -->
-    {% if page.selected_papers %}
-      <h2>
-        <a href="{{ '/publications/' | relative_url }}" style="color: inherit">selected publications</a>
-      </h2>
-      {% include selected_papers.liquid %}
-    {% endif %}
-
     <!-- Education & Experience Side by Side -->
     {% if page.education or page.experience %}
       <div class="row edu-exp-container">
@@ -55,7 +47,7 @@ layout: default
         {% if page.education %}
           <div class="col-md-6">
             <h2 class="section-title">
-              <a style="color: inherit">education</a>
+              <span style="color: inherit">education</span>
             </h2>
             <div class="education-section compact">
               {% for item in page.education %}
@@ -86,7 +78,7 @@ layout: default
         {% if page.experience %}
           <div class="col-md-6">
             <h2 class="section-title">
-              <a style="color: inherit">experience</a>
+              <span style="color: inherit">experience</span>
             </h2>
             <div class="experience-section compact">
               {% for item in page.experience %}
@@ -115,6 +107,13 @@ layout: default
       </div>
     {% endif %}
 
+    <!-- Selected papers -->
+    {% if page.selected_papers %}
+      <h2>
+        <a href="{{ '/publications/' | relative_url }}" style="color: inherit">selected publications</a>
+      </h2>
+      {% include selected_papers.liquid %}
+    {% endif %}
 
     <!-- Social -->
     {% if page.social %}
