@@ -50,7 +50,6 @@ layout: default
           <div class="education-item">
             <div class="row">
               <div class="col-sm-3">
-                <span class="education-date">{{ item.date }}</span>
                 {% if item.logo %}
                   <div class="education-logo">
                     {% assign logo_path = item.logo | prepend: 'assets/img/' %}
@@ -62,7 +61,7 @@ layout: default
               </div>
               <div class="col-sm-9">
                 <h4 class="education-institution">{{ item.institution }}</h4>
-                <p class="education-degree">{{ item.degree }}</p>
+                <p class="education-degree">{{ item.degree }} <span class="education-date">({{ item.date }})</span></p>
                 {% if item.teacher %}
                   <p class="education-teacher">{{ item.teacher }}</p>
                 {% endif %}

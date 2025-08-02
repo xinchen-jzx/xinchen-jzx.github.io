@@ -29,6 +29,10 @@
     
     // Date column styling
     .col-sm-3 {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      
       @media (max-width: 576px) {
         margin-bottom: 0.5rem;
       }
@@ -40,13 +44,12 @@
       font-size: 0.9rem;
       font-weight: 500;
       color: var(--global-theme-color);
-      margin-bottom: 0.75rem;
+      margin-left: 0.5rem;
     }
     
     // Logo styling
     .education-logo {
-      margin-top: 0.5rem;
-      max-width: 80px;
+      max-width: 100px;
       
       img {
         width: 100%;
