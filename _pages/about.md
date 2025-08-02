@@ -30,10 +30,10 @@ education:
 
 experience:
   - date: "May.2025 - present"
-    position: "AIIT, Peking University"
+    position: "Advanced Institute of Information Technology (AIIT), Peking University"
     company: "Research Intern"
   - date: "Sep.2022 - Seq.2024"
-    position: "HPCL, NUDT"
+    position: "State Key Laboratory of High-Performance Computing (HPCL), NUDT"
     company: "Research Intern"
 
 selected_papers: true # includes a list of papers marked as "selected={true}"

@@ -85,11 +85,18 @@ layout: default
           <div class="experience-item">
             <div class="row">
               <div class="col-sm-3">
-                <span class="experience-date">{{ item.date }}</span>
+                {% if item.logo %}
+                  <div class="experience-logo">
+                    {% assign logo_path = item.logo | prepend: 'assets/img/' %}
+                    {%
+                      include figure.liquid loading="eager" path=logo_path class="img-fluid" alt=item.position
+                    %}
+                  </div>
+                {% endif %}
               </div>
               <div class="col-sm-9">
                 <h4 class="experience-position">{{ item.position }}</h4>
-                <p class="experience-company">{{ item.company }}</p>
+                <p class="experience-company">{{ item.company }} <span class="experience-date">({{ item.date }})</span></p>
                 {% if item.description %}
                   <p class="experience-description">{{ item.description }}</p>
                 {% endif %}
