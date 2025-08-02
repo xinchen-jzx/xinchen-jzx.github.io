@@ -38,6 +38,7 @@ experience:
 
 selected_papers: true # includes a list of papers marked as "selected={true}"
 social: true # includes social icons at the bottom of the page
+
 lover: true # includes lover display at the bottom of the page
 lover_start_date: "2024-08-01" # YYYY-MM-DD format
 ---

@@ -100,22 +100,6 @@ layout: default
       </div>
     {% endif %}
 
-    <!-- News -->
-    {% if page.announcements and page.announcements.enabled %}
-      <h2>
-        <a href="{{ '/news/' | relative_url }}" style="color: inherit">news</a>
-      </h2>
-      {% include news.liquid limit=true %}
-    {% endif %}
-
-    <!-- Latest posts -->
-    {% if page.latest_posts and page.latest_posts.enabled %}
-      <h2>
-        <a href="{{ '/blog/' | relative_url }}" style="color: inherit">latest posts</a>
-      </h2>
-      {% include latest_posts.liquid %}
-    {% endif %}
-
     <!-- Selected papers -->
     {% if page.selected_papers %}
       <h2>
@@ -133,47 +117,76 @@ layout: default
       </div>
     {% endif %}
 
-    <!-- Lover Display -->
-    {% if page.lover %}
-      <div class="lover-display">
-        <div class="lover-container">
-          <div class="lover-card left-card">
-            <div class="card-icon">👤</div>
-          </div>
-          <div class="lover-heart">❤️</div>
-          <div class="lover-card right-card">
-            <div class="card-icon">👤</div>
-          </div>
-        </div>
-        <div class="lover-timer">
-          <span id="lover-days">0</span> day <span id="lover-hours">0</span> h <span id="lover-minutes">0</span> m <span id="lover-seconds">0</span> s
-        </div>
-      </div>
-      
-      <script>
-        function updateLoverTimer() {
-          const startDate = new Date('{{ page.lover_start_date }}');
-          const now = new Date();
-          const diff = now - startDate;
-          
-          const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-          const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-          const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-          const seconds = Math.floor((diff % (1000 * 60)) / 1000);
-          
-          document.getElementById('lover-days').textContent = days;
-          document.getElementById('lover-hours').textContent = hours;
-          document.getElementById('lover-minutes').textContent = minutes;
-          document.getElementById('lover-seconds').textContent = seconds;
-        }
-        
-        updateLoverTimer();
-        setInterval(updateLoverTimer, 1000);
-      </script>
-    {% endif %}
-
     {% if site.newsletter and site.newsletter.enabled and site.footer_fixed %}
       {% include newsletter.liquid center=true %}
     {% endif %}
   </article>
 </div>
+
+<!-- Lover Display (Fixed Position) -->
+{% if page.lover %}
+  <div class="lover-display" id="lover-display">
+    <button class="lover-toggle" onclick="toggleLoverDisplay()">−</button>
+    <div class="lover-container">
+      <div class="lover-card left-card">
+        <div class="card-icon">👤</div>
+      </div>
+      <div class="lover-heart">❤️</div>
+      <div class="lover-card right-card">
+        <div class="card-icon">👤</div>
+      </div>
+    </div>
+    <div class="lover-timer">
+      <span id="lover-days">0</span> day <span id="lover-hours">0</span> h <span id="lover-minutes">0</span> m <span id="lover-seconds">0</span> s
+    </div>
+  </div>
+  
+  <script>
+    function updateLoverTimer() {
+      const startDate = new Date('{{ page.lover_start_date }}');
+      const now = new Date();
+      const diff = now - startDate;
+      
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+      
+      document.getElementById('lover-days').textContent = days;
+      document.getElementById('lover-hours').textContent = hours;
+      document.getElementById('lover-minutes').textContent = minutes;
+      document.getElementById('lover-seconds').textContent = seconds;
+    }
+    
+    function toggleLoverDisplay() {
+      const display = document.getElementById('lover-display');
+      const toggle = display.querySelector('.lover-toggle');
+      
+      if (display.classList.contains('minimized')) {
+        display.classList.remove('minimized');
+        toggle.textContent = '−';
+      } else {
+        display.classList.add('minimized');
+        toggle.textContent = '❤️';
+      }
+    }
+    
+    // Check saved state
+    const loverMinimized = localStorage.getItem('loverMinimized');
+    if (loverMinimized === 'true') {
+      document.getElementById('lover-display').classList.add('minimized');
+      document.querySelector('.lover-toggle').textContent = '❤️';
+    }
+    
+    // Save state on toggle
+    const originalToggle = window.toggleLoverDisplay;
+    window.toggleLoverDisplay = function() {
+      originalToggle();
+      const isMinimized = document.getElementById('lover-display').classList.contains('minimized');
+      localStorage.setItem('loverMinimized', isMinimized);
+    }
+    
+    updateLoverTimer();
+    setInterval(updateLoverTimer, 1000);
+  </script>
+{% endif %}
