@@ -87,9 +87,13 @@
     border: 1px solid var(--global-divider-color);
     border-top: none;
     transition: height 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    opacity: 0;
+    visibility: hidden;
     
     &.open {
       height: 150px;
+      opacity: 1;
+      visibility: visible;
     }
   }
 }
@@ -214,6 +218,8 @@ html[data-theme="dark"] {
       
       &.open {
         height: 130px;
+        opacity: 1;
+        visibility: visible;
       }
     }
   }
@@ -255,6 +261,8 @@ html[data-theme="dark"] {
       
       &.open {
         height: 120px;
+        opacity: 1;
+        visibility: visible;
       }
     }
   }
