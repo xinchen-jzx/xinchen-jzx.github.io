@@ -46,7 +46,7 @@ lover_left_photo: "your_photo.jpg"         # 你的照片，放在 assets/img/ �
 lover_right_photo: "girlfriend_photo.jpg"  # 女朋友的照片，放在 assets/img/ 目录下
 ---
 
-👋 Welcome! I am a first-year Ph.D. student in Computer Science at <b>Institute of Computing Technology, Chinese Academy of Sciences (ICT, CAS)</b>, where I conduct research in the <a href="https://github.com/ICTPLSys">PL-System Research Group</a> under the supervision of <a href="https://cuihuimin.github.io/">Dr. Huimin Cui</a> and <a href="https://wangchenxi7.github.io/home/">Dr. Chenxi Wang</a>. Prior to that, I received my B.S. in Computer Science, from <b>National University of Defense Technology (NUDT), </b>, advised by <a href="">Dr.Zengkun</a>.
+👋 Welcome! I am a Ph.D. Candidate in Computer Science at <a href="https://www.ict.ac.cn/">Institute of Computing Technology, Chinese Academy of Sciences (ICT, CAS)</a>, where I conduct research in the <a href="https://github.com/ICTPLSys">PL-System Research Group</a> under the supervision of <a href="https://cuihuimin.github.io/">Dr. Huimin Cui</a> and <a href="https://wangchenxi7.github.io/home/">Dr. Chenxi Wang</a>. Prior to that, I received my B.S. in Computer Science, from <a href="https://www.nudt.edu.cn/">National University of Defense Technology (NUDT), </a>, advised by <a href="">Dr.Zengkun</a>.
 
 🤔 My research interest includes:
 - <b>Managed Runtime System:</b> build hard-core systems, managed runtime and big data systems for emerging hardware, such as non-volatile memory and resource-disaggregated datacenter

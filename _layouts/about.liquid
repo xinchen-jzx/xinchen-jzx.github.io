@@ -130,39 +130,42 @@ layout: default
   </article>
 </div>
 
-<!-- Lover Pull Cord -->
+<!-- Lover Curtain Container -->
 {% if page.lover %}
-  <div class="lover-pull-cord" id="lover-pull-cord" onclick="toggleLoverDisplay()">
-    <div class="cord-string"></div>
-    <div class="cord-handle">
-      <span class="cord-icon">❤️</span>
-    </div>
-  </div>
-  
-  <!-- Lover Display (Slide from Top) -->
-  <div class="lover-display-wrapper" id="lover-display-wrapper">
-    <div class="lover-display" id="lover-display">
-      <div class="lover-container">
-        <div class="lover-card left-card">
-          {% if page.lover_left_photo %}
-            {% assign left_photo_path = page.lover_left_photo | prepend: 'assets/img/' %}
-            <img src="{{ left_photo_path | relative_url }}" alt="Me" class="lover-photo">
-          {% else %}
-            <div class="card-icon">👤</div>
-          {% endif %}
-        </div>
-        <div class="lover-heart">❤️</div>
-        <div class="lover-card right-card">
-          {% if page.lover_right_photo %}
-            {% assign right_photo_path = page.lover_right_photo | prepend: 'assets/img/' %}
-            <img src="{{ right_photo_path | relative_url }}" alt="My Love" class="lover-photo">
-          {% else %}
-            <div class="card-icon">👤</div>
-          {% endif %}
-        </div>
+  <div class="lover-curtain-container">
+    <!-- Pull Cord -->
+    <div class="lover-pull-cord" id="lover-pull-cord" onclick="toggleLoverDisplay()">
+      <div class="cord-string"></div>
+      <div class="cord-handle">
+        <span class="cord-icon">❤️</span>
       </div>
-      <div class="lover-timer">
-        <span id="lover-days">0</span> day <span id="lover-hours">0</span> h <span id="lover-minutes">0</span> m <span id="lover-seconds">0</span> s
+    </div>
+    
+    <!-- Curtain with Lover Display -->
+    <div class="lover-curtain" id="lover-curtain">
+      <div class="lover-display" id="lover-display">
+        <div class="lover-container">
+          <div class="lover-card left-card">
+            {% if page.lover_left_photo %}
+              {% assign left_photo_path = page.lover_left_photo | prepend: 'assets/img/' %}
+              <img src="{{ left_photo_path | relative_url }}" alt="Me" class="lover-photo">
+            {% else %}
+              <div class="card-icon">👤</div>
+            {% endif %}
+          </div>
+          <div class="lover-heart">❤️</div>
+          <div class="lover-card right-card">
+            {% if page.lover_right_photo %}
+              {% assign right_photo_path = page.lover_right_photo | prepend: 'assets/img/' %}
+              <img src="{{ right_photo_path | relative_url }}" alt="My Love" class="lover-photo">
+            {% else %}
+              <div class="card-icon">👤</div>
+            {% endif %}
+          </div>
+        </div>
+        <div class="lover-timer">
+          <span id="lover-days">0</span> day <span id="lover-hours">0</span> h <span id="lover-minutes">0</span> m <span id="lover-seconds">0</span> s
+        </div>
       </div>
     </div>
   </div>
@@ -185,16 +188,16 @@ layout: default
     }
     
     function toggleLoverDisplay() {
-      const wrapper = document.getElementById('lover-display-wrapper');
+      const curtain = document.getElementById('lover-curtain');
       const cord = document.getElementById('lover-pull-cord');
-      const isOpen = wrapper.classList.contains('open');
+      const isOpen = curtain.classList.contains('open');
       
       if (isOpen) {
-        wrapper.classList.remove('open');
+        curtain.classList.remove('open');
         cord.classList.remove('pulled');
         localStorage.setItem('loverOpen', 'false');
       } else {
-        wrapper.classList.add('open');
+        curtain.classList.add('open');
         cord.classList.add('pulled');
         localStorage.setItem('loverOpen', 'true');
       }
@@ -203,7 +206,7 @@ layout: default
     // Check saved state
     const loverOpen = localStorage.getItem('loverOpen');
     if (loverOpen === 'true') {
-      document.getElementById('lover-display-wrapper').classList.add('open');
+      document.getElementById('lover-curtain').classList.add('open');
       document.getElementById('lover-pull-cord').classList.add('pulled');
     }
     
