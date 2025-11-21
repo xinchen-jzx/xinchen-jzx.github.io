@@ -48,9 +48,8 @@ lover_right_photo: "girlfriend_photo.jpg"  # 女朋友的照片，放在 assets/
 
 👋 Welcome! I am a Ph.D. Candidate in Computer Science at <a href="https://www.ict.ac.cn/">Institute of Computing Technology, Chinese Academy of Sciences (ICT, CAS)</a>, where I conduct research in the <a href="https://github.com/ICTPLSys">PL-System Research Group</a> under the supervision of <a href="https://cuihuimin.github.io/">Dr. Huimin Cui</a> and <a href="https://wangchenxi7.github.io/home/">Dr. Chenxi Wang</a>. Prior to that, I received my B.S. in Computer Science, from <a href="https://www.nudt.edu.cn/">National University of Defense Technology (NUDT), </a>, advised by <a href="">Dr.Zengkun</a>.
 
-🤔 My research interest includes:
-- <b>Programming Languages:</b> AI Compiler, MLIR
-- <b>Machine Learning System:</b> Heterogeneous Computing, build hard-core systems, managed runtime and big data systems for emerging hardware
+🤔 My research broadly covers computer architecture, compilers, heterogeneous computing, distributed systems, and deep learning. My current <b>research interests</b> include two main areas: (1) building system software using language models, and (2) creating scalable and cost-effective infrastructures for AI applications: 
+- <b>Performant and cost-effective infrastructures for AI applications:</b> I work to design and implement Deep Learning (DL) Compilers and frameworks to improve the performance and energy efficiency of emerging AI applications on heterogeneous computing platforms.
 - <b>LLM:</b> <a href="https://aclanthology.org/2023.findings-acl.530/">CTG (ACL'23)</a>, <a href="https://dl.acm.org/doi/10.5555/3737916.3740736">Semi-Open-Ended QA (NIPS'24)</a>
 
 📫 If you are seeking any form of academic cooperation, please feel free to email me at <a href="">zexinjian@gmail.com</a>.
