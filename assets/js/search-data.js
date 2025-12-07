@@ -57,6 +57,11 @@ ninja.data = [{
           description: "NeurIPS24 - Perception of Knowledge Boundaries for LLMs via Semi-open-ended Question Answering",
           section: "Projects",handler: () => {
               window.location.href = "/projects/4_LLM-KnowledgeBoundary24.html";
+            },},{id: "projects-nudt-compiler",
+          title: 'NUDT-Compiler',
+          description: "for CSC-2024 Compiler Design Contest",
+          section: "Projects",handler: () => {
+              window.location.href = "/projects/5_AICompiler44RV25.html";
             },},{
         id: 'social-email',
         title: 'email',
