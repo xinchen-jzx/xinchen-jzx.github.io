@@ -24,6 +24,10 @@ education:
     logo: "NUDT.png"
 
 experience:
+  - date: "Dec.2025 - present"
+    position: "Noah's Ark Lab, Huawei"
+    company: "Research Intern"
+    logo: "Huawei.png"
   - date: "May.2025 - present"
     position: "Advanced Institute of Information Technology (AIIT), Peking University"
     company: "Research Intern"
