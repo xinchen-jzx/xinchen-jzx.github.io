@@ -4,8 +4,57 @@ title: 旅行地图
 permalink: /travel-map/
 nav_order: 5
 nav: true
+map: true
 description: 我的旅行足迹地图，记录去过的地方和美好回忆。
 ---
+
+<!-- Leaflet CSS -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+      integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+      crossorigin=""/>
+
+<style>
+#travel-map {
+  height: 600px;
+  width: 100%;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  margin-bottom: 2rem;
+  background: #f8f9fa;
+}
+
+/* Custom marker styling */
+.custom-marker {
+  background: transparent !important;
+  border: none !important;
+}
+
+/* Modal image styling */
+#photoGallery .card {
+  transition: transform 0.2s;
+}
+
+#photoGallery .card:hover {
+  transform: translateY(-2px);
+}
+
+#photoGallery img {
+  transition: opacity 0.2s;
+}
+
+#photoGallery img:hover {
+  opacity: 0.9;
+}
+
+/* Popup styling */
+.leaflet-popup-content-wrapper {
+  border-radius: 8px;
+}
+
+.leaflet-popup-content h6 {
+  color: #2c3e50 !important;
+}
+</style>
 
 <div class="row">
   <div class="col-md-12">
@@ -15,7 +64,7 @@ description: 我的旅行足迹地图，记录去过的地方和美好回忆。
 </div>
 
 <!-- The map container -->
-<div id="travel-map" style="height: 600px; width: 100%; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);"></div>
+<div id="travel-map"></div>
 
 <!-- Photo modal -->
 <div class="modal fade" id="photoModal" tabindex="-1" aria-labelledby="photoModalLabel" aria-hidden="true">
@@ -208,42 +257,3 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 });
 </script>
-
-<style>
-.custom-marker {
-  background: transparent !important;
-  border: none !important;
-}
-
-/* Modal image styling */
-#photoGallery .card {
-  transition: transform 0.2s;
-}
-
-#photoGallery .card:hover {
-  transform: translateY(-2px);
-}
-
-#photoGallery img {
-  transition: opacity 0.2s;
-}
-
-#photoGallery img:hover {
-  opacity: 0.9;
-}
-
-/* Map container styling */
-#travel-map {
-  background: #f8f9fa;
-  margin-bottom: 2rem;
-}
-
-/* Popup styling */
-.leaflet-popup-content-wrapper {
-  border-radius: 8px;
-}
-
-.leaflet-popup-content h6 {
-  color: #2c3e50 !important;
-}
-</style>
