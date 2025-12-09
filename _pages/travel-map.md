@@ -1,11 +1,11 @@
 ---
 layout: page
-title: 旅行地图
+title: Travel
 permalink: /travel-map/
 nav_order: 5
 nav: true
 map: true
-description: 我的旅行足迹地图，记录去过的地方和美好回忆。
+description: My Wonderful Memories
 ---
 
 <!-- Leaflet CSS -->
@@ -58,8 +58,8 @@ description: 我的旅行足迹地图，记录去过的地方和美好回忆。
 
 <div class="row">
   <div class="col-md-12">
-    <h2>我的旅行地图</h2>
-    <p>点击地图上的红点标记，查看我在各个地方拍摄的旅行照片！</p>
+    <h2>My Travel</h2>
+    <p>Click on the red dots on the map to see my travel photos from various locations!</p>
   </div>
 </div>
 
@@ -119,6 +119,20 @@ const travelLocations = [
         caption: "中科院计算所",
         description: "进行博士研究的科研机构"
       }
+    ],
+    visitDate: "2021-现在",
+    icon: "🏛️"
+  },
+  {
+    name: "Changsha, China",
+    coordinates: [28.1940, 112.9822],
+    description: "长沙",
+    photos: [
+      {
+        url: "assets/img/travel/Changsha/NUDT-1.jpg",
+        caption: "NUDT",
+        description: "国防科技大学"
+      },
     ],
     visitDate: "2021-现在",
     icon: "🏛️"
