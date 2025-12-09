@@ -1,0 +1,175 @@
+<!DOCTYPE html> <html lang="en"> <head> <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> <meta charset="utf-8"> <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> <meta http-equiv="X-UA-Compatible" content="IE=edge"> <title> 旅行地图 | Zexin Jane </title> <meta name="author" content="Zexin Jane"> <meta name="description" content="我的旅行足迹地图，记录去过的地方和美好回忆。"> <meta name="keywords" content="jekyll, jekyll-theme, academic-website, portfolio-website"> <link rel="stylesheet" href="/assets/css/bootstrap.min.css?a4b3f509e79c54a512b890d73235ef04"> <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mdbootstrap@4.20.0/css/mdb.min.css" integrity="sha256-jpjYvU3G3N6nrrBwXJoVEYI/0zw8htfFnhT9ljN3JJw=" crossorigin="anonymous"> <link defer rel="stylesheet" href="/assets/css/academicons.min.css?f0b7046b84e425c55f3463ac249818f5"> <link defer rel="stylesheet" href="/assets/css/scholar-icons.css?62b2ac103a88034e6882a5be5f3e2772"> <link defer rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:100,300,400,500,700|Material+Icons&amp;display=swap"> <link defer rel="stylesheet" href="/assets/css/jekyll-pygments-themes-github.css?591dab5a4e56573bf4ef7fd332894c99" media="" id="highlight_theme_light"> <link rel="shortcut icon" href="data:image/svg+xml,&lt;svg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%20100%20100%22&gt;&lt;text%20y=%22.9em%22%20font-size=%2290%22&gt;%E2%9A%9B%EF%B8%8F&lt;/text&gt;&lt;/svg&gt;"> <link rel="stylesheet" href="/assets/css/main.css?d41d8cd98f00b204e9800998ecf8427e"> <link rel="canonical" href="https://xinchen-jzx.github.io/travel-map/"> <script src="/assets/js/theme.js?a81d82887dd692e91686b43de4542f18"></script> <link defer rel="stylesheet" href="/assets/css/jekyll-pygments-themes-native.css?5847e5ed4a4568527aa6cfab446049ca" media="none" id="highlight_theme_dark"> <script>
+    initTheme();
+  </script> </head> <body class="fixed-top-nav "> <header> <nav id="navbar" class="navbar navbar-light navbar-expand-sm fixed-top" role="navigation"> <div class="container"> <a class="navbar-brand title font-weight-lighter" href="/"> <span class="font-weight-bold">Zexin</span> Jane </a> <button class="navbar-toggler collapsed ml-auto" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar top-bar"></span> <span class="icon-bar middle-bar"></span> <span class="icon-bar bottom-bar"></span> </button> <div class="collapse navbar-collapse text-right" id="navbarNav"> <ul class="navbar-nav ml-auto flex-nowrap"> <li class="nav-item "> <a class="nav-link" href="/">about </a> </li> <li class="nav-item "> <a class="nav-link" href="/publications/">publications </a> </li> <li class="nav-item "> <a class="nav-link" href="/projects/">projects </a> </li> <li class="nav-item "> <a class="nav-link" href="/repositories/">repositories </a> </li> <li class="nav-item active"> <a class="nav-link" href="/travel-map/">旅行地图 <span class="sr-only">(current)</span> </a> </li> <li class="nav-item "> <a class="nav-link" href="/teaching/">teaching </a> </li> <li class="toggle-container"> <button id="light-toggle" title="Change theme"> <i class="ti ti-sun-moon" id="light-toggle-system"></i> <i class="ti ti-moon-filled" id="light-toggle-dark"></i> <i class="ti ti-sun-filled" id="light-toggle-light"></i> </button> </li> </ul> </div> </div> </nav> <progress id="progress" value="0"> <div class="progress-container"> <span class="progress-bar"></span> </div> </progress> </header> <div class="container mt-5" role="main"> <div class="post"> <header class="post-header"> <h1 class="post-title">旅行地图</h1> <p class="post-description">我的旅行足迹地图，记录去过的地方和美好回忆。</p> </header> <article> <div class="row"> <div class="col-md-12"> <h2>我的旅行地图</h2> <p>点击地图上的红点标记，查看我在各个地方拍摄的旅行照片！</p> </div> </div> <div id="travel-map" style="height: 600px; width: 100%; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);"></div> <div class="modal fade" id="photoModal" tabindex="-1" aria-labelledby="photoModalLabel" aria-hidden="true"> <div class="modal-dialog modal-lg modal-dialog-centered"> <div class="modal-content"> <div class="modal-header"> <h5 class="modal-title" id="photoModalLabel"></h5> <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> </div> <div class="modal-body"> <div id="photoGallery" class="row"> </div> <div id="locationInfo" class="mt-3"> </div> </div> </div> </div> </div> <script>
+// Travel locations data
+const travelLocations = [
+  {
+    name: "Beijing, China",
+    coordinates: [39.9042, 116.4074],
+    description: "首都北京，学习和生活的地方",
+    photos: [
+      {
+        url: "/assets/img/travel/beijing_placeholder.svg",
+        caption: "故宫博物院",
+        description: "世界上最大的古代宫殿建筑群"
+      },
+      {
+        url: "/assets/img/travel/beijing_placeholder.svg",
+        caption: "长城",
+        description: "世界七大奇迹之一"
+      },
+      {
+        url: "/assets/img/travel/beijing_placeholder.svg",
+        caption: "颐和园",
+        description: "中国古典园林之首"
+      },
+      {
+        url: "/assets/img/travel/beijing_placeholder.svg",
+        caption: "北京大学",
+        description: "中国顶尖高等学府"
+      },
+      {
+        url: "/assets/img/travel/beijing_placeholder.svg",
+        caption: "中科院计算所",
+        description: "进行博士研究的科研机构"
+      }
+    ],
+    visitDate: "2021-现在",
+    icon: "🏛️"
+  },
+  {
+    name: "Shanghai, China",
+    coordinates: [31.2304, 121.4737],
+    description: "国际化大都市，现代与传统交融",
+    photos: [
+      {
+        url: "/assets/img/travel/beijing_placeholder.svg",
+        caption: "外滩",
+        description: "上海的标志性滨江景观"
+      },
+      {
+        url: "/assets/img/travel/beijing_placeholder.svg",
+        caption: "浦东天际线",
+        description: "现代摩天大楼林立"
+      }
+    ],
+    visitDate: "2022",
+    icon: "🏙️"
+  },
+  {
+    name: "Hangzhou, China",
+    coordinates: [30.2741, 120.1551],
+    description: "人间天堂，西湖美景甲天下",
+    photos: [
+      {
+        url: "/assets/img/travel/beijing_placeholder.svg",
+        caption: "西湖",
+        description: "世界文化遗产，中国十大名胜之一"
+      }
+    ],
+    visitDate: "2023",
+    icon: "🌸"
+  }
+];
+
+// Initialize the map when DOM is loaded
+document.addEventListener('DOMContentLoaded', function() {
+  // Create the map
+  const map = L.map('travel-map').setView([35.8617, 104.1954], 4); // Center on China
+
+  // Add OpenStreetMap tiles
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 19,
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+  }).addTo(map);
+
+  // Custom red icon for markers
+  const redIcon = L.divIcon({
+    html: '<div style="background-color: #dc3545; width: 20px; height: 20px; border-radius: 50%; border: 2px solid white; box-shadow: 0 2px 6px rgba(0,0,0,0.3);"></div>',
+    iconSize: [20, 20],
+    iconAnchor: [10, 10],
+    popupAnchor: [0, -10],
+    className: 'custom-marker'
+  });
+
+  // Add markers for each location
+  travelLocations.forEach(location => {
+    const marker = L.marker(location.coordinates, { icon: redIcon }).addTo(map);
+
+    // Create popup content
+    const popupContent = `
+      <div style="min-width: 200px;">
+        <h6 style="margin: 0 0 8px 0; color: #333;">
+          ${location.icon || '📍'} ${location.name}
+        </h6>
+        <p style="margin: 4px 0; font-size: 13px; color: #666;">
+          <strong>访问时间:</strong> ${location.visitDate}
+        </p>
+        <p style="margin: 4px 0; font-size: 13px; color: #666;">
+          ${location.description}
+        </p>
+        <button class="btn btn-sm btn-primary" onclick="showLocationPhotos('${location.name}')">
+          查看照片 (${location.photos.length})
+        </button>
+      </div>
+    `;
+
+    marker.bindPopup(popupContent);
+  });
+
+  // Function to show location photos in modal
+  window.showLocationPhotos = function(locationName) {
+    const location = travelLocations.find(loc => loc.name === locationName);
+    if (!location) return;
+
+    // Set modal title
+    document.getElementById('photoModalLabel').innerHTML = `
+      ${location.icon || '📍'} ${location.name}
+    `;
+
+    // Clear and populate photo gallery
+    const gallery = document.getElementById('photoGallery');
+    gallery.innerHTML = '';
+
+    location.photos.forEach(photo => {
+      const photoCol = document.createElement('div');
+      photoCol.className = 'col-md-6 mb-3';
+      photoCol.innerHTML = `
+        <div class="card">
+          <img src="${photo.url}" class="card-img-top" alt="${photo.caption}"
+               style="height: 200px; object-fit: cover;"
+               onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZGRkIi8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtZmFtaWx5PSJBcmlhbCwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxOCIgZmlsbD0iIzk5OSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZHk9Ii4zZW0iPkJhY2tncm91bmQgUGhvdG88L3RleHQ+PC9zdmc+';">
+          <div class="card-body p-2">
+            <h6 class="card-title mb-1">${photo.caption}</h6>
+            <p class="card-text small text-muted">${photo.description}</p>
+          </div>
+        </div>
+      `;
+      gallery.appendChild(photoCol);
+    });
+
+    // Add location information
+    document.getElementById('locationInfo').innerHTML = `
+      <div class="alert alert-info">
+        <h6 class="alert-heading">关于 ${location.name}</h6>
+        <p class="mb-1"><strong>访问时间:</strong> ${location.visitDate}</p>
+        <p class="mb-0">${location.description}</p>
+      </div>
+    `;
+
+    // Show the modal
+    const modal = new bootstrap.Modal(document.getElementById('photoModal'));
+    modal.show();
+  };
+
+  // Fit map to show all markers
+  if (travelLocations.length > 0) {
+    const group = new L.featureGroup(travelLocations.map(loc =>
+      L.marker(loc.coordinates)
+    ));
+    map.fitBounds(group.getBounds().pad(0.1));
+  }
+});
+</script> <style>.custom-marker{background:transparent!important;border:none!important}#photoGallery .card{transition:transform .2s}#photoGallery .card:hover{transform:translateY(-2px)}#photoGallery img{transition:opacity .2s}#photoGallery img:hover{opacity:.9}#travel-map{background:#f8f9fa;margin-bottom:2rem}.leaflet-popup-content-wrapper{border-radius:8px}.leaflet-popup-content h6{color:#2c3e50!important}</style> </article> </div> </div> <footer class="fixed-bottom" role="contentinfo"> <div class="container mt-0"> © Copyright 2025 Zexin Jane. Powered by <a href="https://jekyllrb.com/" target="_blank" rel="external nofollow noopener">Jekyll</a> with <a href="https://github.com/alshedivat/al-folio" rel="external nofollow noopener" target="_blank">al-folio</a> theme. Hosted by <a href="https://pages.github.com/" target="_blank" rel="external nofollow noopener">GitHub Pages</a>. Photos from <a href="https://unsplash.com" target="_blank" rel="external nofollow noopener">Unsplash</a>. </div> </footer> <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script> <script src="/assets/js/bootstrap.bundle.min.js"></script> <script src="https://cdn.jsdelivr.net/npm/mdbootstrap@4.20.0/js/mdb.min.js" integrity="sha256-NdbiivsvWt7VYCt6hYNT3h/th9vSTL4EDWeGs5SN3DA=" crossorigin="anonymous"></script> <script defer src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js" integrity="sha256-Nn1q/fx0H7SNLZMQ5Hw5JLaTRZp0yILA/FRexe19VdI=" crossorigin="anonymous"></script> <script defer src="https://cdn.jsdelivr.net/npm/imagesloaded@5.0.0/imagesloaded.pkgd.min.js" integrity="sha256-htrLFfZJ6v5udOG+3kNLINIKh2gvoKqwEhHYfTTMICc=" crossorigin="anonymous"></script> <script defer src="/assets/js/masonry.js?a0db7e5d5c70cc3252b3138b0c91dcaf" type="text/javascript"></script> <script defer src="https://cdn.jsdelivr.net/npm/medium-zoom@1.1.0/dist/medium-zoom.min.js" integrity="sha256-ZgMyDAIYDYGxbcpJcfUnYwNevG/xi9OHKaR/8GK+jWc=" crossorigin="anonymous"></script> <script defer src="/assets/js/zoom.js?85ddb88934d28b74e78031fd54cf8308"></script> <script src="/assets/js/no_defer.js?2781658a0a2b13ed609542042a859126"></script> <script defer src="/assets/js/common.js?e0514a05c5c95ac1a93a8dfd5249b92e"></script> <script defer src="/assets/js/copy_code.js?c8a01c11a92744d44b093fc3bda915df" type="text/javascript"></script> <script defer src="/assets/js/jupyter_new_tab.js?d9f17b6adc2311cbabd747f4538bb15f"></script> <script async src="https://d1bxh8uas1mnw7.cloudfront.net/assets/embed.js"></script> <script async src="https://badge.dimensions.ai/badge.js"></script> <script defer type="text/javascript" id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.js" integrity="sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI=" crossorigin="anonymous"></script> <script src="/assets/js/mathjax-setup.js?a5bb4e6a542c546dd929b24b8b236dfd"></script> <script defer src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6" crossorigin="anonymous"></script> <script defer src="/assets/js/progress-bar.js?2f30e0e6801ea8f5036fa66e1ab0a71a" type="text/javascript"></script> <script src="/assets/js/vanilla-back-to-top.min.js?f40d453793ff4f64e238e420181a1d17"></script> <script>
+    addBackToTop();
+  </script> </body> </html>
