@@ -30,9 +30,9 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/repositories/";
           },
-        },{id: "nav-旅行地图",
-          title: "旅行地图",
-          description: "我的旅行足迹地图，记录去过的地方和美好回忆。",
+        },{id: "nav-travel",
+          title: "Travel",
+          description: "My Wonderful Memories",
           section: "Navigation",
           handler: () => {
             window.location.href = "/travel-map/";
