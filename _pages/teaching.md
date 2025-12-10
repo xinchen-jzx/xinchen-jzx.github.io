@@ -21,5 +21,5 @@ nav_order: 6
 
 ## Talks
 
-- GRACE: Gradient-guided Controllable Retrieval for Augmenting Attribute-based Text Generation
+- <b>GRACE: Gradient-guided Controllable Retrieval for Augmenting Attribute-based Text Generation</b>
   - <a href="">ACL-IJCAI-SIGIR</a>, Changsha, China, Jun 24, 2023
