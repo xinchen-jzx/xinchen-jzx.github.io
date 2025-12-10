@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Travel
+title: travel
 permalink: /travel-map/
 nav_order: 5
 nav: true

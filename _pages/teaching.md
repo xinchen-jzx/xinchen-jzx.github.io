@@ -1,11 +1,13 @@
 ---
 layout: page
 permalink: /teaching/
-title: teaching
+title: teaching & talk
 description: Teaching Assistant
 nav: true
 nav_order: 6
 ---
+
+## Teaching
 
 <h4 style="margin:0 10px 0;">National University of Defense Technology</h4>
 
@@ -16,3 +18,8 @@ nav_order: 6
   <li>TA for C++ Programming, Spring 2023</li>
   <li>TA for C++ Programming, Fall 2022</li>
 </ul>
+
+## Talks
+
+- GRACE: Gradient-guided Controllable Retrieval for Augmenting Attribute-based Text Generation
+  - ACL-IJCAI-SIGIR, Changsha, China, Jun 24, 2023
