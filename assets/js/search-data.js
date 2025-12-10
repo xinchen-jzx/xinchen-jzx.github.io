@@ -31,14 +31,14 @@ ninja.data = [{
             window.location.href = "/repositories/";
           },
         },{id: "nav-travel",
-          title: "Travel",
+          title: "travel",
           description: "My Wonderful Memories",
           section: "Navigation",
           handler: () => {
             window.location.href = "/travel-map/";
           },
-        },{id: "nav-teaching",
-          title: "teaching",
+        },{id: "nav-teaching-amp-talk",
+          title: "teaching &amp; talk",
           description: "Teaching Assistant",
           section: "Navigation",
           handler: () => {
