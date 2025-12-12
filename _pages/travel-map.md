@@ -169,7 +169,91 @@ const travelLocations = [
     ],
     visitDate: "2023",
     icon: "🌸"
-  }
+  },
+  {
+    name: "Shenzhen, China",
+    coordinates: [22.5445, 114.0545],
+    description: "人间天堂，西湖美景甲天下",
+    photos: [
+      {
+        url: "/assets/img/travel/beijing_placeholder.svg",
+        caption: "西湖",
+        description: "世界文化遗产，中国十大名胜之一"
+      }
+    ],
+    visitDate: "2023",
+    icon: "🌸"
+  },
+  {
+    name: "Xian, China",
+    coordinates: [34.3415, 108.9401],
+    description: "人间天堂，西湖美景甲天下",
+    photos: [
+      {
+        url: "/assets/img/travel/beijing_placeholder.svg",
+        caption: "西湖",
+        description: "世界文化遗产，中国十大名胜之一"
+      }
+    ],
+    visitDate: "2023",
+    icon: "🌸"
+  },
+  {
+    name: "Guiyang, China",
+    coordinates: [26.6476, 106.6301],
+    description: "人间天堂，西湖美景甲天下",
+    photos: [
+      {
+        url: "/assets/img/travel/beijing_placeholder.svg",
+        caption: "西湖",
+        description: "世界文化遗产，中国十大名胜之一"
+      }
+    ],
+    visitDate: "2023",
+    icon: "🌸"
+  },
+  {
+    name: "Zunyi, China",
+    coordinates: [27.4895, 106.8582],
+    description: "人间天堂，西湖美景甲天下",
+    photos: [
+      {
+        url: "/assets/img/travel/beijing_placeholder.svg",
+        caption: "西湖",
+        description: "世界文化遗产，中国十大名胜之一"
+      }
+    ],
+    visitDate: "2023",
+    icon: "🌸"
+  },
+  {
+    name: "Changde, China",
+    coordinates: [29.0316, 111.6984],
+    description: "人间天堂，西湖美景甲天下",
+    photos: [
+      {
+        url: "/assets/img/travel/beijing_placeholder.svg",
+        caption: "西湖",
+        description: "世界文化遗产，中国十大名胜之一"
+      }
+    ],
+    visitDate: "2023",
+    icon: "🌸"
+  },
+  {
+    name: "Wuhan, China",
+    coordinates: [30.5930, 114.3053],
+    description: "人间天堂，西湖美景甲天下",
+    photos: [
+      {
+        url: "/assets/img/travel/beijing_placeholder.svg",
+        caption: "西湖",
+        description: "世界文化遗产，中国十大名胜之一"
+      }
+    ],
+    visitDate: "2023",
+    icon: "🌸"
+  },
 ];
 
 // Initialize the map when DOM is loaded
