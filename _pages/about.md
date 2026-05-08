@@ -24,7 +24,7 @@ education:
     logo: "NUDT.png"
 
 experience:
-  - date: "Dec.2025 - present"
+  - date: "Mar.2026 - present"
     position: "Noah's Ark Lab, Huawei"
     company: "Research Intern"
     logo: "Huawei.jpg"
