@@ -727,7 +727,14 @@ footer.sticky-bottom {
     margin-top: 0;
 
     li {
-      margin-bottom: 1rem;
+      margin-bottom: 1.25rem;
+      padding-bottom: 1.25rem;
+      border-bottom: 1px solid var(--global-divider-color);
+
+      &:last-child {
+        border-bottom: none;
+        padding-bottom: 0;
+      }
 
       .preview {
       }
@@ -750,17 +757,51 @@ footer.sticky-bottom {
           }
         }
 
+        &.abbr-inline {
+          margin-bottom: 0.35rem;
+
+          abbr {
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.02em;
+            margin-bottom: 0;
+            padding: 0.3rem 0.55rem;
+          }
+        }
+
         .award {
           color: var(--global-theme-color) !important;
           border: 1px solid var(--global-theme-color);
         }
       }
 
+      .row.no-preview {
+        .title {
+          margin-top: 0;
+        }
+
+        .periodical {
+          margin-top: 0.15rem;
+        }
+
+        .links {
+          margin-top: 0.6rem;
+        }
+
+        .badges {
+          margin-top: 0.45rem;
+        }
+      }
+
       .title {
         font-weight: bolder;
+        line-height: 1.35;
       }
 
       .author {
+        margin-top: 0.2rem;
+        line-height: 1.5;
+
         a {
           border-bottom: 1px dashed var(--global-theme-color);
 
@@ -787,14 +828,26 @@ footer.sticky-bottom {
         }
       }
 
+      .periodical {
+        color: var(--global-text-color-light);
+        font-size: 0.95rem;
+        line-height: 1.45;
+        margin-top: 0.15rem;
+      }
+
       .links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.4rem;
+        margin-top: 0.5rem;
+
         a.btn {
           color: var(--global-text-color);
           border: 1px solid var(--global-text-color);
-          padding-left: 1rem;
-          padding-right: 1rem;
-          padding-top: 0.25rem;
-          padding-bottom: 0.25rem;
+          padding-left: 0.85rem;
+          padding-right: 0.85rem;
+          padding-top: 0.2rem;
+          padding-bottom: 0.2rem;
           margin-left: 0;
 
           &:hover {
@@ -808,7 +861,13 @@ footer.sticky-bottom {
       }
 
       .badges {
-        padding-bottom: 0.5rem;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 0.4rem;
+        margin-top: 0.4rem;
+        padding-bottom: 0.25rem;
+
         span {
           display: inline-block;
           color: $black-color;
