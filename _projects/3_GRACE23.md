@@ -8,7 +8,7 @@ category: work
 related_publications: true
 giscus_comments: true
 
-bibliography: GRACE23.bib
+bibliography: GRACE@ACL23.bib
 ---
 
 Zhihua Wen, Zhiliang Tian, Zhen Huang, Yuxin Yang, **Zexin Jian**, Changjian Wang, Dongsheng Li

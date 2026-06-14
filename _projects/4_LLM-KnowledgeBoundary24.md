@@ -8,7 +8,7 @@ category: work
 related_publications: true
 giscus_comments: true
 
-bibliography: LLM-KnowledgeBoundary24.bib
+bibliography: LLM-KnowledgeBoundary@NIPS24.bib
 ---
 
 Zhihua Wen, Zhiliang Tian, Zexin Jian, Zhen Huang, Pei Ke, Yifu Gao, Minlie Huang, Dongsheng Li
