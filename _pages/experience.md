@@ -1,7 +1,8 @@
 ---
 layout: page
-permalink: /teaching/
-title: Experience
+permalink: /experience/
+title: experience
+description: My Wonderful Experience
 nav: true
 nav_order: 6
 ---
@@ -15,7 +16,7 @@ nav_order: 6
   - Co-Lead the Compute-Communication Overlap (CATCCOS) Project. 
   - Co-Leda the memfabric Project.
 - <b>May. 2025 - Mar. 2026</b>: Research Assistant in Advanced Institute of Information Technology (AIIT), Peking University
-  - Lead the RISC-V AI Compiler Project.
+  - Lead the RISC-V AI Compiler Project, which leads to a paper accepted by <a href="https://doi.org/10.1145/3774895.3812195">ICS Workshop 2026</a>.
 
 ## Teaching
 
