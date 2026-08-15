@@ -1,11 +1,21 @@
 ---
 layout: page
 permalink: /teaching/
-title: teaching & talk
-description: Teaching Assistant
+title: Experience
 nav: true
 nav_order: 6
 ---
+
+## Work Experience
+
+- <b>Mar. 2026 - now</b>: Research Assistant in Noah's Ark Lab, Huawei, with Zhongzhe Hu
+  - Lead the mooep-ascend Project.
+  - Lead the monarch + memfabric Project.
+  - Co-lead the MegaKernel Project.
+  - Co-Lead the Compute-Communication Overlap (CATCCOS) Project. 
+  - Co-Leda the memfabric Project.
+- <b>May. 2025 - Mar. 2026</b>: Research Assistant in Advanced Institute of Information Technology (AIIT), Peking University
+  - Lead the RISC-V AI Compiler Project.
 
 ## Teaching
 

@@ -28,7 +28,7 @@ experience:
     position: "Noah's Ark Lab, Huawei"
     company: "Research Intern"
     logo: "Huawei.jpg"
-  - date: "May.2025 - present"
+  - date: "May.2025 - Mar.2026"
     position: "Advanced Institute of Information Technology (AIIT), Peking University"
     company: "Research Intern"
     logo: "PKU.png"
