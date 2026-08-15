@@ -38,11 +38,11 @@ ninja.data = [{
             window.location.href = "/travel-map/";
           },
         },{id: "nav-experience",
-          title: "Experience",
-          description: "",
+          title: "experience",
+          description: "My Wonderful Experience",
           section: "Navigation",
           handler: () => {
-            window.location.href = "/teaching/";
+            window.location.href = "/experience/";
           },
         },{id: "projects-nudt-compiler",
           title: 'NUDT-Compiler',
