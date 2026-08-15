@@ -37,9 +37,9 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/travel-map/";
           },
-        },{id: "nav-teaching-amp-talk",
-          title: "teaching &amp; talk",
-          description: "Teaching Assistant",
+        },{id: "nav-experience",
+          title: "Experience",
+          description: "",
           section: "Navigation",
           handler: () => {
             window.location.href = "/teaching/";
