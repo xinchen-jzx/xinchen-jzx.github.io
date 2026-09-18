@@ -10,11 +10,11 @@ nav_order: 6
 ## Work Experience
 
 - <b>Mar. 2026 - now</b>: Research Assistant in Noah's Ark Lab, Huawei, with Zhongzhe Hu
-  - Lead the mooep-ascend Project.
-  - Lead the monarch + memfabric Project.
-  - Co-lead the MegaKernel Project.
-  - Co-Lead the Compute-Communication Overlap (CATCCOS) Project. 
-  - Co-Leda the memfabric Project.
+  - Co-Lead the <a href="https://gitcode.com/Ascend/memfabric_hybrid">MemFabric Project</a>.
+  - Co-Lead the <a href="https://gitcode.com/cann/catccos">Compute-Communication Overlap Subroutines (CATCCOS) Project</a>. 
+  - Co-Lead the <a href="">MegaKernel Project</a>.
+  - Lead the <a href="">Sub-Tile Asynchronous Parallelism (STAP) Project</a>.
+  - Lead the <a href="">Ascend-MoonEP Project</a>.
 - <b>May. 2025 - Mar. 2026</b>: Research Assistant in Advanced Institute of Information Technology (AIIT), Peking University
   - Lead the RISC-V AI Compiler Project, which leads to a paper accepted by <a href="https://doi.org/10.1145/3774895.3812195">ICS Workshop 2026</a>.
 
