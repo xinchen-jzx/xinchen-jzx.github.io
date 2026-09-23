@@ -9,7 +9,7 @@ nav_order: 6
 
 ## Work Experience
 
-- <b>Mar. 2026 - now</b>: Research Assistant in Noah's Ark Lab, Huawei, with Zhongzhe Hu
+- <b>Mar. 2026 - now</b>: Research Assistant in Noah's Ark Lab, Huawei, with <a href="https://scholar.google.com/citations?user=PGlG6UUAAAAJ&hl=zh-CN">Zhongzhe Hu</a>.
   - Co-Lead the <a href="https://gitcode.com/Ascend/memfabric_hybrid">MemFabric Project</a>.
   - Co-Lead the <a href="https://gitcode.com/cann/catccos">Compute-Communication Overlap Subroutines (CATCCOS) Project</a>. 
   - Co-Lead the <a href="">MegaKernel Project</a>.
@@ -34,3 +34,7 @@ nav_order: 6
 
 - <b>GRACE: Gradient-guided Controllable Retrieval for Augmenting Attribute-based Text Generation</b>
   - <a href="">ACL-IJCAI-SIGIR</a>, Changsha, China, Jun 24, 2023
+
+## Awards
+
+- 2026 Outstanding Student Leader, University of Chinese Academy of Sciences 
