@@ -7,11 +7,9 @@ importance: 1
 category: fun
 ---
 
-github repository:
-- <a href="https://github.com/xinchen-jzx/mini-Rust">xinchen-jzx/mini-Rust</a>
+github repository: <a href="https://github.com/xinchen-jzx/mini-Rust">xinchen-jzx/mini-Rust</a>
 
-Contributors:
-- <a href="https://github.com/flying-rind">Rongda Deng</a>, <a href="https://xinchen-jzx.github.io/">Zexin Jian</a>
+Contributors: <a href="https://github.com/flying-rind">Rongda Deng</a>, <a href="https://xinchen-jzx.github.io/">Zexin Jian</a>
 
 ---
 

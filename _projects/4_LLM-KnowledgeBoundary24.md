@@ -11,7 +11,7 @@ giscus_comments: true
 bibliography: LLM-KnowledgeBoundary@NIPS24.bib
 ---
 
-Zhihua Wen, Zhiliang Tian, Zexin Jian, Zhen Huang, Pei Ke, Yifu Gao, Minlie Huang, Dongsheng Li
+Zhihua Wen, Zhiliang Tian, **Zexin Jian**, Zhen Huang, Pei Ke, Yifu Gao, Minlie Huang, Dongsheng Li
 
 # Abstract
 

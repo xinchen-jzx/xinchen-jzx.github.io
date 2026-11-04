@@ -7,11 +7,9 @@ importance: 2
 category: fun
 ---
 
-github repository:
-- <a href="https://github.com/xinchen-jzx/SysYCompiler2024">xinchen-jzx/SysYCompiler2024</a>
+github repository: <a href="https://github.com/xinchen-jzx/SysYCompiler2024">xinchen-jzx/SysYCompiler2024</a>
 
-Contributors:
-- <a href="https://houhuawei23.github.io/">Huawei Hou</a>, <a href="https://github.com/TernaryExplorer">Xiangsheng Tang</a>, <a href="https://gitee.com/westme10n">Fuzhong Yang</a>, <a href="https://xinchen-jzx.github.io/">Zexin Jian</a>
+Contributors: <a href="https://houhuawei23.github.io/">Huawei Hou</a>, <a href="https://github.com/TernaryExplorer">Xiangsheng Tang</a>, <a href="https://gitee.com/westme10n">Fuzhong Yang</a>, <a href="https://xinchen-jzx.github.io/">Zexin Jian</a>
 
 ---
 
