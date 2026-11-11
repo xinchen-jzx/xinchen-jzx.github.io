@@ -56,4 +56,4 @@ lover_right_photo: "girlfriend_photo.jpg"  # 女朋友的照片，放在 assets/
 - <b>Performant and cost-effective infrastructures for AI applications:</b> I work to design and implement Deep Learning (DL) Compilers and frameworks to improve the performance and energy efficiency of emerging AI applications on heterogeneous computing platforms.
 - <b>LLM:</b> <a href="https://aclanthology.org/2023.findings-acl.530/">CTG (ACL'23)</a>, <a href="https://dl.acm.org/doi/10.5555/3737916.3740736">Semi-Open-Ended QA (NIPS'24)</a>
 
-📫 If you are seeking any form of academic cooperation, please feel free to email me at <a href="">zexinjian@gmail.com</a>.
+📫 If you are seeking any form of academic cooperation, please feel free to email me at <a href="">jianzexin25z@ict.ac.cn</a>.
