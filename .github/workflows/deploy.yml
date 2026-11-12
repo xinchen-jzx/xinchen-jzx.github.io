@@ -67,7 +67,7 @@ permissions:
 jobs:
   deploy:
     # available images: https://github.com/actions/runner-images#available-images
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
       - name: Checkout 🛎️
         uses: actions/checkout@v4
@@ -88,9 +88,15 @@ jobs:
           valueFile: "_config.yml"
           propertyPath: "giscus.repo"
           value: ${{ github.repository }}
+      - name: Install ImageMagick
+        run: |
+          if ! command -v convert >/dev/null 2>&1; then
+            sudo apt-get update -o Acquire::Retries=3 -o APT::Update::Error-Mode=any
+            sudo apt-get install -y --no-install-recommends -o Acquire::Retries=3 imagemagick
+          fi
+          convert -version
       - name: Install and Build 🔧
         run: |
-          sudo apt-get update && sudo apt-get install -y imagemagick
           pip3 install --upgrade nbconvert
           export JEKYLL_ENV=production
           bundle exec jekyll build
