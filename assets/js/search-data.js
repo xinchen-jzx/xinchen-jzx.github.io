@@ -16,27 +16,6 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/publications/";
           },
-        },{id: "nav-projects",
-          title: "projects",
-          description: "A growing collection of my cool projects.",
-          section: "Navigation",
-          handler: () => {
-            window.location.href = "/projects/";
-          },
-        },{id: "nav-repositories",
-          title: "repositories",
-          description: "Collections of my repositories.",
-          section: "Navigation",
-          handler: () => {
-            window.location.href = "/repositories/";
-          },
-        },{id: "nav-travel",
-          title: "travel",
-          description: "My Wonderful Memories",
-          section: "Navigation",
-          handler: () => {
-            window.location.href = "/travel-map/";
-          },
         },{id: "nav-experience",
           title: "experience",
           description: "My Wonderful Experience",
@@ -44,27 +23,7 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/experience/";
           },
-        },{id: "projects-nudt-compiler",
-          title: 'NUDT-Compiler',
-          description: "for CSC-2024 Compiler Design Contest",
-          section: "Projects",handler: () => {
-              window.location.href = "/projects/1_SysYCompiler24.html";
-            },},{id: "projects-nudt-os",
-          title: 'NUDT-OS',
-          description: "Open source project miniRust",
-          section: "Projects",handler: () => {
-              window.location.href = "/projects/2_miniRust.html";
-            },},{id: "projects-grace23",
-          title: 'GRACE23',
-          description: "ACL23 - GRACE:Gradient-guided Controllable Retrieval for Augmenting Attribute-based Text Generation",
-          section: "Projects",handler: () => {
-              window.location.href = "/projects/3_GRACE23.html";
-            },},{id: "projects-llm-knowledgeboundary24",
-          title: 'LLM-KnowledgeBoundary24',
-          description: "NeurIPS24 - Perception of Knowledge Boundaries for LLMs via Semi-open-ended Question Answering",
-          section: "Projects",handler: () => {
-              window.location.href = "/projects/4_LLM-KnowledgeBoundary24.html";
-            },},{
+        },{
         id: 'social-email',
         title: 'email',
         section: 'Socials',
