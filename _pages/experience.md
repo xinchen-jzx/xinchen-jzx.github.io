@@ -1,7 +1,7 @@
 ---
 layout: page
 permalink: /experience/
-title: experience
+title: CV
 description: My Wonderful Experience
 nav: true
 nav_order: 6
