@@ -1,50 +1,71 @@
-// Single-column education and research history on the experience page.
+// Education and research history with a logo/date column.
 .career-entries {
+  --career-accent: #0f766e;
+
   .career-entry {
+    display: grid;
+    grid-template-columns: 184px minmax(0, 1fr);
+    align-items: start;
+    gap: 1.5rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .career-meta {
     display: flex;
-    align-items: flex-start;
-    gap: 1rem;
-    margin-bottom: 1.75rem;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+    min-width: 0;
   }
 
   .career-logo {
     flex-shrink: 0;
-    width: 72px;
-    height: 72px;
+    width: 128px;
+    height: 128px;
     object-fit: contain;
     background-color: white;
     border-radius: 6px;
-    padding: 4px;
+    padding: 6px;
   }
 
   .career-content {
-    flex: 1;
     min-width: 0;
     overflow-wrap: anywhere;
-  }
 
-  .career-heading {
-    display: flex;
-    align-items: baseline;
-    justify-content: space-between;
-    gap: 0.25rem 1rem;
-
-    h3 {
-      margin: 0 0 0.25rem;
-      font-size: 1.05rem;
-      font-weight: 600;
-      line-height: 1.4;
+    a {
+      color: var(--career-accent);
+      text-decoration: underline;
+      text-underline-offset: 3px;
     }
   }
 
   .career-date {
-    flex-shrink: 0;
-    margin: 0 0 0.25rem;
-    color: var(--global-text-color-light);
+    max-width: 100%;
+    margin: 0;
+    padding: 0.375rem 0.5rem;
+    border-radius: 4px;
+    background-color: #0f766e;
+    color: white;
     font-size: 0.875rem;
+    font-weight: 600;
+    line-height: 1.4;
+    text-align: center;
   }
 
-  .career-role,
+  .career-role {
+    margin: 0 0 0.5rem;
+    font-size: 1.2rem;
+    font-weight: 600;
+    line-height: 1.4;
+  }
+
+  .career-institution {
+    margin: 0 0 0.5rem;
+    font-size: 1.05rem;
+    font-weight: 600;
+    line-height: 1.5;
+  }
+
   .career-advisor,
   .career-description {
     margin: 0 0 0.25rem;
@@ -56,28 +77,34 @@
   }
 
   .career-highlights {
-    margin: 0.5rem 0 0;
+    margin: 0.75rem 0 0;
     padding-left: 1.25rem;
 
     li + li {
-      margin-top: 0.25rem;
+      margin-top: 0.375rem;
     }
   }
 
-  @media (max-width: 575.98px) {
+  @media (max-width: 767.98px) {
     .career-entry {
-      gap: 0.75rem;
+      grid-template-columns: minmax(0, 1fr);
+      gap: 1rem;
+    }
+
+    .career-meta {
+      flex-direction: row;
+      gap: 1rem;
     }
 
     .career-logo {
-      width: 56px;
-      height: 56px;
-    }
-
-    .career-heading {
-      flex-direction: column;
+      width: 88px;
+      height: 88px;
     }
   }
+}
+
+html[data-theme="dark"] .career-entries {
+  --career-accent: #5eead4;
 }
 
 // Education and Experience sections styling

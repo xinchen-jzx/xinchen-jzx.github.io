@@ -2,18 +2,18 @@
   {% for item in include.entries %}
     {% assign institution = item.institution | default: item.position %}
     <div class="career-entry">
-      {% if item.logo %}
-        {% assign logo_path = item.logo | prepend: 'assets/img/' %}
-        <img class="career-logo" src="{{ logo_path | relative_url }}" alt="" width="72" height="72" loading="lazy">
-      {% endif %}
+      <div class="career-meta">
+        {% if item.logo %}
+          {% assign logo_path = item.logo | prepend: 'assets/img/' %}
+          <img class="career-logo" src="{{ logo_path | relative_url }}" alt="" width="128" height="128" loading="lazy">
+        {% endif %}
+        <p class="career-date">{{ item.date | escape }}</p>
+      </div>
       <div class="career-content">
-        <div class="career-heading">
-          <h3>{{ institution | escape }}</h3>
-          <p class="career-date">{{ item.date | escape }}</p>
-        </div>
-        <p class="career-role">{{ item.degree | default: item.company | escape }}</p>
+        <h3 class="career-role">{{ item.degree | default: item.company }}</h3>
+        <p class="career-institution">{{ institution | escape }}</p>
         {% if item.teacher %}
-          <p class="career-advisor">{{ item.teacher | escape }}</p>
+          <p class="career-advisor">{{ item.teacher }}</p>
         {% endif %}
         {% if item.description %}
           <p class="career-description">{{ item.description }}</p>
