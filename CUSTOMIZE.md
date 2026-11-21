@@ -20,7 +20,6 @@ The project is structured as follows, focusing on the main components that you w
 ├── 📄 _config.yml: the configuration file of the template
 ├── 📂 _data/: contains some of the data used in the template
 │   ├── 📄 cv.yml: CV in YAML format, used when assets/json/resume.json is not found
-│   ├── 📄 repositories.yml: users and repositories info in YAML format
 │   └── 📄 socials.yml: your social media and contact info in YAML format
 ├── 📂 _includes/: contains code parts that are included in the main HTML file
 │   └── 📄 news.liquid: defines the news section layout in the about page
@@ -29,7 +28,6 @@ The project is structured as follows, focusing on the main components that you w
 ├── 📂 _pages/: contains the pages of the website
 |   └── 📄 404.md: 404 page (page not found)
 ├── 📂 _posts/: contains the blog posts
-├── 📂 _projects/: contains the projects
 └── 📂 _sass/: contains the SASS files that define the style of the website
     ├── 📄 _base.scss: base style of the website
     ├── 📄 _cv.scss: style of the CV page
@@ -53,10 +51,6 @@ There are currently 2 different ways of generating the CV page content. The firs
 
 What this means is, if there is no resume data defined in [\_config.yml](_config.yml) and loaded via a json file, it will load the contents of [\_data/cv.yml](_data/cv.yml). If you want to use the [\_data/cv.yml](_data/cv.yml) file as the source of your CV, you must delete the [assets/json/resume.json](assets/json/resume.json) file.
 
-## Modifying the user and repository information
-
-The user and repository information is defined in [\_data/repositories.yml](_data/repositories.yml). You can add as many users and repositories as you want. Both informations are used in the `repositories` section.
-
 ## Creating new pages
 
 You can create new pages by adding new Markdown files in the [\_pages](_pages/) directory. The easiest way to do this is to copy an existing page and modify it. You can choose the layout of the page by changing the [layout](https://jekyllrb.com/docs/layouts/) attribute in the [frontmatter](https://jekyllrb.com/docs/front-matter/) of the Markdown file, and also the path to access it by changing the [permalink](https://jekyllrb.com/docs/permalinks/) attribute. You can also add new layouts in the [\_layouts](_layouts/) directory if you feel the need for it.
@@ -69,19 +63,15 @@ If you want to create blog posts that are not ready to be published, but you wan
 
 Note that `posts` is also a collection, but it is a default collection created automatically by Jekyll. To access the posts, you can use the `site.posts` variable in your templates.
 
-## Creating new projects
-
-You can create new projects by adding new Markdown files in the [\_projects](_projects/) directory. The easiest way to do this is to copy an existing project and modify it.
-
 ## Adding some news
 
 You can add news in the about page by adding new Markdown files in the [\_news](_news/) directory. There are currently two types of news: inline news and news with a link. News with a link take you to a new page while inline news are displayed directly in the about page. The easiest way to create yours is to copy an existing news and modify it.
 
 ## Adding Collections
 
-This Jekyll theme implements [collections](https://jekyllrb.com/docs/collections/) to let you break up your work into categories. The theme comes with three default collections: `news`, `projects`, and `books`. Items from the `news` collection are automatically displayed on the home page, while items from the `projects` collection are displayed on a responsive grid on projects page and items from the `books` collection are displayed on its own `bookshelf` page inside `submenus`.
+This Jekyll theme implements [collections](https://jekyllrb.com/docs/collections/) to let you break up your work into categories. The `news` collection contains news items that can be displayed on the home page.
 
-You can easily create your own collections, apps, short stories, courses, or whatever your creative work is. To do this, edit the collections in the [\_config.yml](_config.yml) file, create a corresponding folder, and create a landing page for your collection, similar to [\_pages/projects.md](_pages/projects.md).
+You can create your own collections by editing the collections in [\_config.yml](_config.yml), creating a corresponding folder, and adding a page for the collection in [\_pages](_pages/).
 
 If you wish to create a collection with support for categories and tags, like the blog posts, you just need to add this collection to the `jekyll-archives` section of your [\_config.yml](_config.yml) file. You can check how this is done with the `books` collection. For more information about customizing the archives section or creating your own archives page, check the [jekyll-archives-v2 documentation](https://george-gca.github.io/jekyll-archives-v2/).
 
@@ -173,7 +163,6 @@ exclude:
   - _news/announcement_*.md
   - _pages/blog.md
   - _posts/
-  - _projects/?_project.md
   - assets/jupyter/blog.ipynb
 ```
 
@@ -207,20 +196,6 @@ To remove the news section, you can:
 - remove the `announcements` part in [\_pages/about.md](_pages/about.md)
 - remove the news part in the `Collections` section in the [\_config.yml](_config.yml) file
 
-### Removing the projects page
-
-To remove the projects, you can:
-
-- delete the [\_projects](_projects/) directory
-- delete the projects page [\_pages/projects.md](_pages/projects.md)
-- remove reference to projects page in our [\_pages/dropdown.md](_pages/dropdown.md)
-- remove projects part in the `Collections` section in the [\_config.yml](_config.yml) file
-
-You can also:
-
-- delete [\_includes/projects_horizontal.liquid](_includes/projects_horizontal.liquid)
-- delete [\_includes/projects.liquid](_includes/projects.liquid)
-
 ### Removing the publications page
 
 To remove the publications, you can:
@@ -240,13 +215,6 @@ You can also:
 - delete [\_plugins/hide-custom-bibtex.rb](_plugins/hide-custom-bibtex.rb)
 - delete [\_plugins/inspirehep-citations.rb](_plugins/inspirehep-citations.rb)
 - remove the `jekyll-scholar` gem from the [Gemfile](Gemfile) and the `plugins` section in [\_config.yml](_config.yml)
-
-### Removing the repositories page
-
-To remove the repositories, you can:
-
-- delete the repositories page [\_pages/repositories.md](_pages/repositories.md)
-- delete [\_includes/repository/](_includes/repository/) directory
 
 ## Adding Token for Lighthouse Badger
 
@@ -286,7 +254,7 @@ In this folder you need to store your file in the same format as you would in `_
 - It will only upload files which follow the pattern `yyyy-mm-dd-title.md`
   - This means that only markdown files will be posted
   - It means that any markdown which do not follow this pattern will not be posted
-- The scheduler works by moving posts from the `_scheduled/` directory to `_posts/`, it will not post to folders like `_projects/` or `_news/`
+- The scheduler works by moving posts from the `_scheduled/` directory to `_posts/`, it will not post to folders like `_news/`
 - The date in the name of the file is the day that file will be uploaded on
   - `2024-08-27-file1.md` will not be posted before or after 27-August-2024 (Scheduler only works for posts scheduled on the present day)
   - `2025-08-27-file2.md` will be posted exactly on 27-August-2025

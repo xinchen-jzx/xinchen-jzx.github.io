@@ -25,18 +25,6 @@ impressum_path: # set to path to include impressum link in the footer, use the s
 back_to_top: true # set to false to disable the back to top button
 
 # -----------------------------------------------------------------------------
-# Theme
-# -----------------------------------------------------------------------------
-
-# repo color theme
-repo_theme_light: default # https://github.com/anuraghazra/github-readme-stats/blob/master/themes/README.md
-repo_theme_dark: dark # https://github.com/anuraghazra/github-readme-stats/blob/master/themes/README.md
-repo_trophies:
-  enabled: true
-  theme_light: flat # https://github.com/ryo-ma/github-profile-trophy
-  theme_dark: gitdimmed # https://github.com/ryo-ma/github-profile-trophy
-
-# -----------------------------------------------------------------------------
 # RSS Feed
 # -----------------------------------------------------------------------------
 # will use title and url fields
@@ -137,8 +125,6 @@ collections:
   news:
     defaults:
       layout: post
-    output: true
-  projects:
     output: true
 
 # -----------------------------------------------------------------------------
@@ -353,12 +339,10 @@ enable_pirsch_analytics: false # enables Pirsch analytics (https://pirsch.io/)
 enable_openpanel_analytics: false # enables Openpanel analytics (https://openpanel.dev/)
 enable_google_verification: false # enables google site verification
 enable_bing_verification: false # enables bing site verification
-enable_masonry: true # enables automatic project cards arrangement
 enable_math: true # enables math typesetting (uses MathJax)
 enable_tooltips: false # enables automatic tooltip links generated for each section titles on pages and posts
 enable_darkmode: true # enables switching between light/dark modes
 enable_navbar_social: false # enables displaying social links in the navbar on the about page
-enable_project_categories: true # enables categorization of projects into multiple categories
 enable_medium_zoom: true # enables image zoom feature (as on medium.com)
 enable_progressbar: true # enables a horizontal progress bar linked to the vertical scroll position
 enable_video_embedding: false # enables video embedding for bibtex entries. If false, the button opens the video link in a new window.
@@ -423,12 +407,6 @@ third_party_libraries:
         light: "https://cdn.jsdelivr.net/npm/highlight.js@{{version}}/styles/github.min.css"
         dark: "https://cdn.jsdelivr.net/npm/highlight.js@{{version}}/styles/github-dark.min.css"
     version: "11.9.0"
-  imagesloaded:
-    integrity:
-      js: "sha256-htrLFfZJ6v5udOG+3kNLINIKh2gvoKqwEhHYfTTMICc="
-    url:
-      js: https://cdn.jsdelivr.net/npm/imagesloaded@{{version}}/imagesloaded.pkgd.min.js
-    version: "5.0.0"
   img-comparison-slider:
     integrity:
       css: "sha256-3qTIuuUWIFnnU3LpQMjqiXc0p09rvd0dmj+WkpQXSR8="
@@ -445,19 +423,6 @@ third_party_libraries:
     url:
       js: "https://cdn.jsdelivr.net/npm/jquery@{{version}}/dist/jquery.min.js"
     version: "3.6.0"
-  leaflet:
-    integrity:
-      css: "sha256-q9ba7o845pMPFU+zcAll8rv+gC+fSovKsOoNQ6cynuQ="
-      js: "sha256-MgH13bFTTNqsnuEoqNPBLDaqxjGH+lCpqrukmXc8Ppg="
-      js_map: "sha256-YAoQ3FzREN4GmVENMir8vgHHypC0xfSK3CAxTHCqx1M="
-    local:
-      images: "images/"
-    url:
-      css: "https://cdn.jsdelivr.net/npm/leaflet@{{version}}/dist/leaflet.min.css"
-      images: "https://cdn.jsdelivr.net/npm/leaflet@{{version}}/dist/images/"
-      js: "https://cdn.jsdelivr.net/npm/leaflet@{{version}}/dist/leaflet.min.js"
-      js_map: "https://cdn.jsdelivr.net/npm/leaflet@{{version}}/dist/leaflet.js.map"
-    version: "1.9.4"
   lightbox2:
     integrity:
       css: "sha256-uypRbsAiJcFInM/ndyI/JHpzNe6DtUNXaWEUWEPfMGo="
@@ -475,12 +440,6 @@ third_party_libraries:
       fonts: "https://cdn.jsdelivr.net/npm/mathjax@{{version}}/es5/output/chtml/fonts/woff-v2/"
       js: "https://cdn.jsdelivr.net/npm/mathjax@{{version}}/es5/tex-mml-chtml.js"
     version: "3.2.2"
-  masonry:
-    integrity:
-      js: "sha256-Nn1q/fx0H7SNLZMQ5Hw5JLaTRZp0yILA/FRexe19VdI="
-    url:
-      js: "https://cdn.jsdelivr.net/npm/masonry-layout@{{version}}/dist/masonry.pkgd.min.js"
-    version: "4.2.2"
   mdb:
     integrity:
       css: "sha256-jpjYvU3G3N6nrrBwXJoVEYI/0zw8htfFnhT9ljN3JJw="

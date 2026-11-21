@@ -1,3 +1,85 @@
+// Single-column education and research history on the experience page.
+.career-entries {
+  .career-entry {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    margin-bottom: 1.75rem;
+  }
+
+  .career-logo {
+    flex-shrink: 0;
+    width: 56px;
+    height: 56px;
+    object-fit: contain;
+    background-color: white;
+    border-radius: 6px;
+    padding: 4px;
+  }
+
+  .career-content {
+    flex: 1;
+    min-width: 0;
+    overflow-wrap: anywhere;
+  }
+
+  .career-heading {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 0.25rem 1rem;
+
+    h3 {
+      margin: 0 0 0.25rem;
+      font-size: 1.05rem;
+      font-weight: 600;
+      line-height: 1.4;
+    }
+  }
+
+  .career-date {
+    flex-shrink: 0;
+    margin: 0 0 0.25rem;
+    color: var(--global-text-color-light);
+    font-size: 0.875rem;
+  }
+
+  .career-role,
+  .career-advisor,
+  .career-description {
+    margin: 0 0 0.25rem;
+  }
+
+  .career-advisor {
+    color: var(--global-text-color-light);
+    font-size: 0.9rem;
+  }
+
+  .career-highlights {
+    margin: 0.5rem 0 0;
+    padding-left: 1.25rem;
+
+    li + li {
+      margin-top: 0.25rem;
+    }
+  }
+
+  @media (max-width: 575.98px) {
+    .career-entry {
+      gap: 0.75rem;
+    }
+
+    .career-logo {
+      width: 40px;
+      height: 40px;
+    }
+
+    .career-heading {
+      flex-direction: column;
+    }
+  }
+}
+
 // Education and Experience sections styling
 
 .education-section,

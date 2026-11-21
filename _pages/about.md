@@ -11,36 +11,6 @@ profile:
   more_info: >
     <p>Beijing Haidian, China</p>
 
-education:
-  - date: "Sep.2025 - present"
-    institution: "the Institute of Computing Technology, Chinese Academy of Sciences (ICT, CAS) "
-    degree: "ph.D. in Computer Science"
-    teacher: "advised by Dr. Huimin Cui and Dr. Chenxi Wang"
-    logo: "ICT.png"
-  - date: "Sep.2021 - Jul.2025"
-    institution: "National University of Defense Technology (NUDT)"
-    degree: "B.S. in Computer Science"
-    teacher: "advised by Dr. Zengkun and Dr. Zhiliang Tian"
-    logo: "NUDT.png"
-
-experience:
-  - date: "Mar.2026 - present"
-    position: "Noah's Ark Lab, Huawei"
-    company: "Research Intern"
-    logo: "Huawei.jpg"
-  - date: "May.2025 - Mar.2026"
-    position: "Advanced Institute of Information Technology (AIIT), Peking University"
-    company: "Research Intern"
-    logo: "PKU.png"
-  - date: "Jun.2024 - Sep.2025"
-    position: "the Institute of Computing Technology, Chinese Academy of Sciences (ICT, CAS) "
-    company: "Visiting Student in Computer Science"
-    logo: "ICT.png"
-  - date: "Sep.2022 - Seq.2024"
-    position: "State Key Laboratory of High-Performance Computing (HPCL), NUDT"
-    company: "Research Intern"
-    logo: "NUDT.png"
-
 selected_papers: true # includes a list of papers marked as "selected={true}"
 social: true # includes social icons at the bottom of the page
 

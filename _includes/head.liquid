@@ -84,17 +84,6 @@
   </script>
 {% endif %}
 
-{% if page.map %}
-  <!-- GeoJSON support via Leaflet -->
-  <link
-    defer
-    rel="stylesheet"
-    href="{{ site.third_party_libraries.leaflet.url.css }}"
-    integrity="{{ site.third_party_libraries.leaflet.integrity.css }}"
-    crossorigin="anonymous"
-  >
-{% endif %}
-
 {% if page.code_diff %}
   <!-- diff2html -->
   <link

@@ -536,14 +536,6 @@ footer.sticky-bottom {
   transform: translateX(-15px) translateY(-5px);
 }
 
-// Repositories
-
-@media (min-width: 768px) {
-  .repo {
-    max-width: 50%;
-  }
-}
-
 // Blog
 
 .header-bar {
@@ -650,45 +642,6 @@ footer.sticky-bottom {
   a:hover {
     border-bottom-color: var(--global-theme-color);
     text-decoration: none;
-  }
-}
-
-// Projects
-
-.projects {
-  a {
-    text-decoration: none;
-
-    &:hover {
-      .card-title {
-        color: var(--global-theme-color);
-      }
-    }
-  }
-
-  .card {
-    img {
-      width: 100%;
-    }
-  }
-
-  .col {
-    padding-bottom: 1rem;
-  }
-
-  .grid-sizer,
-  .grid-item {
-    width: 250px;
-    margin-bottom: 10px;
-  }
-
-  h2.category {
-    color: var(--global-divider-color);
-    border-bottom: 1px solid var(--global-divider-color);
-    padding-top: 0.5rem;
-    margin-top: 2rem;
-    margin-bottom: 1rem;
-    text-align: right;
   }
 }
 
@@ -1201,11 +1154,6 @@ nav[data-toggle="toc"] {
 }
 
 .echarts {
-  height: 400px;
-  width: 100%;
-}
-
-.map {
   height: 400px;
   width: 100%;
 }

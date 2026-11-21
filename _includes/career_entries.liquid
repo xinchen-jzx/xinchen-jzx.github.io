@@ -1,0 +1,31 @@
+<div class="career-entries">
+  {% for item in include.entries %}
+    {% assign institution = item.institution | default: item.position %}
+    <div class="career-entry">
+      {% if item.logo %}
+        {% assign logo_path = item.logo | prepend: 'assets/img/' %}
+        <img class="career-logo" src="{{ logo_path | relative_url }}" alt="" width="56" height="56" loading="lazy">
+      {% endif %}
+      <div class="career-content">
+        <div class="career-heading">
+          <h3>{{ institution | escape }}</h3>
+          <p class="career-date">{{ item.date | escape }}</p>
+        </div>
+        <p class="career-role">{{ item.degree | default: item.company | escape }}</p>
+        {% if item.teacher %}
+          <p class="career-advisor">{{ item.teacher | escape }}</p>
+        {% endif %}
+        {% if item.description %}
+          <p class="career-description">{{ item.description }}</p>
+        {% endif %}
+        {% if item.highlights %}
+          <ul class="career-highlights">
+            {% for highlight in item.highlights %}
+              <li>{{ highlight }}</li>
+            {% endfor %}
+          </ul>
+        {% endif %}
+      </div>
+    </div>
+  {% endfor %}
+</div>

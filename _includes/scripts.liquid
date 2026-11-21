@@ -13,23 +13,6 @@
   crossorigin="anonymous"
 ></script>
 
-{% if site.enable_masonry %}
-  <!-- Masonry & imagesLoaded -->
-  <script
-    defer
-    src="{{ site.third_party_libraries.masonry.url.js }}"
-    integrity="{{ site.third_party_libraries.masonry.integrity.js }}"
-    crossorigin="anonymous"
-  ></script>
-  <script
-    defer
-    src="{{ site.third_party_libraries.imagesloaded.url.js }}"
-    integrity="{{ site.third_party_libraries.imagesloaded.integrity.js }}"
-    crossorigin="anonymous"
-  ></script>
-  <script defer src="{{ '/assets/js/masonry.js' | relative_url | bust_file_cache }}" type="text/javascript"></script>
-{% endif %}
-
 {% if page.mermaid and page.mermaid.enabled %}
   <!-- Mermaid and D3 -->
   <script
@@ -58,16 +41,6 @@
     crossorigin="anonymous"
   ></script>
   <script defer src="{{ '/assets/js/diff2html-setup.js' | relative_url | bust_file_cache }}" type="text/javascript"></script>
-{% endif %}
-
-{% if page.map %}
-  <!-- Leaflet -->
-  <script
-    src="{{ site.third_party_libraries.leaflet.url.js }}"
-    integrity="{{ site.third_party_libraries.leaflet.integrity.js }}"
-    crossorigin="anonymous"
-  ></script>
-  <script defer src="{{ '/assets/js/leaflet-setup.js' | relative_url | bust_file_cache }}" type="text/javascript"></script>
 {% endif %}
 
 {% if page.chart and page.chart.chartjs %}

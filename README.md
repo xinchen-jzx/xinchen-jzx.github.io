@@ -245,7 +245,6 @@ Run the test yourself: [Google Lighthouse PageSpeed Insights](https://pagespeed.
       - [Full support for math &amp; code](#full-support-for-math--code)
       - [Photos, Audio, Video and more](#photos-audio-video-and-more)
     - [Other features](#other-features)
-      - [GitHub's repositories and user stats](#githubs-repositories-and-user-stats)
       - [Theming](#theming)
       - [Social media previews](#social-media-previews)
       - [Atom (RSS-like) Feed](#atom-rss-like-feed)
@@ -314,11 +313,9 @@ You can add extra information to a publication, like a PDF file in the [assets/p
 
 ### Collections
 
-This Jekyll theme implements `collections` to let you break up your work into categories. The theme comes with two default collections: `news` and `projects`. Items from the `news` collection are automatically displayed on the home page. Items from the `projects` collection are displayed on a responsive grid on projects page.
+This Jekyll theme implements `collections` to let you break up your work into categories. The `news` collection contains news items that can be displayed on the home page.
 
-[![Projects Preview](readme_preview/projects.png)](https://alshedivat.github.io/al-folio/projects/)
-
-You can easily create your own collections, apps, short stories, courses, or whatever your creative work is. To do this, edit the collections in the [\_config.yml](_config.yml) file, create a corresponding folder, and create a landing page for your collection, similar to `_pages/projects.md`.
+You can create your own collections by editing the collections in [\_config.yml](_config.yml), creating a corresponding folder, and adding a page for the collection in [\_pages](_pages/).
 
 ---
 
@@ -345,54 +342,15 @@ For more details on how to create distill-styled posts using `<d-*>` tags, pleas
 
 #### Photos, Audio, Video and more
 
-Photo formatting is made simple using [Bootstrap's grid system](https://getbootstrap.com/docs/4.4/layout/grid/). Easily create beautiful grids within your blog posts and project pages, also with support for [video](https://alshedivat.github.io/al-folio/blog/2023/videos/) and [audio](https://alshedivat.github.io/al-folio/blog/2023/audios/) embeds:
+Photo formatting is made simple using [Bootstrap's grid system](https://getbootstrap.com/docs/4.4/layout/grid/). Easily create beautiful grids within your pages and blog posts, also with support for [video](https://alshedivat.github.io/al-folio/blog/2023/videos/) and [audio](https://alshedivat.github.io/al-folio/blog/2023/audios/) embeds:
 
 <p align="center">
-  <a href="https://alshedivat.github.io/al-folio/projects/1_project/">
-    <img src="readme_preview/photos-screenshot.png" width="75%">
-  </a>
+  <img src="readme_preview/photos-screenshot.png" width="75%">
 </p>
 
 ---
 
 ### Other features
-
-#### GitHub's repositories and user stats
-
-**al-folio** uses [github-readme-stats](https://github.com/anuraghazra/github-readme-stats) and [github-profile-trophy](https://github.com/ryo-ma/github-profile-trophy) to display GitHub repositories and user stats on the `/repositories/` page.
-
-[![Repositories Preview](readme_preview/repositories.png)](https://alshedivat.github.io/al-folio/repositories/)
-
-Edit the `_data/repositories.yml` and change the `github_users` and `github_repos` lists to include your own GitHub profile and repositories to the `/repositories/` page.
-
-You may also use the following codes for displaying this in any other pages.
-
-```html
-<!-- code for GitHub users -->
-{% if site.data.repositories.github_users %}
-<div class="repositories d-flex flex-wrap flex-md-row flex-column justify-content-between align-items-center">
-  {% for user in site.data.repositories.github_users %} {% include repository/repo_user.liquid username=user %} {% endfor %}
-</div>
-{% endif %}
-
-<!-- code for GitHub trophies -->
-{% if site.repo_trophies.enabled %} {% for user in site.data.repositories.github_users %} {% if site.data.repositories.github_users.size > 1 %}
-<h4>{{ user }}</h4>
-{% endif %}
-<div class="repositories d-flex flex-wrap flex-md-row flex-column justify-content-between align-items-center">
-  {% include repository/repo_trophies.liquid username=user %}
-</div>
-{% endfor %} {% endif %}
-
-<!-- code for GitHub repositories -->
-{% if site.data.repositories.github_repos %}
-<div class="repositories d-flex flex-wrap flex-md-row flex-column justify-content-between align-items-center">
-  {% for repo in site.data.repositories.github_repos %} {% include repository/repo.liquid repository=repo %} {% endfor %}
-</div>
-{% endif %}
-```
-
----
 
 #### Theming
 
