@@ -5,6 +5,7 @@ title: CV
 description: My Wonderful Experience
 nav: true
 nav_order: 6
+contact_role: "HY Qingyun Intern"
 
 education:
   - date: "Sep. 2025 - present"
@@ -45,6 +46,21 @@ experience:
       - Participate in the <a href="https://github.com/xinchen-jzx/GRACE">Controled-Text Generation (CTG) Project</a>, which leads to a paper accepted by <a href="https://aclanthology.org/2023.findings-acl.530/">ACL-Findings 2023</a>.
       - Participate in the <a href="https://github.com/xinchen-jzx/LLM-KnowledgeBoundary">Semi-Opened Question Answering Project</a>, which leads to a paper accepted by <a href="https://dl.acm.org/doi/10.5555/3737916.3740736">NeurIPS 2024</a>.
 ---
+
+## Contact
+
+{% capture contact_name %}{{ site.first_name }} {{ site.middle_name }} {{ site.last_name }}{% endcapture %}
+{% assign contact_website = site.url | append: site.baseurl %}
+<dl class="cv-contact">
+  <dt>Name</dt>
+  <dd>{{ contact_name | normalize_whitespace | escape }}</dd>
+  <dt>Role</dt>
+  <dd>{{ page.contact_role | escape }}</dd>
+  <dt>Email</dt>
+  <dd><a class="cv-contact-email" href="mailto:{{ site.data.socials.email | escape }}">{{ site.data.socials.email | escape }}</a></dd>
+  <dt>Website</dt>
+  <dd><a href="{{ contact_website | escape }}">{{ contact_website | escape }}</a></dd>
+</dl>
 
 ## Education
 
