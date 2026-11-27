@@ -24,6 +24,8 @@ experience:
     company: >-
       Research Assistant in Hunyuan, Tencent (Qingyun Project), with <a href=""></a>.
     logo: "Tencent.png"
+    highlights:
+      - 'Lead the <a href=""> Project</a>.'
   - date: "Mar. 2026 - Nov. 2026"
     company: >-
       Research Assistant in Noah's Ark Lab, Huawei, with <a href="https://scholar.google.com/citations?user=PGlG6UUAAAAJ&hl=zh-CN">Zhongzhe Hu</a>.
@@ -38,6 +40,7 @@ experience:
     logo: "PKU.png"
     highlights:
       - 'Lead the <a href="">RISC-V AI Compiler Project</a>, which leads to a paper accepted by <a href="https://doi.org/10.1145/3774895.3812195">ICS-Workshop 2026</a>.'
+      - 'Lead the <a href="">NPU Verification Project</a>.'
   - date: "Sep. 2022 - Sep. 2024"
     company: >-
       Research Intern in State Key Laboratory of High-Performance Computing, NUDT, with <a href="https://scholar.google.com/citations?user=ClvGvccAAAAJ">Zhiliang Tian</a>.
